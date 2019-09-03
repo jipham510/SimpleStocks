@@ -94,3 +94,40 @@ header {
     font-size: 18px; }
   .front-page .front-page-intro .sign-up h4 {
     padding: 16px 0px; }
+  .front-page .front-page-intro .front-page-text1 {
+    margin-bottom: 20px;
+    z-index: 3;
+    animation: text1 3s 1;
+    position: relative;
+    background: white;
+    letter-spacing: 4px;
+    padding-bottom: 20px; }
+  .front-page .front-page-intro .front-page-text2 {
+    background: white;
+    z-index: 2;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin-bottom: -80px;
+    position: relative;
+    top: -10px;
+    animation: text2 1s 1;
+    animation-delay: 3s; }
+  .front-page .front-page-intro .front-page-text3 {
+    z-index: 1;
+    position: relative;
+    top: -10px; }
+
+@keyframes text1 {
+  0% {
+    color: white;
+    margin-bottom: -40px; }
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: -40px; }
+  85% {
+    letter-spacing: 4px;
+    margin-bottom: -40px; } }
+
+@keyframes text2 {
+  100% {
+    margin-bottom: 0px; } }
