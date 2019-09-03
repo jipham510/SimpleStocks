@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: "DIN Pro", "DIN Web", sans-serif;
+  position: relative; }
+  body a {
+    text-decoration: none;
+    color: #030C14; }
+    body a:hover {
+      color: #67CF9A;
+      transition: all 0.3s ease-out; }
+
+header {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  height: 70px;
+  padding: 12px 0px; }
+  header #logo {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    margin-left: 8vw;
+    padding: 10px;
+    background: url(../images/robinhood-logo.png);
+    background-size: cover; }
+    header #logo h4 {
+      margin-top: 5px;
+      padding: 0px 23px; }
+  header .icons {
+    margin-top: 10px;
+    position: absolute;
+    top: 0px;
+    left: 22vw; }
+    header .icons .fa-envelope {
+      margin-top: 2px; }
+  header .menu {
+    position: absolute;
+    z-index: 3;
+    top: 0px;
+    right: 0vw;
+    margin-right: 9vw; }
+    header .menu .log-in {
+      margin-top: 26px;
+      font-size: 16px;
+      font-weight: bold;
+      position: absolute;
+      right: 10vw;
+      white-space: nowrap; }
+      header .menu .log-in:hover {
+        text-decoration: underline; }
+    header .menu .sign-up {
+      position: absolute;
+      right: 0vw; }
+
+.sign-up {
+  width: 105px;
+  height: 50px;
+  border-radius: 36px;
+  background: #67CF9A;
+  text-align: center;
+  color: white;
+  margin-top: 12px;
+  transition: all 0.3s ease-out; }
+  .sign-up h4 {
+    font: 17px;
+    font-weight: bold;
+    margin-top: 17px; }
+  .sign-up:hover {
+    text-decoration: underline;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+
+.front-page .front-page-pic {
+  position: absolute;
+  top: 10vh;
+  right: 1vw;
+  height: 700px;
+  width: 900px;
+  background: url(../images/splashimage.png); }
+
+.front-page .front-page-intro {
+  position: absolute;
+  top: 40vh;
+  left: 8.5vw;
+  height: 400px;
+  width: 400px; }
+  .front-page .front-page-intro h1 {
+    font-size: 46px;
+    font-weight: bold; }
+  .front-page .front-page-intro h2 {
+    font-size: 18px; }
+  .front-page .front-page-intro .sign-up h4 {
+    padding: 16px 0px; }

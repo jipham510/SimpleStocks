@@ -1,0 +1,6 @@
+$primary-color : #67CF9A;
+$secondary-color : #030C14;
+$main-font: "DIN Pro", "DIN Web", sans-serif;
+@mixin easeOut {
+    transition: all 0.3s ease-out;
+}
