@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+body {
+  font-family: "DIN Pro", "DIN Web", sans-serif;
+  font-size: 14px; }
+  body a {
+    text-decoration: none;
+    color: #67CF9A; }
+
+.background-img {
+  background: black;
+  width: 50vw;
+  height: 100vh;
+  background: url("../images/login_background.png");
+  background-size: cover;
+  background-position: center; }
+  .background-img .text1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 10px; }
+  .background-img .login-form {
+    position: absolute;
+    left: 53.5vw;
+    top: 22.5vh; }
+    .background-img .login-form .text2 {
+      margin-top: 10px;
+      padding: 10px 0; }
+    .background-img .login-form input {
+      background: #E8F0FE;
+      padding: 16px 14px;
+      border: 1px solid white;
+      border-radius: 3px;
+      width: 410px; }
+    .background-img .login-form input:focus {
+      outline: none !important;
+      border: 1px solid #67CF9A; }
+    .background-img .login-form .forgot-user-pass {
+      padding: 20px 0px; }
+
+.sign-in {
+  width: 140px;
+  height: 50px;
+  border-radius: 3px;
+  background: #67CF9A;
+  text-align: center;
+  color: white;
+  margin-top: 45px;
+  transition: box-shadow 0.3s ease-out; }
+  .sign-in h4 {
+    font: 14px;
+    padding-top: 19px; }
+  .sign-in:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
