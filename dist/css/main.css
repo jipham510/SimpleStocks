@@ -1,9 +1,84 @@
+body {
+  font-size: 14px; }
+
+.background-img {
+  background: black;
+  width: 50vw;
+  height: 100vh;
+  background: url("../images/login_background.png");
+  background-size: cover;
+  background-position: center;
+  color: #030C14; }
+  .background-img .text1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 10px; }
+  .background-img .login-form {
+    position: absolute;
+    left: 53.5vw;
+    top: 22.5vh; }
+    .background-img .login-form .text2 {
+      margin-top: 10px;
+      padding: 10px 0; }
+    .background-img .login-form input {
+      background: #E8F0FE;
+      padding: 16px 14px;
+      border: 1px solid white;
+      border-radius: 3px;
+      width: 410px; }
+    .background-img .login-form input:focus {
+      outline: none !important;
+      border: 1px solid #67CF9A; }
+    .background-img .login-form #forgot-up {
+      color: #67CF9A; }
+    .background-img .login-form .forgot-user-pass {
+      padding-top: 20px;
+      padding-bottom: 10px;
+      position: relative;
+      width: 210px;
+      white-space: nowrap; }
+      .background-img .login-form .forgot-user-pass::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: #67CF9A;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: all 0.3s ease-in; }
+      .background-img .login-form .forgot-user-pass:hover::after {
+        transform-origin: right;
+        transform: scaleX(1); }
+
+.form-button {
+  width: 140px;
+  height: 50px;
+  border-radius: 3px;
+  background: #67CF9A;
+  text-align: center;
+  color: white;
+  margin-top: 45px;
+  transition: box-shadow 0.3s ease-out; }
+  .form-button h4 {
+    font: 14px;
+    padding-top: 19px; }
+  .form-button:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer; }
+  .form-button#demo {
+    position: relative;
+    top: -20px; }
+
 * {
   box-sizing: border-box; }
 
 body {
   font-family: "DIN Pro", "DIN Web", sans-serif;
-  position: relative; }
+  position: relative;
+  background: white;
+  color: #000; }
   body a {
     text-decoration: none;
     color: #030C14; }
@@ -27,7 +102,8 @@ header {
     margin-left: 8vw;
     padding: 10px;
     background: url(../images/robinhood-logo.png);
-    background-size: cover; }
+    background-size: cover;
+    color: #030C14; }
     header #logo h4 {
       margin-top: 5px;
       padding: 0px 23px; }
@@ -91,7 +167,8 @@ header {
   top: 40vh;
   left: 8.5vw;
   height: 400px;
-  width: 400px; }
+  width: 400px;
+  color: #000; }
   .front-page .front-page-intro h1 {
     font-size: 46px;
     font-weight: bold; }
