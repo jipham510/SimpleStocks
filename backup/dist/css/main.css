@@ -1,0 +1,289 @@
+:root {
+  --primary-color: #67CF9A;
+  --secondary-color: #030C14;
+  --background-color: white;
+  --text-color: #424242;
+  --link-color: #030C14;
+  --link-color-hover: #67CF9A
+; }
+
+[data-theme="dark"] {
+  --background-color: black;
+  --text-color: #fff;
+  --link-color: #67CF9A;
+  --link-color-hover: white; }
+
+:root {
+  --primary-color: #67CF9A;
+  --secondary-color: #030C14;
+  --background-color: white;
+  --text-color: #424242;
+  --link-color: #030C14;
+  --link-color-hover: #67CF9A
+; }
+
+[data-theme="dark"] {
+  --background-color: black;
+  --text-color: #fff;
+  --link-color: #67CF9A;
+  --link-color-hover: white; }
+
+body {
+  font-size: 14px; }
+
+.background-img {
+  background: --background-color;
+  width: 50vw;
+  height: 100vh;
+  background: url("../images/login_background.png");
+  background-size: cover;
+  background-position: center;
+  color: var(--link-color); }
+  .background-img .text1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 10px; }
+  .background-img .login-form {
+    position: absolute;
+    left: 53.5vw;
+    top: 22.5vh; }
+    .background-img .login-form .text2 {
+      margin-top: 10px;
+      padding: 10px 0; }
+    .background-img .login-form input {
+      background: #E8F0FE;
+      padding: 16px 14px;
+      border: 1px solid white;
+      border-radius: 3px;
+      width: 410px; }
+    .background-img .login-form input:focus {
+      outline: none !important;
+      border: 1px solid #67CF9A; }
+    .background-img .login-form #forgot-up {
+      color: #67CF9A; }
+    .background-img .login-form .forgot-user-pass {
+      padding-top: 20px;
+      padding-bottom: 10px;
+      position: relative;
+      width: 210px;
+      white-space: nowrap; }
+      .background-img .login-form .forgot-user-pass::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: #67CF9A;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: all 0.3s ease-in; }
+      .background-img .login-form .forgot-user-pass:hover::after {
+        transform-origin: right;
+        transform: scaleX(1); }
+
+.form-button {
+  width: 140px;
+  height: 50px;
+  border-radius: 3px;
+  background: #67CF9A;
+  text-align: center;
+  color: white;
+  margin-top: 45px;
+  transition: box-shadow 0.3s ease-out; }
+  .form-button h4 {
+    font: 14px;
+    padding-top: 19px; }
+  .form-button:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer; }
+  .form-button#demo {
+    position: relative;
+    top: -20px; }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: "DIN Pro", "DIN Web", sans-serif;
+  position: relative;
+  background: var(--background-color);
+  color: var(--text-color); }
+  body a {
+    text-decoration: none;
+    color: var(--link-color); }
+    body a:hover {
+      color: var(--link-color-hover);
+      transition: all 0.3s ease-out; }
+
+header {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 70px;
+  padding: 12px 0px;
+  background: var(--background-color); }
+  header #logo {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    margin-left: 8vw;
+    padding: 10px;
+    background: url(../images/robinhood-logo.png);
+    background-size: cover;
+    color: var(--link-color); }
+    header #logo h4 {
+      margin-top: 5px;
+      padding: 0px 23px;
+      position: relative;
+      width: 150px; }
+  header #logo:hover {
+    cursor: pointer;
+    color: #67CF9A; }
+  header .icons {
+    margin-top: 10px;
+    position: absolute;
+    top: 0px;
+    left: 22vw; }
+    header .icons .fa-envelope {
+      margin-top: 2px; }
+  header .menu {
+    position: absolute;
+    z-index: 3;
+    top: 0px;
+    right: 0vw;
+    margin-right: 9vw; }
+    header .menu .log-in {
+      margin-top: 26px;
+      font-size: 16px;
+      font-weight: bold;
+      position: absolute;
+      right: 10vw;
+      white-space: nowrap; }
+      header .menu .log-in:hover {
+        text-decoration: underline; }
+    header .menu .sign-up {
+      position: absolute;
+      right: 0vw; }
+
+.sign-up {
+  width: 105px;
+  height: 50px;
+  border-radius: 36px;
+  background: #67CF9A;
+  text-align: center;
+  color: white;
+  margin-top: 12px;
+  transition: all 0.3s ease-out; }
+  .sign-up h4 {
+    font: 17px;
+    font-weight: bold;
+    margin-top: 17px; }
+  .sign-up:hover {
+    text-decoration: underline;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+
+.front-page .front-page-pic {
+  position: absolute;
+  top: 30vh;
+  right: 1vw;
+  height: 700px;
+  width: 900px;
+  background: url(../images/splashimage.png);
+  opacity: 0;
+  animation: fadeinpic 2s 1;
+  animation-delay: 3s;
+  animation-fill-mode: forwards; }
+
+.front-page .front-page-intro {
+  position: absolute;
+  top: 40vh;
+  left: 8.5vw;
+  height: 400px;
+  width: 400px;
+  color: var(--text-color); }
+  .front-page .front-page-intro h1 {
+    font-size: 46px;
+    font-weight: bold; }
+  .front-page .front-page-intro h2 {
+    font-size: 18px; }
+  .front-page .front-page-intro .cover {
+    position: absolute;
+    top: -200px;
+    background: var(--background-color);
+    width: 400px;
+    height: 140px;
+    z-index: 5; }
+  .front-page .front-page-intro .front-page-text1 {
+    z-index: 3;
+    position: relative;
+    left: -3px;
+    animation: drop1 1s 1;
+    background: var(--background-color);
+    padding-top: 50px;
+    animation-fill-mode: forwards; }
+  .front-page .front-page-intro .front-page-text2 {
+    left: -4px;
+    background: var(--background-color);
+    z-index: 2;
+    padding-top: 6px;
+    opacity: 0;
+    position: absolute;
+    animation: drop2 1s 1;
+    animation-delay: 1s;
+    animation-fill-mode: forwards; }
+  .front-page .front-page-intro .front-page-text3 {
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    top: -10px;
+    animation: drop3 1s 1;
+    animation-delay: 2s;
+    animation-fill-mode: forwards; }
+  .front-page .front-page-intro .sign-up {
+    position: relative;
+    top: 80px;
+    opacity: 0;
+    animation: fadein 1s 1;
+    animation-delay: 3s;
+    animation-fill-mode: forwards; }
+    .front-page .front-page-intro .sign-up h4 {
+      padding: 16px 0px; }
+
+@keyframes drop1 {
+  from {
+    top: -140px; }
+  to {
+    top: -40px; } }
+
+@keyframes drop2 {
+  from {
+    top: -46px;
+    opacity: 0; }
+  to {
+    top: 54px;
+    opacity: 1; } }
+
+@keyframes drop3 {
+  from {
+    top: 40px;
+    opacity: 0; }
+  to {
+    top: 145px;
+    opacity: 1; } }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeinpic {
+  from {
+    opacity: 0;
+    top: 30vh; }
+  to {
+    opacity: 1;
+    top: 10vh; } }

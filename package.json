@@ -1,15 +1,38 @@
 {
-  "name": "robinhood",
+  "name": "simplestocks",
+  "private": true,
+  "dependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
   "scripts": {
-    "sass": "node-sass -w scss/ -o dist/css --recursive"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jipham510/SimpleStocks.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "node-sass": "^4.12.0"
-  }
+  "bugs": {
+    "url": "https://github.com/jipham510/SimpleStocks/issues"
+  },
+  "homepage": "https://github.com/jipham510/SimpleStocks#readme"
 }

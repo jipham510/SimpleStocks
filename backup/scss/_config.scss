@@ -1,0 +1,25 @@
+$background-color: white;
+$primary-color : #67CF9A;
+$secondary-color : #030C14;
+:root { 
+    --primary-color: #67CF9A;
+    --secondary-color: #030C14;
+
+    --background-color: white;
+    --text-color: #424242;
+    --link-color: #030C14;
+    --link-color-hover: #67CF9A
+}
+[data-theme="dark"] {
+    --background-color: black;
+    --text-color: #fff;
+    --link-color: #67CF9A;
+    --link-color-hover: white; 
+}
+$main-font: "DIN Pro", "DIN Web", sans-serif;
+@mixin easeOut {
+    transition: all 0.3s ease-out;
+}
+@mixin easeIn {
+    transition: all 0.3s ease-in;
+}

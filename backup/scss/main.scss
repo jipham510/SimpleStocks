@@ -1,0 +1,249 @@
+// WIP: Store the user preference for future visits
+// https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
+
+@import 'config';
+@import 'login';
+* {
+    box-sizing: border-box;
+    // padding: 0;
+    // margin: 0;
+}
+// .test {
+//     width: 1000px;
+//     height: 1000px;
+//     // z-index: -10;
+//     background: red;
+//     position: relative;
+//     // top: 100px;
+//     left: 121px;
+// }
+body {
+    font-family: $main-font;
+    position: relative;
+    background: var(--background-color);
+    color: var(--text-color);
+    a {
+        text-decoration: none;
+        color: var(--link-color);
+        &:hover {
+        color: var(--link-color-hover);
+            @include easeOut();
+        }
+    }
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 70px;
+    padding: 12px 0px;
+    background: var(--background-color);
+
+    #logo {
+        position: absolute;
+        width: 36px;
+        height: 36px;
+        margin-left: 8vw;
+        padding: 10px;
+        background: url(../images/robinhood-logo.png);
+        background-size: cover;
+        color: var(--link-color);
+        h4 {
+            margin-top: 5px;
+            padding: 0px 23px;
+            position: relative;
+            width: 150px;
+        }
+    }
+    #logo:hover {
+        cursor: pointer;
+        color: $primary-color;
+    }
+    .icons {
+        margin-top: 10px;
+        position: absolute;
+        top: 0px;
+        left: 22vw; 
+        .fa-envelope {
+            margin-top: 2px;
+        }
+    }
+
+    .menu {
+        position: absolute;
+        z-index: 3;
+        top: 0px;
+        right: 0vw; 
+        margin-right: 9vw;
+        .log-in {
+            &:hover {
+                text-decoration: underline;
+            }
+            margin-top: 26px;
+            font-size: 16px;
+            font-weight: bold;
+            position: absolute;
+            right: 10vw;
+            white-space: nowrap;
+        }
+        .sign-up{
+            position: absolute;
+            right: 0vw;
+        }
+    }
+}
+.sign-up {
+    width: 105px;
+    height: 50px;
+    border-radius: 36px;
+    background: $primary-color;
+    text-align: center;
+    color: white;
+    margin-top: 12px;
+    @include easeOut();
+    h4 {
+        font: 17px;
+        font-weight: bold;
+        margin-top: 17px;
+    }
+    &:hover {
+        text-decoration: underline;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+}
+
+.front-page {
+    .front-page-pic {
+        position: absolute;
+        top: 30vh;
+        right: 1vw;
+        height: 700px;
+        width: 900px;
+        background: url(../images/splashimage.png);
+        opacity: 0;
+        animation: fadeinpic 2s 1;
+        animation-delay: 3s;
+        animation-fill-mode: forwards;  
+    }
+    .front-page-intro {
+        position: absolute;
+        top: 40vh;
+        left: 8.5vw;
+        height: 400px;
+        width: 400px;
+        // background: red;
+        color: var(--text-color);
+        h1 {
+            font-size: 46px;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        .cover {
+            position: absolute;
+            top: -200px;
+            background: var(--background-color);
+            width: 400px;
+            height: 140px;
+            z-index: 5;
+        }
+        .front-page-text1 {
+            z-index: 3;
+            position: relative;
+            left: -3px;
+            animation: drop1 1s 1;
+            background: var(--background-color);
+            padding-top: 50px;
+            animation-fill-mode: forwards;  
+        }
+        .front-page-text2 {
+            // margin: 0;
+            left: -4px;
+            background: var(--background-color);
+            z-index: 2;
+            padding-top: 6px;
+            // padding-bottom: 20px;
+            opacity: 0;
+            // padding: 0px;
+            position: absolute;
+            // top: -50px;
+            animation: drop2 1s 1;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;  
+        }
+        .front-page-text3 {
+            opacity: 0;
+            z-index: 1;
+            position: absolute;
+            top: -10px;
+            
+            animation: drop3 1s 1;
+            animation-delay: 2s;
+            animation-fill-mode: forwards;  
+        }
+        .sign-up {
+            position: relative;
+            top: 80px;
+            opacity: 0;
+            animation: fadein 1s 1;
+            animation-delay: 3s;
+            animation-fill-mode: forwards;  
+            h4 {
+                padding: 16px 0px;
+            }
+
+        }
+    }
+}
+
+@keyframes drop1 {
+    from { 
+        top: -140px;
+    }
+    to   { 
+        top: -40px;
+    }
+}
+@keyframes drop2 {
+    from { 
+        top: -46px;
+        opacity: 0;
+    }
+    to   { 
+        top: 54px;
+        opacity: 1;
+    }
+}
+@keyframes drop3 {
+    from { 
+        top: 40px;
+        opacity: 0;
+    }
+    to   { 
+        top: 145px;
+        opacity: 1;
+    }
+}
+@keyframes fadein {
+    from { 
+        opacity: 0;
+    }
+    to   { 
+        opacity: 1;
+    }
+}
+@keyframes fadeinpic {
+    from { 
+        opacity: 0;
+        top: 30vh;
+    }
+    to   { 
+        opacity: 1;
+        top: 10vh;
+    }
+}
+
