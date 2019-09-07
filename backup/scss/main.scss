@@ -54,6 +54,7 @@ header {
         h4 {
             margin-top: 5px;
             padding: 0px 23px;
+            margin: 0px 5px;
             position: relative;
             width: 150px;
         }
@@ -67,6 +68,9 @@ header {
         position: absolute;
         top: 0px;
         left: 22vw; 
+        a {
+            padding: 100px;
+        }
         .fa-envelope {
             margin-top: 2px;
         }

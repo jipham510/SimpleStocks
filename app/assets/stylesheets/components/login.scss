@@ -1,0 +1,112 @@
+
+body {
+    font-size: 14px;
+    // letter-spacing: 1px;
+}
+.background-img {
+    width: 50vw;
+    height: 100vh;  
+    background: url(/assets/login_background.png);
+    background-size: cover;
+    background-position: center;
+    color: var(--link-color);
+    .text1 {
+        font-size: 24px;
+        font-weight: bold;
+        // margin-bottom: 5px;
+        padding-bottom: 10px;
+    }
+    .login-form {
+        .text2 {
+            margin-top: 10px;
+            padding: 10px 0;
+        }
+
+        position: absolute;
+        left: 53.5vw;
+        top: 22.5vh;
+        .input-field {
+            background: #E8F0FE;
+            padding: 16px 14px;
+            border: 1px solid white;
+            border-radius: 3px;
+            width: 410px;
+        }
+        .input-field:focus {
+            outline: none !important;
+            border:1px solid $primary-color;
+            // box-shadow: 0 0 10px #719ECE;
+
+        }
+        #forgot-up {
+            color: $primary-color;
+            text-decoration: none;
+            
+        }
+        .forgot-user-pass {
+            // padding: 20px 0px;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            position: relative;
+            width: 210px;
+            white-space: nowrap;
+
+            // background: black;
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 2px;
+                background: $primary-color;
+
+                transform: scaleX(0);
+                transform-origin: left;
+                @include easeIn;
+            }
+            &:hover::after {
+                transform-origin: right;
+                transform: scaleX(1);
+            }
+        }
+    }
+}
+.form-button {
+    width: 140px;
+    height: 50px;
+    border-radius: 3px;
+    background: $primary-color;
+    text-align: center;
+    color: white;
+    margin-top: 45px;
+    transition: box-shadow 0.3s ease-out;
+    h4 {
+        font: 14px;
+        // font-weight: bold;
+        padding-top: 19px;
+        // margin-top: 17px;
+    }
+    input[type="submit"] {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    }
+    input[value="Sign In"]{
+        font: 14px;
+        padding-bottom: 2px;
+    }
+    &:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+    }
+    &#demo {
+        // background: red;
+        position: relative;
+        top: -20px;
+    }
+}
