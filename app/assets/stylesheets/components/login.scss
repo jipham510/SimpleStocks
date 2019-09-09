@@ -9,7 +9,7 @@ body {
     background: url(/assets/login_background.png);
     background-size: cover;
     background-position: center;
-    color: var(--link-color);
+    color: var(--text-color);
     .text1 {
         font-size: 24px;
         font-weight: bold;
@@ -97,6 +97,10 @@ body {
         outline: inherit;
     }
     input[value="Sign In"]{
+        font: 14px;
+        padding-bottom: 2px;
+    }
+    input[value="Sign Up"]{
         font: 14px;
         padding-bottom: 2px;
     }

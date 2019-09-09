@@ -9,6 +9,8 @@ class LoginForm extends React.Component {
             password: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemo = this.handleDemo.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
     }
     update(field) {
         return e => this.setState({
@@ -21,18 +23,42 @@ class LoginForm extends React.Component {
         this.props.processForm(user);
     }
 
-    test() {
-        // debugger
-        return (
-            <ul>
-                {this.props.errors.map((error,i) => (
-                    <li key={i}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        );
+    handleDemo(e){
+        let user = "Demo_User";
+        let pass = "password";
+
+        this.setState({username: "", password: "" },
+                      () => this.demoLogin(user,pass) );
+
     }
+    demoLogin(user,pass) {
+        user = user.split("");
+        pass = pass.split("");
+        const _demoUser = (user) => {
+            if (user.length > 0) {
+                let char = user.shift();
+                this.setState({ username: this.state.username + char },
+                    () => setTimeout(() => { _demoUser(user) }, 100)
+                )
+            } else {
+                console.log(`finished writing username`)
+                _demoPass(pass);
+            }
+        }
+        const _demoPass = (pass) => {
+            if (pass.length > 0) {
+                let char = pass.shift();
+                this.setState({ password: this.state.password + char },
+                    () => setTimeout(() => { _demoPass(pass) }, 100)
+                )
+            } else {
+                console.log(`finished writing password`);
+                document.querySelector(".sign-in-button").click();
+            }
+        }
+        _demoUser(user);
+    }
+
     render() {
 
         return (
@@ -62,9 +88,14 @@ class LoginForm extends React.Component {
                             </h4>
                         </div>
                     </form>
-                    {this.test()}
-
-                    <div className="form-button" id="demo">
+                    <ul>
+                        {this.props.errors.map((error, i) => (
+                            <li key={i}>
+                                {error}
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="form-button" id="demo" onClick={this.handleDemo}>
                         <h4>Demo</h4>
                     </div>
                 </div>

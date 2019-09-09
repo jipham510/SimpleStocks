@@ -1,0 +1,46 @@
+@keyframes drop1 {
+    from { 
+        top: -140px;
+    }
+    to   { 
+        top: -40px;
+    }
+}
+@keyframes drop2 {
+    from { 
+        top: -46px;
+        opacity: 0;
+    }
+    to   { 
+        top: 54px;
+        opacity: 1;
+    }
+}
+@keyframes drop3 {
+    from { 
+        top: 40px;
+        opacity: 0;
+    }
+    to   { 
+        top: 145px;
+        opacity: 1;
+    }
+}
+@keyframes fadein {
+    from { 
+        opacity: 0;
+    }
+    to   { 
+        opacity: 1;
+    }
+}
+@keyframes fadeinpic {
+    from { 
+        opacity: 0;
+        top: 30vh;
+    }
+    to   { 
+        opacity: 1;
+        top: 10vh;
+    }
+}

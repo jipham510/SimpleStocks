@@ -1,0 +1,51 @@
+
+.home {
+    height: 200vh;
+}
+
+.home-menu {
+    position: absolute;
+    top: 0vh;
+    right: 10vw; 
+    .home-logout {
+        // background: black;
+        position: relative;
+    }
+}
+
+.searchbar {
+    position: relative;
+    left: 20vw;
+    top: 0vh;
+    background-color: red;
+    width: 45vw;
+    height: 5vh;
+    h4 {
+        margin-top: 3px;
+    }
+
+}
+.dashboard {
+    position: relative;
+    top: 20vh;
+    left: 10vw;
+    background-color: green;
+    width: 50vw;
+    height: 40vh;
+}
+.newsfeed {
+    position: relative;
+    top: 30vh;
+    left: 10vw;
+    background-color: orange;
+    width: 50vw;
+    height: 100vh;
+}
+.watchlist {
+    position: fixed;
+    top: 20vh;
+    right: 10vw;
+    width: 20vw;
+    height: 200vh;
+    background-color: purple;
+}

@@ -2,18 +2,16 @@ $background-color: white;
 $primary-color : #67CF9A;
 $secondary-color : #030c14;
 :root { 
-    --primary-color: #67CF9A;
-    --secondary-color: #030C14;
 
+    //variables depending on dark theme
     --background-color: white;
     --text-color: black;
     //#424242
     --link-color: #030C14;
     --link-color-hover: #67CF9A;
-    #logo {
-        background: url(/assets/robinhood-logo.png);
-        background-size: cover;
-    }
+    // #logo {
+    //     // background: url(/assets/robinhood-logo.png);
+    // }
 }
 [data-theme="dark"] {
     --background-color: #030c14;
@@ -21,8 +19,7 @@ $secondary-color : #030c14;
     --link-color: #67CF9A;
     --link-color-hover: white; 
     #logo {
-        background: url(/assets/robinhood-logo-green.png);
-        background-size: cover;
+        // background: url(/assets/robinhood-logo-green.png);
         color: white;
         &:hover {
             color: #67CF9A;
