@@ -8,6 +8,12 @@
 
 ActiveRecord::Base.transaction do
     User.destroy_all
+    Stock.destroy_all
+
     demo_user = User.create!(username: 'Demo_User', first_name: "demo", last_name: "user", email: "demo_user@gmail.com", password: 'password')
-    demo_user = User.create!(username: 'jpham', first_name: "jimmy", last_name: "pham", email: "demo_user@gmail.com", password: 'password')
+    my_login = User.create!(username: 'jpham', first_name: "jimmy", last_name: "pham", email: "demo_user@gmail.com", password: 'password')
+    
+    stock = Stock.create!(name: "Apple Inc", ticker: "aapl")
+    stock = Stock.create!(name: "Google", ticker: "googl")
+    
 end
