@@ -8,7 +8,11 @@ class Home extends React.Component {
     }
     render() {
         let render_page = (this.props.currentUser) ? <UserPageContainer /> : <Splash />
-        return ( {render_page} )
+        return (
+            <div>
+                {render_page}
+            </div>
+        )
     }
 }
 

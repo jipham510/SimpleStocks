@@ -12,6 +12,9 @@ class SignUpForm extends React.Component {
         this.redirectDemo = this.redirectDemo.bind(this);
         this.handleLogoClick = this.handleLogoClick.bind(this);
     }
+    componentWillUnmount() {
+        this.props.clearErrors();
+    }
     update(field) {
         return e => this.setState({
             [field]: e.currentTarget.value

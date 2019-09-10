@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createNewUser } from '../../actions/session_actions';
+import { createNewUser, clearErrors } from '../../actions/session_actions';
 import SignUpForm from './SignUpForm';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    processForm: (user) => dispatch(createNewUser(user))
+    processForm: (user) => dispatch(createNewUser(user)),
+    clearErrors: () => dispatch(clearErrors()),
 });
 
 export default connect(
