@@ -49,6 +49,7 @@ body {
         right: 1vw;
         height: 700px;
         width: 900px;
+        
         background: url(/assets/splashimage.png);
 
         opacity: 0;
@@ -60,15 +61,16 @@ body {
         position: absolute;
         top: 35vh;
         left: 8.5vw;
-        height: 400px;
-        width: 400px;
+        width: 35vw;
         color: var(--text-color);
         h1 {
-            font-size: 46px;
+            // font-size: 46px;
+            font-size: 4em;
             font-weight: bold;
         }
         h2 {
-            font-size: 18px;
+            // font-size: 18px;
+            font-size: 1.5em;
         }
         .cover {
             position: absolute;
