@@ -38,7 +38,7 @@ class SignUpForm extends React.Component {
                 <div className="signup-body">
                     <div className="signup-form">
                         <h1 className="signup-form-heading1">Make Your Money Move</h1>
-                        <h3 className="signup-form-heading2">Simple Stocks lets you invest in companies you love, <br/> commission-free.</h3>
+                            <h3 className="signup-form-heading2">Simple Stocks lets you invest in companies you love, <br/>commission-free</h3>
                         <form onSubmit={this.handleSubmit}>
                             <div className="name-form">
                                     <input type="text" placeholder="First Name" className="input-field first-name"/>
@@ -72,8 +72,8 @@ class SignUpForm extends React.Component {
                             ))}
                         </ul>
                         <br/>
-                        <div className="forgot-user-pass">
-                            < Link to="/login" id="forgot-up"> Already have an account? Sign In! </Link>
+                            <div className="already-have-acc">
+                                < Link to="/login" id="already-have-acc-text">Already have an account? Sign In! </Link>
                         </div>
                     </div>
                     <div className="right-side-content">
