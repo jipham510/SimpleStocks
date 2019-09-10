@@ -72,6 +72,8 @@ body {
         }
     }
 }
+
+
 .form-button {
     width: 140px;
     height: 50px;
@@ -81,12 +83,17 @@ body {
     color: white;
     margin-top: 45px;
     transition: box-shadow 0.3s ease-out;
+    font: 14px;
+        &#login-form-button {
+            font-size: 14px;
+        }
     h4 {
         font: 14px;
         // font-weight: bold;
         padding-top: 19px;
         // margin-top: 17px;
     }
+
     input[type="submit"] {
         background: none;
         color: inherit;
@@ -113,4 +120,7 @@ body {
         position: relative;
         top: -20px;
     }
+}
+.errors {
+    position: absolute;
 }

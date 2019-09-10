@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
                 )
             } else {
                 console.log(`finished writing password`);
-                document.querySelector(".sign-in-button").click();
+                document.getElementById("login-form-button").click();
             }
         }
         _demoUser(user);
@@ -69,7 +69,7 @@ class LoginForm extends React.Component {
 
                         <div className="email-username">
                             <div className="text2">
-                                <h2>Email or Username</h2>
+                                <h2>Username</h2>
                             </div>
                             <input type="text" className="input-field" value={this.state.username} onChange={this.update('username')} />
                         </div>
@@ -82,13 +82,15 @@ class LoginForm extends React.Component {
                         <div className="forgot-user-pass">
                             < Link to="/signup" id="forgot-up"> Don't have an account? Sign up! </Link>
                         </div>
-                        <div className="form-button" id="sign-in">
+                        {/* <div className="form-button" id="sign-in">
                             <h4>
                                 <input type="submit" className="sign-in-button" value="Sign In" />
                             </h4>
-                        </div>
+                        </div> */}
+
+                    <input type="submit" className="form-button" value="Sign In" id="login-form-button"/>
                     </form>
-                    <ul>
+                    <ul className="errors"> 
                         {this.props.errors.map((error, i) => (
                             <li key={i}>
                                 {error}

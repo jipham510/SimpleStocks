@@ -1,7 +1,90 @@
-
-.signup-form {
-    position: absolute;
-    top: 14vh;
-    left: 14vw;
+.signup-body-parent {
+    display: flex;
+    justify-content: center;
+    width: 70vw;
 }
 
+.SignUpForm{
+    header {
+        #logo{
+            margin-left: 5vw;
+        }
+        .menu{
+            margin-right: 5vw;
+            .theme {
+                right: 0vw;
+            }
+        }
+    }
+    display: flex;
+    justify-content: center;
+    .signup-body {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin-top: 20vh;
+        width: 80vw;
+        height: 50vh;
+        // margin-right: 10vw;
+        .signup-form {
+            text-align: left;
+            width: 47vw;
+            // top: 14vh;
+            .input-field {
+                padding: 16px 14px;
+                border: 1px solid #DEE4E6;
+                border-radius: 6px;
+                width: 500px;
+                background: transparent;
+            }
+            .input-field:focus {
+                outline: none !important;
+                border: 1px solid $primary-color;
+                // box-shadow: 0 0 10px #719ECE;
+            }
+            .first-name {                
+                width: 240px;
+                margin-right: 20px
+            }
+            .last-name {                
+                width: 240px;
+            }
+            
+            .signup-form-heading1 {
+                padding-bottom: 3vh;
+            }
+            .signup-form-heading2 {
+                padding-bottom: 3vh;
+            }
+            h1 {
+                font-size: 48px;
+                font-weight: 100;
+                letter-spacing: 1px;
+            }
+            h3 {
+                font-size: 24px;
+                font-weight: 100;
+                letter-spacing: 1px;
+            }
+            #signup-form-button {
+                width: 500px;
+                font-size: 1.5em;
+                margin-bottom: 3vh;
+            }
+        }
+
+        .right-side-content {
+            padding-left: 1vw;
+            #video-background {
+                width: 200px;
+                height: 200px;
+            }
+            .content-description {
+                h4 {
+                    font-size: 20px;
+                }
+            }
+            
+        }
+    }
+}

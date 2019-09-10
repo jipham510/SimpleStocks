@@ -16,7 +16,7 @@ class Nav extends React.Component {
     }
     toggleDarkMode(e) {
         const body = document.querySelector("body");
-        debugger
+    
         if (body.getAttribute("data-theme")) {
             localStorage.setItem("theme", "light")
             e.target.innerHTML = "Dark Mode";
