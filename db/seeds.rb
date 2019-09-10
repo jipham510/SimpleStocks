@@ -8,6 +8,6 @@
 
 ActiveRecord::Base.transaction do
     User.destroy_all
-    demo_user = User.create!(username: 'Demo_User', password: 'password')
-    demo_user = User.create!(username: 'jpham', password: 'password')
+    demo_user = User.create!(username: 'Demo_User', first_name: "demo", last_name: "user", email: "demo_user@gmail.com", password: 'password')
+    demo_user = User.create!(username: 'jpham', first_name: "jimmy", last_name: "pham", email: "demo_user@gmail.com", password: 'password')
 end

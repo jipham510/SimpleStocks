@@ -6,11 +6,15 @@ class SignUpForm extends React.Component {
         super(props);
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            first_name: "",
+            last_name: "",
+            email: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.redirectDemo = this.redirectDemo.bind(this);
         this.handleLogoClick = this.handleLogoClick.bind(this);
+        this.formatErrors = this.formatErrors.bind(this);
     }
     componentWillUnmount() {
         this.props.clearErrors();
@@ -31,6 +35,9 @@ class SignUpForm extends React.Component {
     handleLogoClick(){
         this.props.history.push("/");
     }
+    formatErrors(){
+        return this.props.errors.join(", ")
+        }
     render() {
         return (
             <div className="SignUpForm">
@@ -44,12 +51,12 @@ class SignUpForm extends React.Component {
                             <h3 className="signup-form-heading2">Simple Stocks lets you invest in companies you love, <br/>commission-free</h3>
                         <form onSubmit={this.handleSubmit}>
                             <div className="name-form">
-                                    <input type="text" placeholder="First Name" className="input-field first-name"/>
-                                    <input type="text" placeholder="Last Name" className="input-field last-name"/>
+                                    <input type="text" placeholder="First Name" className="input-field first-name" value={this.state.first_name} onChange={this.update('first_name')} />
+                                    <input type="text" placeholder="Last Name" className="input-field last-name" value={this.state.last_name} onChange={this.update('last_name')}/>
                             </div>
                             <div className="email">
                                 <br/>
-                                    <input type="text" placeholder="Email" className="input-field"/>
+                                    <input type="text" placeholder="Email" className="input-field" value={this.state.email} onChange={this.update('email')}/>
                             </div>
                                 <div className="username">
                                 <br/>
@@ -59,21 +66,12 @@ class SignUpForm extends React.Component {
                                 <br/>
                                     <input type="password" placeholder="Password" className="input-field" value={this.state.password} onChange={this.update('password')} />
                             </div>
-                            {/* <div className="form-button" id="sign-up">
-                                <h4>
-                                <input type="submit" className="sign-up-button" value="Sign Up" />
-                                </h4>
-                            </div> */}
                             <input type="submit" className="form-button" value="Sign Up" id="signup-form-button" />
 
                         </form>
                         <ul className="errors">
-                            {this.props.errors.map((error, i) => (
-                                <li key={i}>
-                                    {error}
-                                </li>
-                            ))}
-                        </ul>
+                            {this.formatErrors()}
+                        </ul> 
                         <br/>
                             <div className="already-have-acc">
                                 < Link to="/login" id="already-have-acc-text">Already have an account? Sign In! </Link>
