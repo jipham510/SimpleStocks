@@ -43,10 +43,13 @@ body {
 }
 
 .front-page {
+    // display: flex;
+    // justify-content: center;
     .front-page-pic {
         position: absolute;
         top: 30vh;
         right: 1vw;
+        
         height: 700px;
         width: 900px;
         
@@ -61,6 +64,7 @@ body {
         position: absolute;
         top: 35vh;
         left: 8.5vw;
+
         width: 35vw;
         color: var(--text-color);
         h1 {

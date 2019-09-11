@@ -4,7 +4,7 @@ import NavContainer from '../nav/nav_container'
 
 const Splash = (props) => {
     return (
-        <div>
+        <div className="splash-wrapper">
             <header>
                 <NavContainer />
                 {/* <div className="icons">
@@ -25,7 +25,6 @@ const Splash = (props) => {
                 </div>
 
             </header>
-            <div className="test"></div>
 
             <div className="front-page">
                 <div className="front-page-intro">
