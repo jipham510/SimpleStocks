@@ -14,4 +14,4 @@ const receiveStocks = (stocks) => ({
 
 export const fetchStock = (ticker) => (dispatch) => APIStockUtil.fetchStock(ticker).then( stock => dispatch(receiveStock(stock)))
 
-export const fetchStocks = () => (dispatch) => APIStockUtil.fetchStock().then( stocks => dispatch(receiveStocks(stocks)))
+export const fetchStocks = () => (dispatch) => APIStockUtil.fetchStocks().then( stocks => dispatch(receiveStocks(stocks)))

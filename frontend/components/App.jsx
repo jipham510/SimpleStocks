@@ -1,6 +1,4 @@
 import React from "react";
-import Splash from "./home/Splash";
-// import HomeContainer from "./home/UserPage/UserPageContainer";
 import SignUpFormContainer from "./forms/SignUpFormContainer";
 import LoginFormContainer from "./forms/LoginFormContainer";
 import HomeContainer from "./home/HomeContainer"

@@ -12948,3 +12948,536 @@ Processing by Api::SessionsController#destroy as JSON
 Completed 200 OK in 53ms (Views: 0.5ms | ActiveRecord: 39.6ms)
 
 
+Started GET "/" for ::1 at 2019-09-10 21:22:12 -0700
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jimmypham/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 2364ms (Views: 2361.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2019-09-10 21:23:48 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/models/user.rb:9
+Completed 401 Unauthorized in 35ms (Views: 0.3ms | ActiveRecord: 20.3ms)
+
+
+Started POST "/api/users" for ::1 at 2019-09-10 21:23:53 -0700
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "password"=>"[FILTERED]", "first_name"=>"", "last_name"=>"", "email"=>""}}
+  [1m[35m (11.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:6
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:6
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:6
+Completed 401 Unauthorized in 396ms (Views: 0.6ms | ActiveRecord: 25.0ms)
+
+
+Started POST "/api/session" for ::1 at 2019-09-10 21:24:21 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Demo_Use", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Demo_Use"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:9
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/session" for ::1 at 2019-09-10 21:24:22 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Demo_User", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Demo_User"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:9
+Completed 401 Unauthorized in 334ms (Views: 0.2ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/api/session" for ::1 at 2019-09-10 21:24:25 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Demo_User", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Demo_User"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:9
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered api/users/show.json.jbuilder (3.4ms)
+Completed 200 OK in 348ms (Views: 19.5ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-09-10 21:24:29 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "nRbog32TCRLJUhiGc7U-vg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:35
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Demo_User"], ["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:35
+  [1m[36mUser Update (14.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "KWfNRI20smYqrgwWma4mYg"], ["updated_at", "2019-09-11 04:24:29.492402"], ["id", 17]]
+  ↳ app/models/user.rb:35
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:35
+Completed 200 OK in 28ms (Views: 0.5ms | ActiveRecord: 18.9ms)
+
+
+Started POST "/api/session" for ::1 at 2019-09-10 21:24:33 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Demo_User", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Demo_User"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:9
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.2ms)
+Completed 200 OK in 339ms (Views: 5.5ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-09-10 21:24:36 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "KWfNRI20smYqrgwWma4mYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:35
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Demo_User"], ["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:35
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "WNJQLfXL22SwkAXSZQRlqw"], ["updated_at", "2019-09-11 04:24:36.170161"], ["id", 17]]
+  ↳ app/models/user.rb:35
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:35
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/" for ::1 at 2019-09-10 21:26:26 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 130ms (Views: 123.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-10 21:27:22 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 752ms (Views: 744.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-10 21:27:26 -0700
+
+NameError - uninitialized constant Api::StocksController:
+
+Started GET "/" for ::1 at 2019-09-10 21:29:00 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 157ms (Views: 154.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-10 21:29:03 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  Rendered api/stocks/index.json.jbuilder (1.7ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+
+SyntaxError - syntax error, unexpected keyword_do_block
+...tocks.each do |single_stock| do
+...                             ^~:
+  app/views/api/stocks/index.json.jbuilder:2:in `'
+  app/controllers/api/stocks_controller.rb:4:in `index'
+
+Started GET "/" for ::1 at 2019-09-10 21:30:47 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 46ms (Views: 43.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-10 21:30:49 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (2.6ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/_stock.json.jbuilder (1.3ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/index.json.jbuilder (36.1ms)
+Completed 200 OK in 48ms (Views: 26.5ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/" for ::1 at 2019-09-10 21:36:09 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 677ms (Views: 672.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-10 21:36:15 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (0.9ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/_stock.json.jbuilder (0.9ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/index.json.jbuilder (6.3ms)
+Completed 200 OK in 22ms (Views: 20.2ms | ActiveRecord: 0.9ms)
+
+
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Destroy (11.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 18]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 17]]
+  ↳ db/seeds.rb:10
+  [1m[36mStock Load (0.9ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Destroy (0.7ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 3]]
+  ↳ db/seeds.rb:11
+  [1m[36mStock Destroy (0.3ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 4]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (8.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Demo_User"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Create (7.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at", "first_name", "last_name", "email") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["username", "Demo_User"], ["password_digest", "$2a$12$.18EzRpDW/CsQmp6WpNshOxYJ5ku827qlN6TssS.4TrwfEiZbzrSK"], ["session_token", "P3rBHZcWF8ar8WNNNuBRPg"], ["created_at", "2019-09-11 04:39:13.810337"], ["updated_at", "2019-09-11 04:39:13.810337"], ["first_name", "demo"], ["last_name", "user"], ["email", "demo_user@gmail.com"]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jpham"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at", "first_name", "last_name", "email") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["username", "jpham"], ["password_digest", "$2a$12$N0ZsabCNnffauK..Qb0Qje1W2Ix8J2wBSfY0qLya8XHFj2JlyPZpK"], ["session_token", "qP-sB2_xM79zpNZPutkjSQ"], ["created_at", "2019-09-11 04:39:14.143352"], ["updated_at", "2019-09-11 04:39:14.143352"], ["first_name", "jimmy"], ["last_name", "pham"], ["email", "demo_user@gmail.com"]]
+  ↳ db/seeds.rb:14
+  [1m[36mStock Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mStock Create (0.5ms)[0m  [1m[32mINSERT INTO "stocks" ("name", "ticker", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Apple Inc"], ["ticker", "AAPL"], ["created_at", "2019-09-11 04:39:14.146491"], ["updated_at", "2019-09-11 04:39:14.146491"]]
+  ↳ db/seeds.rb:16
+  [1m[36mStock Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "GOOGL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.3ms)[0m  [1m[32mINSERT INTO "stocks" ("name", "ticker", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Google"], ["ticker", "GOOGL"], ["created_at", "2019-09-11 04:39:14.148993"], ["updated_at", "2019-09-11 04:39:14.148993"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (9.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 19]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 20]]
+  ↳ db/seeds.rb:10
+  [1m[36mStock Load (0.8ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Destroy (0.6ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 5]]
+  ↳ db/seeds.rb:11
+  [1m[36mStock Destroy (0.4ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 6]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Demo_User"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at", "first_name", "last_name", "email") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["username", "Demo_User"], ["password_digest", "$2a$12$uTpBduQ754UuhEQ.f9GKxu2hGASlyZbkEefsfcx94VryniwoeLNNu"], ["session_token", "DkttvCPJXGaCs_gUaqd0Iw"], ["created_at", "2019-09-11 04:39:19.099580"], ["updated_at", "2019-09-11 04:39:19.099580"], ["first_name", "demo"], ["last_name", "user"], ["email", "demo_user@gmail.com"]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jpham"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at", "first_name", "last_name", "email") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["username", "jpham"], ["password_digest", "$2a$12$R5sGBHMgMO2TEgLXOOJS6uo/RWuU/1SZONZHJKHMcOjy8NwyLUlK2"], ["session_token", "64xJA2dyWxrK8y7RIxuy4g"], ["created_at", "2019-09-11 04:39:19.479181"], ["updated_at", "2019-09-11 04:39:19.479181"], ["first_name", "jimmy"], ["last_name", "pham"], ["email", "demo_user@gmail.com"]]
+  ↳ db/seeds.rb:14
+  [1m[36mStock Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mStock Create (1.4ms)[0m  [1m[32mINSERT INTO "stocks" ("name", "ticker", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Apple Inc"], ["ticker", "AAPL"], ["created_at", "2019-09-11 04:39:19.483991"], ["updated_at", "2019-09-11 04:39:19.483991"]]
+  ↳ db/seeds.rb:16
+  [1m[36mStock Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "GOOGL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.7ms)[0m  [1m[32mINSERT INTO "stocks" ("name", "ticker", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Google"], ["ticker", "GOOGL"], ["created_at", "2019-09-11 04:39:19.488524"], ["updated_at", "2019-09-11 04:39:19.488524"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+Started GET "/" for ::1 at 2019-09-10 21:39:28 -0700
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jimmypham/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 2027ms (Views: 2023.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-10 21:39:39 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (1.8ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/_stock.json.jbuilder (0.5ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/index.json.jbuilder (22.5ms)
+Completed 200 OK in 34ms (Views: 19.4ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-10 21:42:40 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 876ms (Views: 869.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-10 21:42:46 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (0.8ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/_stock.json.jbuilder (0.8ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/index.json.jbuilder (8.1ms)
+Completed 200 OK in 27ms (Views: 25.6ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mUser Load (9.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mStock Load (1.9ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+Started GET "/" for ::1 at 2019-09-11 02:58:35 -0700
+  [1m[35m (4.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jimmypham/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 1852ms (Views: 1849.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-11 02:58:53 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (1.4ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:7
+  Rendered api/stocks/index.json.jbuilder (18.0ms)
+Completed 200 OK in 29ms (Views: 14.4ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/" for ::1 at 2019-09-11 03:06:17 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 64ms (Views: 57.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-11 03:06:22 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (1.9ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:7
+  Rendered api/stocks/index.json.jbuilder (480.0ms)
+Completed 500 Internal Server Error in 487ms (ActiveRecord: 1.9ms)
+
+
+
+NameError - undefined local variable or method `single_stock' for #<#<Class:0x00007f8851390400>:0x00007f8857544480>
+Did you mean?  singleton_class:
+  app/views/api/stocks/index.json.jbuilder:8:in `block in _app_views_api_stocks_index_json_jbuilder___4104670821586636852_70111740139540'
+  app/views/api/stocks/index.json.jbuilder:7:in `_app_views_api_stocks_index_json_jbuilder___4104670821586636852_70111740139540'
+  app/controllers/api/stocks_controller.rb:4:in `index'
+
+Started GET "/" for ::1 at 2019-09-11 03:06:49 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 38ms (Views: 36.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-11 03:06:52 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (0.6ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:7
+  Rendered api/stocks/_stock.json.jbuilder (0.8ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.2ms)
+  Rendered api/stocks/index.json.jbuilder (13.8ms)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-11 03:07:41 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (0.8ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:7
+  Rendered api/stocks/_stock.json.jbuilder (0.4ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/index.json.jbuilder (4.2ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2019-09-11 03:09:53 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 34ms (Views: 31.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-11 03:09:57 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (0.5ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/_stock.json.jbuilder (0.5ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/index.json.jbuilder (4.5ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-09-11 03:10:51 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 48ms (Views: 45.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-11 03:10:54 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (0.7ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:8
+  Rendered api/stocks/index.json.jbuilder (10.6ms)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2019-09-11 03:12:27 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 80ms (Views: 74.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-11 03:12:30 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (1.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/_stock.json.jbuilder (0.9ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.2ms)
+  Rendered api/stocks/index.json.jbuilder (18.2ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2019-09-11 03:13:00 -0700
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jimmypham/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 1178ms (Views: 1175.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-11 03:13:04 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (0.8ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/_stock.json.jbuilder (0.4ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/index.json.jbuilder (20.6ms)
+Completed 200 OK in 40ms (Views: 27.3ms | ActiveRecord: 9.3ms)
+
+
+Started POST "/api/session" for ::1 at 2019-09-11 03:13:15 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Demo_User", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (5.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Demo_User"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:9
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered api/users/show.json.jbuilder (2.0ms)
+Completed 200 OK in 384ms (Views: 7.4ms | ActiveRecord: 14.0ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-09-11 03:13:17 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "DkttvCPJXGaCs_gUaqd0Iw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:16
+  [1m[35m (9.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:35
+  [1m[36mUser Exists (2.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Demo_User"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:35
+  [1m[36mUser Update (12.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "StSBBjWyRKj_Cad0ah7Ewg"], ["updated_at", "2019-09-11 10:13:18.003242"], ["id", 21]]
+  ↳ app/models/user.rb:35
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:35
+Completed 200 OK in 37ms (Views: 0.2ms | ActiveRecord: 28.5ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-11 03:18:10 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (0.4ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/_stock.json.jbuilder (0.4ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/index.json.jbuilder (4.1ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.4ms)
+
+
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Destroy (1.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 22]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 21]]
+  ↳ db/seeds.rb:10
+  [1m[36mStock Load (1.7ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Destroy (1.0ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 7]]
+  ↳ db/seeds.rb:11
+  [1m[36mStock Destroy (0.4ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 8]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Demo_User"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Create (14.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at", "first_name", "last_name", "email") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["username", "Demo_User"], ["password_digest", "$2a$12$E9EJhRYeg0sAlKpg/59a.earAQnhiJl/8CmodKz./zO.eRV7nyLzi"], ["session_token", "MUeyyP7Ign6iXUDo-6muXw"], ["created_at", "2019-09-11 10:23:18.606627"], ["updated_at", "2019-09-11 10:23:18.606627"], ["first_name", "demo"], ["last_name", "user"], ["email", "demo_user@gmail.com"]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jpham"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at", "first_name", "last_name", "email") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["username", "jpham"], ["password_digest", "$2a$12$29YurbGa3RTXqWrIL6mUROziuc1tHPGz.wo1zHN8Bi6PMfPKaFqAW"], ["session_token", "FsWxY3dQVzO5Da1Tg0vePA"], ["created_at", "2019-09-11 10:23:18.972270"], ["updated_at", "2019-09-11 10:23:18.972270"], ["first_name", "jimmy"], ["last_name", "pham"], ["email", "demo_user@gmail.com"]]
+  ↳ db/seeds.rb:14
+  [1m[36mStock Exists (8.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mStock Create (1.4ms)[0m  [1m[32mINSERT INTO "stocks" ("name", "ticker", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Apple Inc"], ["ticker", "AAPL"], ["created_at", "2019-09-11 10:23:18.983165"], ["updated_at", "2019-09-11 10:23:18.983165"]]
+  ↳ db/seeds.rb:16
+  [1m[36mStock Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "GOOGL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.6ms)[0m  [1m[32mINSERT INTO "stocks" ("name", "ticker", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Google"], ["ticker", "GOOGL"], ["created_at", "2019-09-11 10:23:18.988001"], ["updated_at", "2019-09-11 10:23:18.988001"]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Create (0.5ms)[0m  [1m[32mINSERT INTO "stocks" ("name", "ticker", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Tesla"], ["ticker", "TSLA"], ["created_at", "2019-09-11 10:23:18.991685"], ["updated_at", "2019-09-11 10:23:18.991685"]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "NFLX"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Create (0.4ms)[0m  [1m[32mINSERT INTO "stocks" ("name", "ticker", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Netflix"], ["ticker", "NFLX"], ["created_at", "2019-09-11 10:23:18.994959"], ["updated_at", "2019-09-11 10:23:18.994959"]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "MSFT"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Create (0.5ms)[0m  [1m[32mINSERT INTO "stocks" ("name", "ticker", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Microsoft"], ["ticker", "MSFT"], ["created_at", "2019-09-11 10:23:18.998611"], ["updated_at", "2019-09-11 10:23:18.998611"]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "Sbux"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mStock Create (0.5ms)[0m  [1m[32mINSERT INTO "stocks" ("name", "ticker", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Starbucks"], ["ticker", "Sbux"], ["created_at", "2019-09-11 10:23:19.001605"], ["updated_at", "2019-09-11 10:23:19.001605"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+Started GET "/" for ::1 at 2019-09-11 03:23:37 -0700
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jimmypham/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 1231ms (Views: 1228.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/stocks" for ::1 at 2019-09-11 03:23:46 -0700
+Processing by Api::StocksController#index as JSON
+  Rendering api/stocks/index.json.jbuilder
+  [1m[36mStock Load (2.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/_stock.json.jbuilder (0.5ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/_stock.json.jbuilder (0.1ms)
+  Rendered api/stocks/index.json.jbuilder (28.4ms)
+Completed 200 OK in 38ms (Views: 22.1ms | ActiveRecord: 12.3ms)
+
+

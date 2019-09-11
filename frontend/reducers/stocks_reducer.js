@@ -10,9 +10,7 @@ const stockReducer = ( state={},action) => {
             }
             return Object.assign({}, state, { [new_stock.ticker]: new_stock })
         case RECEIVE_STOCKS:
-            // debugger
-            
-            return Object.assign({}, state)
+            return Object.assign({}, action.stocks);
         default: 
             return state;
     }
