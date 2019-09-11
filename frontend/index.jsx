@@ -5,12 +5,16 @@ import configureStore from "./store/store";
 import Root from "./components/root";
 // import {fetchStock} from "./util/stock_api_util";
 import { fetchStock, fetchStocks} from "./actions/stock_actions";
+import { fetchStockCompanyInfo, fetchStockStats, fetchStockChart} from "./util/stock_api_util"; 
 document.addEventListener("DOMContentLoaded", () => {
     let store;
 
     //TESTING START
     window.fetchStock = fetchStock;
     window.fetchStocks = fetchStocks;
+    window.fetchStockCompanyInfo = fetchStockCompanyInfo;
+    window.fetchStockStats = fetchStockStats;
+    window.fetchStockChart = fetchStockChart;
     window.test = "test";
     //TESTING END
     if (window.currentUser) {

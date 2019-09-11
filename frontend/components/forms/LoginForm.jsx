@@ -44,7 +44,6 @@ class LoginForm extends React.Component {
                     () => setTimeout(() => { _demoUser(user) }, 100)
                 )
             } else {
-                console.log(`finished writing username`)
                 _demoPass(pass);
             }
         }
@@ -55,7 +54,6 @@ class LoginForm extends React.Component {
                     () => setTimeout(() => { _demoPass(pass) }, 100)
                 )
             } else {
-                console.log(`finished writing password`);
                 document.getElementById("login-form-button").click();
             }
         }
