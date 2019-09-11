@@ -18,10 +18,3 @@ const App = () => (
 );
 export default App;
 
-{/* <Switch>
-    <AuthRoute exact path="/login" component={LogInFormContainer} />
-    <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-    <ProtectedRoute exact path="/benches/new" component={BenchFormContainer} />
-    <Route path="/benches/:benchId" component={BenchShowContainer} />
-    <Route exact path="/" component={SearchContainer} />
-</Switch> */}

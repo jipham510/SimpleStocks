@@ -50,7 +50,7 @@ body {
         height: 700px;
         width: 900px;
         
-        background: url(/assets/splashimage.png);
+        background: image-url('splashimage.png');
 
         opacity: 0;
         animation: fadeinpic 2s 1;
