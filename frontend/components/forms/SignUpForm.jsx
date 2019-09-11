@@ -79,7 +79,7 @@ class SignUpForm extends React.Component {
                     </div>
                     <div className="right-side-content">
                         <video autoPlay loop muted id="video-background">
-                            <source src="assets/FirstExperienceStopwatchMovie.mp4" type="video/mp4"></source>
+                                <source src={window.signUpVideoURL} type="video/mp4"></source>
                         </video>
                         <div className="content-description">
                             <h4>Stay on top of your portfolio. </h4>

@@ -22,8 +22,8 @@ header {
             width: 36px;
             height: 36px;
             background-color: var(--text-color);
-            -webkit-mask-image: url(/assets/svg/logo.svg);
-            mask-image: url(/assets/svg/logo.svg);
+            -webkit-mask-image: image-url('logo.svg');
+            mask-image: image-url('logo.svg');
 
         }
         h4 {

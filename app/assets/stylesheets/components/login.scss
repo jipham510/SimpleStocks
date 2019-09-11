@@ -6,7 +6,7 @@ body {
 .background-img {
     width: 50vw;
     height: 100vh;  
-    background: url(/assets/login_background.png);
+    background: image-url('login_background.png');
     background-size: cover;
     background-position: center;
     color: var(--text-color);
