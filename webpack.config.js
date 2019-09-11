@@ -12,7 +12,7 @@ module.exports = {
     plugins: [
         new CaseSensitivePathsPlugin()
         // other plugins ...
-    ]
+    ],
     module: {
         rules: [
             {
