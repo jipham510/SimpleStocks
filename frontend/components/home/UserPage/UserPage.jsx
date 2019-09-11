@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavContainer from '../../nav/nav_container';
-
+import StockIndexContainer from '../../stock/stock_index_container'
 class UserPage extends React.Component {
 
     render() {
@@ -23,7 +23,9 @@ class UserPage extends React.Component {
                 </header>
                 <div className="dashboard"> put zigzag lines here</div>
                 <div className="newsfeed"> put newsfeed here</div>
-                <div className="watchlist"> put watchlist here (how to scroll here?)</div>
+                <div className="watchlist"> put watchlist here (how to scroll here?)
+                    <StockIndexContainer />
+                </div>
             </div>
         )
     }

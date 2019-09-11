@@ -21,7 +21,9 @@ body {
         }
     }
 }
-
+a {
+    text-decoration: none;
+}
 .sign-up {
     width: 105px;
     height: 50px;
@@ -32,6 +34,7 @@ body {
     margin-top: 12px;
     @include easeOut();
     h4 {
+        text-decoration: none;
         font: 17px;
         font-weight: bold;
         margin-top: 17px;
@@ -42,31 +45,28 @@ body {
     }
 }
 
-.front-page {
+.front-page-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    .front-page-pic {
-        // position: absolute;
-        // top: 30vh;
-        // right: 1vw;
-
-        height: 700px;
-        width: 900px;
-        
-        background: image-url('splashimage.png');
-
-        opacity: 0;
-        animation: fadeinpic 2s 1;
-        animation-delay: 3s;
-        animation-fill-mode: forwards;  
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 9vw;
+    margin-right: 9vw;
+    .front-page-pic-container {
+        .front-page-pic {
+            position: relative;
+            top: 20vh;
+            // background: red;
+            height: 700px;
+            width: 800px;
+            margin-top: 10vh;
+            background: image-url('splashimage.png');
+            opacity: 0;
+            animation: fadeinpic 2s 1;
+            animation-delay: 3s;
+            animation-fill-mode: forwards;  
+        }
     }
     .front-page-intro {
-        // position: absolute;
-        // top: 35vh;
-        // left: 8.5vw;
-
-        width: 35vw;
         color: var(--text-color);
         h1 {
             // font-size: 46px;
@@ -78,18 +78,17 @@ body {
             font-size: 1.5em;
         }
         .cover {
-            position: absolute;
-            top: -200px;
+            position: relative;
+            top: 15vh;
             background: var(--background-color);
-            width: 400px;
-            height: 140px;
+            width: 20vw;
+            height: 10vh;
             z-index: 5;
         }
         .front-page-text1 {
             z-index: 3;
             letter-spacing: 1px;
             position: relative;
-            left: -3px;
             animation: drop1 1s 1;
             background: var(--background-color);
             padding-top: 50px;
@@ -97,16 +96,12 @@ body {
         }
         .front-page-text2 {
             letter-spacing: 1px;
-            // margin: 0;
-            left: -4px;
+            left: -2px;
+            padding-top: 10vh;
             background: var(--background-color);
             z-index: 2;
-            padding-top: 6px;
-            // padding-bottom: 20px;
             opacity: 0;
-            // padding: 0px;
-            position: absolute;
-            // top: -50px;
+            position: relative;
             animation: drop2 1s 1;
             animation-delay: 1s;
             animation-fill-mode: forwards;  
@@ -114,8 +109,7 @@ body {
         .front-page-text3 {
             opacity: 0;
             z-index: 1;
-            position: absolute;
-            top: -10px;
+            position: relative;
             h2 {
                 line-height: 26px;
             }
@@ -125,7 +119,7 @@ body {
         }
         .sign-up {
             position: relative;
-            top: 80px;
+            top: 10vh;
             opacity: 0;
             animation: fadein 1s 1;
             animation-delay: 3s;

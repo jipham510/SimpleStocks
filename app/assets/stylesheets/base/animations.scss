@@ -1,28 +1,28 @@
 @keyframes drop1 {
     from { 
-        top: -140px;
+        top: 0vh;
     }
     to   { 
-        top: -40px;
+        top: 13vh;
     }
 }
 @keyframes drop2 {
     from { 
-        top: -46px;
+        top: -5vh;
         opacity: 0;
     }
     to   { 
-        top: 54px;
+        top: 5vh;
         opacity: 1;
     }
 }
 @keyframes drop3 {
     from { 
-        top: 40px;
+        top: -5vh;
         opacity: 0;
     }
     to   { 
-        top: 145px;
+        top: 5vh;
         opacity: 1;
     }
 }
@@ -37,10 +37,10 @@
 @keyframes fadeinpic {
     from { 
         opacity: 0;
-        top: 30vh;
+        top: 20vh;
     }
     to   { 
         opacity: 1;
-        top: 10vh;
+        top: 0vh;
     }
 }

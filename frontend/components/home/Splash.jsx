@@ -26,7 +26,7 @@ const Splash = (props) => {
 
             </header>
 
-            <div className="front-page">
+            <div className="front-page-wrapper">
                 <div className="front-page-intro">
                     <div className="cover"></div>
                     <div className="front-page-text1">
@@ -48,11 +48,15 @@ const Splash = (props) => {
                     <br/>
                     <br/>
                     <br/>
-                    <div className="sign-up">
-                        <h4 className="sign-up-text">Sign Up</h4>
-                    </div>
+                    <Link to="/signup">
+                        <div className="sign-up">
+                            <h4 className="sign-up-text">Sign Up</h4>
+                        </div>
+                    </Link>
                 </div>
-                <div className="front-page-pic"></div>
+                <div className="front-page-pic-container">
+                    <div className="front-page-pic"></div>
+                </div>
             </div>
         </div>
     )
