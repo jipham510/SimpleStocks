@@ -1,5 +1,6 @@
 // webpack.config.js
 var path = require('path');
+var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
     context: __dirname,
@@ -8,6 +9,10 @@ module.exports = {
         path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
         filename: 'bundle.js'
     },
+    plugins: [
+        new CaseSensitivePathsPlugin()
+        // other plugins ...
+    ]
     module: {
         rules: [
             {

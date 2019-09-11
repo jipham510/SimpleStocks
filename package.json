@@ -18,7 +18,7 @@
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.jsx",
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -42,5 +42,8 @@
   "bugs": {
     "url": "https://github.com/jipham510/SimpleStocks/issues"
   },
-  "homepage": "https://github.com/jipham510/SimpleStocks#readme"
+  "homepage": "https://github.com/jipham510/SimpleStocks#readme",
+  "devDependencies": {
+    "case-sensitive-paths-webpack-plugin": "^2.2.0"
+  }
 }
