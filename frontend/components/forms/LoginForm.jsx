@@ -67,7 +67,6 @@ class LoginForm extends React.Component {
                 <div className="login-form">
                     <div className="text1"><h1>Welcome to SimpleStocks</h1></div>
                     <form onSubmit={this.handleSubmit}>
-
                         <div className="email-username">
                             <div className="text2">
                                 <h2>Username</h2>
@@ -83,16 +82,15 @@ class LoginForm extends React.Component {
                         <div className="forgot-user-pass">
                             < Link to="/signup" id="forgot-up"> Don't have an account? Sign up! </Link>
                         </div>
-
+                        <ul className="errors">
+                            {this.props.errors.map((error, i) => (
+                                <li key={i}>
+                                    {error}
+                                </li>
+                            ))}
+                        </ul>
                     <input type="submit" className="form-button" value="Sign In" id="login-form-button"/>
                     </form>
-                    <ul className="errors"> 
-                        {this.props.errors.map((error, i) => (
-                            <li key={i}>
-                                {error}
-                            </li>
-                        ))}
-                    </ul>
                     <div className="form-button" id="demo" onClick={this.handleDemo}>
                         <h4>Demo</h4>
                     </div>

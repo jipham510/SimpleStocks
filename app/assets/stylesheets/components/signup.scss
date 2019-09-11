@@ -67,13 +67,12 @@
                 // letter-spacing: 1px;
             }
             #signup-form-button {
-                margin-top: 3vh;
-                margin-bottom: 1vh;
+                margin-top: 6vh;
                 width: 40vw;
                 font-size: 1.5em;
             }
             .already-have-acc {
-                margin-top: 3vh;
+                margin-top: 1.5vh;
                 padding-bottom: 10px;
                 position: relative;
                 width: 210px;
@@ -102,7 +101,10 @@
                 text-decoration: none;
             }
             .errors {
-                width: 30vw;
+                position: absolute;
+                margin-top: 1vh;
+                width: 40vw;
+                color: red;
             }
         }
 

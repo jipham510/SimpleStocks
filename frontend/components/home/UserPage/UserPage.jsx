@@ -8,7 +8,7 @@ class UserPage extends React.Component {
         const { currentUser, logout } = this.props;
         return (
             <div className="home">
-                <header>
+                <header className="user-page-header">
                     <NavContainer />
                     <div className="searchbar"> 
                         {/* <input type="text" value="search stocks here"/> */}
@@ -16,8 +16,8 @@ class UserPage extends React.Component {
                     </div>
                     <div className="home-menu">
                         <div className="home-logout">
-                            <h1>Welcome {currentUser.username}</h1>
-                            <button onClick={logout}>Log Out</button>
+                            {/* <h1>Welcome {currentUser.username}</h1> */}
+                            <div onClick={logout} className="logout-btn">Log Out</div>
                         </div>
                     </div>
                 </header>

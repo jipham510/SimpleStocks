@@ -16,7 +16,14 @@ body {
         // margin-bottom: 5px;
         padding-bottom: 10px;
     }
-    .login-form {
+    .login-form 
+    {
+
+        .errors {
+            position: absolute;
+            color: red;
+            margin-top: 1vh;
+        }
         .text2 {
             margin-top: 10px;
             padding: 10px 0;
@@ -119,8 +126,4 @@ body {
         position: relative;
         top: -20px;
     }
-}
-.errors {
-    position: absolute;
-
 }

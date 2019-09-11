@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let store;
 
     //TESTING START
-    window.fetchStock = fetchStock;
-    window.fetchStocks = fetchStocks;
-    window.fetchStockCompanyInfo = fetchStockCompanyInfo;
-    window.fetchStockStats = fetchStockStats;
-    window.fetchStockChart = fetchStockChart;
-    window.test = "test";
+    // window.fetchStock = fetchStock;
+    // window.fetchStocks = fetchStocks;
+    // window.fetchStockCompanyInfo = fetchStockCompanyInfo;
+    // window.fetchStockStats = fetchStockStats;
+    // window.fetchStockChart = fetchStockChart;
+    // window.test = "test";
     //TESTING END
     if (window.currentUser) {
         const preloadedState = {
@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore();
     }
     // TESTING STORE
-    window.dispatch = store.dispatch;
-    window.getState = store.getState;
+    // window.dispatch = store.dispatch;
+    // window.getState = store.getState;
     // END
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store} />, root);

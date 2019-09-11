@@ -1,0 +1,21 @@
+
+.logout-btn {
+    position: absolute;
+    right: 1vw;
+    margin-top: 26px;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--text-color);
+    
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        @include easeOut();
+        color: $primary-color;
+    }
+}
+// .user-page-header {
+//     display: flex;
+//     flex-direction: row;
+// }

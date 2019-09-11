@@ -66,12 +66,13 @@ class SignUpForm extends React.Component {
                                 <br/>
                                     <input type="password" placeholder="Password" className="input-field" value={this.state.password} onChange={this.update('password')} />
                             </div>
+                                <ul className="errors">
+                                    {this.formatErrors()}
+                                </ul> 
                             <input type="submit" className="form-button" value="Sign Up" id="signup-form-button" />
 
                         </form>
-                        <ul className="errors">
-                            {this.formatErrors()}
-                        </ul> 
+
                         <br/>
                             <div className="already-have-acc">
                                 < Link to="/login" id="already-have-acc-text">Already have an account? Sign In! </Link>
