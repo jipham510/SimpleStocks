@@ -43,13 +43,14 @@ body {
 }
 
 .front-page {
-    // display: flex;
-    // justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .front-page-pic {
-        position: absolute;
-        top: 30vh;
-        right: 1vw;
-        
+        // position: absolute;
+        // top: 30vh;
+        // right: 1vw;
+
         height: 700px;
         width: 900px;
         
@@ -61,9 +62,9 @@ body {
         animation-fill-mode: forwards;  
     }
     .front-page-intro {
-        position: absolute;
-        top: 35vh;
-        left: 8.5vw;
+        // position: absolute;
+        // top: 35vh;
+        // left: 8.5vw;
 
         width: 35vw;
         color: var(--text-color);

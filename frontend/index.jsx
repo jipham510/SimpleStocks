@@ -4,18 +4,18 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
 // import {fetchStock} from "./util/stock_api_util";
-import { fetchStock, fetchStocks} from "./actions/stock_actions";
-import { fetchStockCompanyInfo, fetchStockStats, fetchStockChart} from "./util/stock_api_util"; 
+import { fetchStock, fetchStocks, fetchCompanyInfo, fetchStockStats, fetchStockChart} from "./actions/stock_actions";
+// import { fetchCompanyInfo, fetchStockStats, fetchStockChart} from "./util/stock_api_util"; 
 document.addEventListener("DOMContentLoaded", () => {
     let store;
 
     //TESTING START
-    // window.fetchStock = fetchStock;
-    // window.fetchStocks = fetchStocks;
-    // window.fetchStockCompanyInfo = fetchStockCompanyInfo;
-    // window.fetchStockStats = fetchStockStats;
-    // window.fetchStockChart = fetchStockChart;
-    // window.test = "test";
+    window.fetchStock = fetchStock;
+    window.fetchStocks = fetchStocks;
+    window.fetchCompanyInfo = fetchCompanyInfo;
+    window.fetchStockStats = fetchStockStats;
+    window.fetchStockChart = fetchStockChart;
+    window.test = "test";
     //TESTING END
     if (window.currentUser) {
         const preloadedState = {
@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore();
     }
     // TESTING STORE
-    // window.dispatch = store.dispatch;
-    // window.getState = store.getState;
+    window.dispatch = store.dispatch;
+    window.getState = store.getState;
     // END
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store} />, root);

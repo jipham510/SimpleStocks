@@ -7,7 +7,7 @@ export const fetchStock = (ticker) => (
 
 // url: `https://cloud.iexapis.com/stable/stock/${ticker}/company/batch?&types=quote&token=${window.iexAPIKey}`,
 
-export const fetchStockCompanyInfo = (ticker) => (
+export const fetchCompanyInfo = (ticker) => (
     $.ajax({
         method: "GET",
         url: `https://cloud.iexapis.com/stable/stock/${ticker}/company/batch?types=quote&filter=description,companyName,city,state,CEO,employees&token=pk_507026b3e85f4e4a889d2c112c20b532`
