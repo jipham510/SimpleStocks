@@ -5,11 +5,7 @@ const stockReducer = ( state={},action) => {
     let newStockState;
     switch(action.type) {
         case RECEIVE_STOCK:
-            let new_stock = { 
-                ticker: action.stock.symbol,
-                name: action.stock.companyName
-            }
-            return merge({}, state, { [new_stock.ticker]: new_stock })
+            return merge({}, state, { [action.stock.ticker]: action.stock })
         case RECEIVE_STOCKS:
             return merge({}, action.stocks);
         case RECEIVE_COMPANY_INFO:

@@ -1,23 +1,17 @@
 import React from 'react';
+import StockInfoContainer from './stock_info_container';
+import ChartContainer from './chart_container';
+
 class StockShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.stock;
     }
-    componentDidMount() {
-        let ticker = this.props.match.params.ticker;
-        this.props.fetchCompanyInfo(ticker).then(res => this.setState(res));
-        this.props.fetchStockStats(ticker).then(res => this.setState(res));
-        this.props.fetchCompanyInfo(ticker).then(res => this.setState(res));
-    }
+
     render() {
-        // debugger
         return (
             <div>
-                {this.state.companyName}
-                {this.state.ticker}
-                {this.state.name}
-                {this.state.name}
+                <StockInfoContainer />
+                <ChartContainer />
             </div>
         )
     }

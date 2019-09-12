@@ -6,10 +6,12 @@ export const RECEIVE_STOCK_STATS = "RECEIVE_STOCK_STATS";
 export const RECEIVE_STOCK_CHART = "RECEIVE_STOCK_CHART";
 export const RECEIVE_STOCKS = "RECEIVE_STOCKS";
 
-const receiveStock = (stock) => ({
+const receiveStock = (stock) => {
+    return {
     type: RECEIVE_STOCK,
-    stock
-})
+        stock: { name: stock.companyName, ticker: stock.symbol }
+    }
+}
 const receiveStocks = (stocks) => ({
     type: RECEIVE_STOCKS,
     stocks

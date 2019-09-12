@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavContainer from '../../nav/nav_container';
-import StockIndexContainer from '../../stock/stock_index_container'
+import StockIndexContainer from '../../stock/stock_index_container';
+import SeachBarContainer from '../../search_bar/search_bar_container'
 class UserPage extends React.Component {
 
     render() {
@@ -10,10 +11,7 @@ class UserPage extends React.Component {
             <div className="home">
                 <header className="user-page-header">
                     <NavContainer />
-                    <div className="searchbar"> 
-                        {/* <input type="text" value="search stocks here"/> */}
-                        <h4>search stocks here </h4>
-                    </div>
+                    <SeachBarContainer />
                     <div className="home-menu">
                         <div className="home-logout">
                             {/* <h1>Welcome {currentUser.username}</h1> */}
