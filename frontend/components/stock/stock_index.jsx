@@ -1,5 +1,5 @@
 import React from 'react';
-import StockIndexItem from './stock_index_item'
+import StockIndexItemContainer from './stock_index_item_container'
 class StockIndex extends React.Component {
     constructor(props) {
         super(props);
@@ -11,8 +11,9 @@ class StockIndex extends React.Component {
         return (
             <div>
                 <ul className="Stock-list">
+                <div className="stock-index-header">Popular Stocks</div>
                 {this.props.stocks.map( stock => 
-                    (<StockIndexItem stock={stock} key={stock.ticker} />)
+                    (<StockIndexItemContainer stock={stock} key={stock.ticker} />)
                 )}
                 </ul>
             </div>

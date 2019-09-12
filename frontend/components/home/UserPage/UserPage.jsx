@@ -14,15 +14,14 @@ class UserPage extends React.Component {
                     <SeachBarContainer />
                     <div className="home-menu">
                         <div className="home-logout">
-                            {/* <h1>Welcome {currentUser.username}</h1> */}
                             <div onClick={logout} className="logout-btn">Log Out</div>
                         </div>
                     </div>
                 </header>
-                <div className="dashboard"> put zigzag lines here</div>
+                <div className="portfolio"> put zigzag lines here</div>
                 <div className="newsfeed"> put newsfeed here</div>
-                <div className="watchlist"> put watchlist here (how to scroll here?)
-                    <StockIndexContainer />
+                <div className="watchlist">
+                <StockIndexContainer />
                 </div>
             </div>
         )

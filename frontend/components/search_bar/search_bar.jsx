@@ -8,7 +8,6 @@ class SeachBar extends React.Component {
     // }
 
     render() {
-        debugger
         return (
             <div className="searchbar">
                 <input type="text" className="seach-bar-input" placeholder="WIP searchbar"/>

@@ -18,6 +18,6 @@ ActiveRecord::Base.transaction do
     stock = Stock.create!(name: "Tesla", ticker: "TSLA")
     stock = Stock.create!(name: "Netflix", ticker: "NFLX")
     stock = Stock.create!(name: "Microsoft", ticker: "MSFT")
-    stock = Stock.create!(name: "Starbucks", ticker: "Sbux")
+    stock = Stock.create!(name: "Starbucks", ticker: "SBUX")
     
 end

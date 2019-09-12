@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
 // import {fetchStock} from "./util/stock_api_util";
-import { fetchStock, fetchStocks, fetchCompanyInfo, fetchStockStats, fetchStockChart} from "./actions/stock_actions";
+import { fetchStock, fetchStocks, fetchCompanyInfo, fetchStockStats, fetchStockChart, fetchLatestStockPrice} from "./actions/stock_actions";
 // import { fetchCompanyInfo, fetchStockStats, fetchStockChart} from "./util/stock_api_util"; 
 document.addEventListener("DOMContentLoaded", () => {
     let store;
@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.fetchCompanyInfo = fetchCompanyInfo;
     window.fetchStockStats = fetchStockStats;
     window.fetchStockChart = fetchStockChart;
+    window.fetchLatestStockPrice = fetchLatestStockPrice;
     window.test = "test";
     //TESTING END
     if (window.currentUser) {

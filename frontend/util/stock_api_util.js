@@ -4,6 +4,12 @@ export const fetchStock = (ticker) => (
         url: `https://cloud.iexapis.com/stable/stock/${ticker}/company/?token=pk_507026b3e85f4e4a889d2c112c20b532`
     })
 )
+export const fetchLatestStockPrice = (ticker) => (
+    $.ajax({
+        method: "GET",
+        url: `https://cloud.iexapis.com/stable/stock/${ticker}/chart/5d/?filter=close&chartLast=1&token=pk_507026b3e85f4e4a889d2c112c20b532`
+    })
+)
 
 // url: `https://cloud.iexapis.com/stable/stock/${ticker}/company/batch?&types=quote&token=${window.iexAPIKey}`,
 

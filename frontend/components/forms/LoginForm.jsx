@@ -6,7 +6,8 @@ class LoginForm extends React.Component {
         super(props);
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            disabled: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
@@ -22,16 +23,20 @@ class LoginForm extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        if (!this.state.disabled) {
+            const user = Object.assign({}, this.state);
+            this.props.processForm(user); 
+        }
     }
 
     handleDemo(e){
-        let user = "Demo_User";
-        let pass = "password";
-
-        this.setState({username: "", password: "" },
-                      () => this.demoLogin(user,pass) );
+        if(!this.state.disabled) {
+            this.setState( { disabled: true} );
+            let user = "Demo_User";
+            let pass = "password";
+            this.setState({username: "", password: "" },
+                        () => this.demoLogin(user,pass) );
+        }
 
     }
     demoLogin(user,pass) {
@@ -54,7 +59,8 @@ class LoginForm extends React.Component {
                     () => setTimeout(() => { _demoPass(pass) }, 100)
                 )
             } else {
-                document.getElementById("login-form-button").click();
+                const demo_user = Object.assign({}, this.state);
+                this.props.processForm(demo_user);
             }
         }
         _demoUser(user);
