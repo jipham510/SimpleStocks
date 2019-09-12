@@ -70,7 +70,7 @@ a {
         color: var(--text-color);
         h1 {
             // font-size: 46px;
-            font-size: 4em;
+            font-size: 3em;
             font-weight: bold;
         }
         h2 {
@@ -95,6 +95,7 @@ a {
             animation-fill-mode: forwards;  
         }
         .front-page-text2 {
+            word-wrap: none;
             letter-spacing: 1px;
             left: -2px;
             padding-top: 10vh;

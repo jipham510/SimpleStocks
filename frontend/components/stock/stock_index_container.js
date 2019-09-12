@@ -4,7 +4,6 @@ import StocksIndex from './stock_index';
 
 const mapStateToProps = (state) => {
     let stocks = Object.values(state.entities.stocks);
-    debugger
     return {
         stocks: stocks
     }
