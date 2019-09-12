@@ -9,6 +9,7 @@ class UserPage extends React.Component {
         const { currentUser, logout } = this.props;
         return (
             <div className="home">
+
                 <header className="user-page-header">
                     <NavContainer />
                     <SeachBarContainer />

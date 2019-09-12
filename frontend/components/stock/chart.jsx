@@ -1,4 +1,6 @@
 import React from 'react';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+
 class Chart extends React.Component {
     constructor(props) {
         super(props);
@@ -17,11 +19,23 @@ class Chart extends React.Component {
     //     } 
     // }
     render() {
-        debugger
+        console.log(this.state.chart)
+        
+        const data = this.state.chart;
+        // const data = [{ name: 'Page A', uv: 400}, { name: 'Page B', uv: 500}];
+
+        const renderLineChart = (
+            <LineChart width={600} height={300} data={data}>
+                <Line type="monotone" dataKey="open" stroke="#8884d8" />
+                <CartesianGrid stroke="#ccc" />
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip />
+            </LineChart>
+        )
         return (
             <div>
-                {/* {this.state.chart} */}
-
+                {renderLineChart}
             </div>
         )
     }
