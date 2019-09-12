@@ -1,7 +1,7 @@
 import React from 'react';
 import StockInfoContainer from './stock_info_container';
 import ChartContainer from './chart_container';
-import NavContainer from '../nav/nav_container';
+import UserNavContainer from '../nav/user_nav_container';
 
 class StockShow extends React.Component {
     constructor(props) {
@@ -11,9 +11,7 @@ class StockShow extends React.Component {
     render() {
         return (
             <div>
-                <header className="user-page-header">
-                    <NavContainer />
-                </header>
+                <UserNavContainer />
                 <div className="stock-show-wrapper">
                     <main className="stock-show-left-content">
                         <ChartContainer />

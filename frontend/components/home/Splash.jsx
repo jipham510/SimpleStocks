@@ -5,7 +5,7 @@ import NavContainer from '../nav/nav_container'
 const Splash = (props) => {
     return (
         <div className="splash-wrapper">
-            <header>
+            <header className="splash-nav">
                 <NavContainer />
                 {/* <div className="icons">
                     <a href="#!" className="hoverlinks">

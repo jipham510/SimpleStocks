@@ -35,10 +35,10 @@ const receiveStockStats = (stats,ticker) => ({
     stats
 })
 
-const receiveStockChart = (chart,ticker) => ({
+const receiveStockChart = (chartData,ticker) => ({
     type: RECEIVE_STOCK_CHART,
     ticker,
-    chart
+    chartData
 })
 
 export const fetchStock = (ticker) => (dispatch) => APIStockUtil.fetchStock(ticker).then( stock => dispatch(receiveStock(stock)))

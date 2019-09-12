@@ -1,13 +1,20 @@
+
 .stock-show-wrapper {
     display: flex;
-    margin: 0px auto;
     flex-direction: row;
-    justify-content: flex-start;
-    // align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0px auto;
     padding-top: 20vh;
     width: 1000px;
     .stock-show-left-content {
         .stock-show-chart-wrapper {
+
+            .chart-header {
+                h1 {
+                    font-size: 2.5em;
+                }
+            }
             .stock-show-chart{
                 position: relative;
                 &::after {
@@ -27,7 +34,7 @@
         }
         .stock-info {
             text-align: left;
-            .stock-info-about-heading {
+            .stock-info-heading {
                 padding-bottom: 2vh;
                 border-bottom: 1px solid #F4F4F5;
                 h2 {

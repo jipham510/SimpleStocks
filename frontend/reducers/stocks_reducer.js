@@ -17,8 +17,8 @@ const stockReducer = ( state={},action) => {
             newStockState = merge({}, state, { [action.ticker]: action.stats});
             return newStockState;
         case RECEIVE_STOCK_CHART:
-            let chart = { chart: action.chart };
-            newStockState = merge({}, state, { [action.ticker]: chart });
+            let chartData = { chartData: action.chartData };
+            newStockState = merge({}, state, { [action.ticker]: chartData });
             return newStockState;
         default: 
             return state;

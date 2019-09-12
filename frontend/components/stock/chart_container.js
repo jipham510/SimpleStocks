@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchStockChart: (ticker, range) => dispatch(fetchStockChart(ticker,range))
+    fetchStockChart: (ticker, range) => dispatch(fetchStockChart(ticker,range)),
+    fetchStock: (ticker) => dispatch(fetchStock(ticker))
 });
 
 export default withRouter(connect(

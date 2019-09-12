@@ -22,8 +22,8 @@ class StockInfo extends React.Component {
     render() {
         return (
             <div className="stock-info">
-                <div className="stock-info-about-heading">
-                    <h2>About</h2>
+                <div className="stock-info-heading--about">
+                    <h3>About</h3>
                 </div>
                 <ul>
                     <li>name: {this.state.company_info.companyName}</li>
