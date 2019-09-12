@@ -22,10 +22,14 @@ class StockInfo extends React.Component {
     render() {
         return (
             <div className="stock-info">
-                name: {this.state.company_info.companyName} <br/>
-                ticker: {this.state.ticker} <br/>
-                week52high: {this.state.stats.week52high}
-
+                <div className="stock-info-about-heading">
+                    <h2>About</h2>
+                </div>
+                <ul>
+                    <li>name: {this.state.company_info.companyName}</li>
+                    <li>ticker: {this.state.ticker} </li>
+                    <li>week52high: {this.state.stats.week52high}</li>
+                </ul>
             </div>
         )
     }

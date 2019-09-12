@@ -1,11 +1,11 @@
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer} from 'recharts';
 
 class Chart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            chart: ""
+            chart: []
         }
     }
     componentDidMount() {
@@ -18,23 +18,27 @@ class Chart extends React.Component {
     //         this.props.fetchStockStats(ticker).then(res => this.setState(res));
     //     } 
     // }
-    render() {
-        console.log(this.state.chart)
-        
+    // decideLineColor(data){
+    //     console.log(data);
+    //     return "green";
+    // }
+    render() {        
         const data = this.state.chart;
         // const data = [{ name: 'Page A', uv: 400}, { name: 'Page B', uv: 500}];
 
         const renderLineChart = (
-            <LineChart width={600} height={300} data={data}>
-                <Line type="monotone" dataKey="open" stroke="#8884d8" />
-                <CartesianGrid stroke="#ccc" />
-                <XAxis dataKey="date" />
-                <YAxis />
-                <Tooltip />
-            </LineChart>
+            // <ResponsiveContainer>
+                <LineChart width={700} height={300} data={data} className="stock-show-chart">
+                <Line type="monotone" dataKey="open" stroke="green" dot={false}/>
+                    {/* <CartesianGrid stroke="#ccc" /> */}
+                    {/* <XAxis dataKey="date" /> */}
+                    <YAxis domain={['dataMin', 'dataMax']} hide={true} />
+                    <Tooltip />
+                </LineChart>
+            // </ResponsiveContainer>
         )
         return (
-            <div>
+            <div className="stock-show-chart-wrapper">
                 {renderLineChart}
             </div>
         )

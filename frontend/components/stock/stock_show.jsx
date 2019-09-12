@@ -15,8 +15,13 @@ class StockShow extends React.Component {
                     <NavContainer />
                 </header>
                 <div className="stock-show-wrapper">
-                    <StockInfoContainer />
-                    <ChartContainer />
+                    <main className="stock-show-left-content">
+                        <ChartContainer />
+                        <StockInfoContainer />
+                    </main>
+                    <div className="order-sidebar">
+                        handle transactions here
+                    </div>
                 </div>
             </div>
         )
