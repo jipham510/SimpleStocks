@@ -15,9 +15,9 @@ class Chart extends React.Component {
             stockName: "",
             lineColor: "#67CF9A",
             active: "1D",
-            hoverPrice: "",
+            hoverPrice: 0,
             timestamp:  "",
-            intialPrice: ""
+            intialPrice: 0
         }
         this.activeBtn = this.activeBtn.bind(this);
         this.handleChangeRange = this.handleChangeRange.bind(this);
@@ -27,29 +27,29 @@ class Chart extends React.Component {
         this.setColorStatus = this.setColorStatus.bind(this);
         this.resetHoverPrice = this.resetHoverPrice.bind(this);
     }
-    // componentDidMount() {
-    //     // this.props.fetchStockChart(this.props.ticker, "1m").then(res => this.setState(res));
-    //     this.props.fetchStock(this.props.ticker).then(res => {
-    //         return this.setState({ stockName: res.stock.name })
-    //     });
-    //     this.props.fetchIntradayData(this.props.ticker).then(res => {
-    //         let data = res.intradayData;
-    //         let color;
-    //         if (data[0].close > data[data.length - 1].close) {
-    //             color = "red";
-    //         } else {
-    //             color = "#67CF9A";
-    //         }
-    //         return this.setState({
-    //             intradayData: data,
-    //             chartData: data,
-    //             intialPrice: data[0].close,
-    //             hoverPrice: data[0].close,
-    //             lineColor: color
-    //         }, this.setColorStatus )
-    //     });
-    //     this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
-    // }
+    componentDidMount() {
+        // this.props.fetchStockChart(this.props.ticker, "1m").then(res => this.setState(res));
+        this.props.fetchStock(this.props.ticker).then(res => {
+            return this.setState({ stockName: res.stock.name })
+        });
+        this.props.fetchIntradayData(this.props.ticker).then(res => {
+            let data = res.intradayData;
+            let color;
+            if (data[0].close > data[data.length - 1].close) {
+                color = "red";
+            } else {
+                color = "#67CF9A";
+            }
+            return this.setState({
+                intradayData: data,
+                chartData: data,
+                intialPrice: data[0].close,
+                hoverPrice: data[0].close,
+                lineColor: color
+            }, this.setColorStatus )
+        });
+        // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+    }
     activeBtn(range) {
         let res = "range-btn";
         if (this.state.active === range) {
@@ -102,25 +102,33 @@ class Chart extends React.Component {
         this.setState({ active: range })
         this.changeDates(range);
     }
-    handleToolTip(e){
-        let timestamp = "";
-        if ( e.activePayload && e.activePayload[0] !== undefined){
-            if (this.state.active === "1D"){
-                timestamp = e.activePayload[0].payload.label + " ET";
-            } else {
-                timestamp = e.activePayload[0].payload.date;
-            }
-        }
-        this.setState({
-            timestamp: timestamp
-        })
-    }
+    // handleToolTip(e){
+    //     let timestamp = "";
+    //     console.log(this.state.active);
+    //     if ( e.activePayload && e.activePayload[0] !== undefined){
+    //         if (this.state.active === "1D"){
+    //             debugger
+    //             timestamp = e.activePayload[0].payload.label + " ET";
+    //         } else {
+    //             timestamp = e.activePayload[0].payload.date;
+    //         }
+    //     }
+    //     this.setState({
+    //         timestamp: timestamp
+    //     })
+    // }
     handleMouseHover(e) {
         if (e.activePayload) {
             let price = e.activePayload[0].payload.close;
             if (price) {
-                price = parseFloatToDollars(e.activePayload[0].payload.close);
-                let timestamp = e.activePayload[0].payload.date;
+                price = e.activePayload[0].payload.close;
+                let timestamp;
+                if (this.state.active === "1D") {
+                    debugger
+                    timestamp = e.activePayload[0].payload.label + " ET";
+                } else {
+                    timestamp = e.activePayload[0].payload.date;
+                }
                 this.setState({
                     hoverPrice: price,
                     timestamp: timestamp
@@ -152,7 +160,7 @@ class Chart extends React.Component {
         )
     }
     resetHoverPrice() {
-        debugger
+        // debugger
         return this.setState({ hoverPrice: this.state.intialPrice})
     }
     render() {
@@ -160,7 +168,7 @@ class Chart extends React.Component {
             <div className="stock-show-chart-wrapper">
                 <div className="chart-header">
                     <h1>{this.state.stockName}</h1>
-                    <h2>{this.state.hoverPrice}</h2>
+                    <h2>$<Odometer value={this.state.hoverPrice} duration={600} /></h2>
                 </div>
                 {this.renderLineChart()}
                 <ul className="chart-ranges">
@@ -171,7 +179,7 @@ class Chart extends React.Component {
                     <li className={this.activeBtn("1Y")} onClick={this.handleChangeRange}>1Y</li>
                     <li className={this.activeBtn("5Y")} onClick={this.handleChangeRange}>5Y</li>
                 </ul>
-                $<Odometer value={1234} duration={1000} />
+        
             </div>
         )
     }
