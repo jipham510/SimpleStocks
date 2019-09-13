@@ -7,8 +7,8 @@ const mapStateToProps = (state, ownProps) => {
     const stockTicker = ownProps.match.params.ticker;
     return {
         ticker: stockTicker,
-        historicalData: state.entities.stocks[stockTicker].historicalData,
-        intradayData: state.entities.stocks[stockTicker].intradayData
+        // historicalData: state.entities.stocks[stockTicker].historicalData,
+        // intradayData: state.entities.stocks[stockTicker].intradayData
     }
 }
 
