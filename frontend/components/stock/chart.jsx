@@ -1,8 +1,8 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { parseFloatToDollars } from '../../util/util'
-import { ETIME } from 'constants';
 class Chart extends React.Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -11,23 +11,40 @@ class Chart extends React.Component {
             intradayData: [],
             stockName: "",
             lineColor: "#67CF9A",
-            active: "1M",
+            active: "1D",
             hoverPrice: "",
-            timestamp:  ""
+            timestamp:  "",
+            intialPrice: ""
         }
         this.activeBtn = this.activeBtn.bind(this);
         this.handleChangeRange = this.handleChangeRange.bind(this);
         this.changeDates = this.changeDates.bind(this);
         this.renderLineChart = this.renderLineChart.bind(this);
         this.handleMouseHover = this.handleMouseHover.bind(this);
+        this.setColorStatus = this.setColorStatus.bind(this);
     }
     componentDidMount() {
-        this.props.fetchStockChart(this.props.ticker, "1m").then(res => this.setState(res));
+        // this.props.fetchStockChart(this.props.ticker, "1m").then(res => this.setState(res));
         this.props.fetchStock(this.props.ticker).then(res => {
             return this.setState({ stockName: res.stock.name })
         });
+        this.props.fetchIntradayData(this.props.ticker).then(res => {
+            let data = res.intradayData;
+            let color;
+            if (data[0].close > data[data.length - 1].close) {
+                color = "red";
+            } else {
+                color = "#67CF9A";
+            }
+            return this.setState({
+                intradayData: data,
+                chartData: data,
+                intialPrice: data[0].close,
+                hoverPrice: data[0].close,
+                lineColor: color
+            }, this.setColorStatus )
+        });
         this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
-        this.props.fetchIntradayData(this.props.ticker).then(res => this.setState(res));
     }
     activeBtn(range) {
         let res = "range-btn";
@@ -37,6 +54,14 @@ class Chart extends React.Component {
         return res;
     }
 
+    setColorStatus(){
+        const stockShowPage = document.querySelector(".stock-show-wrapper");
+        if (this.state.lineColor === "#67CF9A") {
+            stockShowPage.removeAttribute("data-status")
+        } else {
+            stockShowPage.setAttribute("data-status", "red")
+        }
+    }
     changeDates(range) {
         let newChartData;
         if (range === "1D") {
@@ -65,7 +90,7 @@ class Chart extends React.Component {
         this.setState({
             chartData: newChartData,
             lineColor: newColor
-        })
+        }, this.setColorStatus )
     }
     handleChangeRange(e) {
         let range = e.target.innerText;
@@ -84,6 +109,17 @@ class Chart extends React.Component {
         this.setState({
             timestamp: timestamp
         })
+    }
+    handleMouseHover(e) {
+        let price = e.activePayload[0].payload.close;
+        if (price) {
+            price = parseFloatToDollars(e.activePayload[0].payload.close);
+            let timestamp = e.activePayload[0].payload.date;
+            this.setState({
+                hoverPrice: price,
+                timestamp: timestamp
+            });
+        }
     }
 
     renderLineChart() {
@@ -108,17 +144,7 @@ class Chart extends React.Component {
             </LineChart>
         )
     }
-    handleMouseHover(e) {
-        let price = e.activePayload[0].payload.close;
-        if (price) {
-            price = parseFloatToDollars(e.activePayload[0].payload.close);
-            let timestamp = e.activePayload[0].payload.date;
-            this.setState( {hoverPrice: price,
-                timestamp: timestamp
-                });
-            // this.state.handleToolTip(e);
-        }
-    }
+
     render() {
         return (
             <div className="stock-show-chart-wrapper">
