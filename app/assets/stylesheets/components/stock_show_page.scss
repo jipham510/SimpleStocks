@@ -1,4 +1,3 @@
-
 .stock-show-wrapper {
     display: flex;
     flex-direction: row;
@@ -46,6 +45,9 @@
                 h2 {
                     font-size: 3.5em;
                     letter-spacing: 1px;
+                    // .odometer {
+                    //     display: inline;
+                    // }
                 }
             }
             .stock-show-chart{

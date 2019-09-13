@@ -1,4 +1,4 @@
-const apiKey = "pk_486c91a242e5435589f1550c3414fbe5";
+const apiKey = "pk_de82e1c265ce403880d83e5d17770609";
 export const fetchStock = (ticker) => (
     $.ajax({
         method: "GET",

@@ -1,6 +1,9 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { parseFloatToDollars } from '../../util/util'
+import { parseFloatToDollars } from '../../util/util';
+import Odometer from 'react-odometerjs';
+import { render } from 'react-dom';
+
 class Chart extends React.Component {
     
     constructor(props) {
@@ -22,30 +25,31 @@ class Chart extends React.Component {
         this.renderLineChart = this.renderLineChart.bind(this);
         this.handleMouseHover = this.handleMouseHover.bind(this);
         this.setColorStatus = this.setColorStatus.bind(this);
+        this.resetHoverPrice = this.resetHoverPrice.bind(this);
     }
-    componentDidMount() {
-        // this.props.fetchStockChart(this.props.ticker, "1m").then(res => this.setState(res));
-        this.props.fetchStock(this.props.ticker).then(res => {
-            return this.setState({ stockName: res.stock.name })
-        });
-        this.props.fetchIntradayData(this.props.ticker).then(res => {
-            let data = res.intradayData;
-            let color;
-            if (data[0].close > data[data.length - 1].close) {
-                color = "red";
-            } else {
-                color = "#67CF9A";
-            }
-            return this.setState({
-                intradayData: data,
-                chartData: data,
-                intialPrice: data[0].close,
-                hoverPrice: data[0].close,
-                lineColor: color
-            }, this.setColorStatus )
-        });
-        this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
-    }
+    // componentDidMount() {
+    //     // this.props.fetchStockChart(this.props.ticker, "1m").then(res => this.setState(res));
+    //     this.props.fetchStock(this.props.ticker).then(res => {
+    //         return this.setState({ stockName: res.stock.name })
+    //     });
+    //     this.props.fetchIntradayData(this.props.ticker).then(res => {
+    //         let data = res.intradayData;
+    //         let color;
+    //         if (data[0].close > data[data.length - 1].close) {
+    //             color = "red";
+    //         } else {
+    //             color = "#67CF9A";
+    //         }
+    //         return this.setState({
+    //             intradayData: data,
+    //             chartData: data,
+    //             intialPrice: data[0].close,
+    //             hoverPrice: data[0].close,
+    //             lineColor: color
+    //         }, this.setColorStatus )
+    //     });
+    //     this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+    // }
     activeBtn(range) {
         let res = "range-btn";
         if (this.state.active === range) {
@@ -64,6 +68,7 @@ class Chart extends React.Component {
     }
     changeDates(range) {
         let newChartData;
+        let historicalLength = this.state.historicalData.length;
         if (range === "1D") {
 
             newChartData = this.state.intradayData
@@ -71,13 +76,13 @@ class Chart extends React.Component {
                 return chart.close !== null;
             })
         } else if (range === "1W") {
-            newChartData = this.state.historicalData.slice(0, 5)
+            newChartData = this.state.historicalData.slice(historicalLength - 5, historicalLength)
         } else if (range === "1M") {
-            newChartData = this.state.historicalData.slice(0, 22)
+            newChartData = this.state.historicalData.slice(historicalLength - 22, historicalLength)
         } else if (range === "3M") {
-            newChartData = this.state.historicalData.slice(0, 66)
+            newChartData = this.state.historicalData.slice(historicalLength - 66, historicalLength)
         } else if (range === "1Y") {
-            newChartData = this.state.historicalData.slice(0, 264)
+            newChartData = this.state.historicalData.slice(historicalLength - 264, historicalLength)
         } else if (range === "5Y") {
             newChartData = this.state.historicalData
         }
@@ -111,14 +116,16 @@ class Chart extends React.Component {
         })
     }
     handleMouseHover(e) {
-        let price = e.activePayload[0].payload.close;
-        if (price) {
-            price = parseFloatToDollars(e.activePayload[0].payload.close);
-            let timestamp = e.activePayload[0].payload.date;
-            this.setState({
-                hoverPrice: price,
-                timestamp: timestamp
-            });
+        if (e.activePayload) {
+            let price = e.activePayload[0].payload.close;
+            if (price) {
+                price = parseFloatToDollars(e.activePayload[0].payload.close);
+                let timestamp = e.activePayload[0].payload.date;
+                this.setState({
+                    hoverPrice: price,
+                    timestamp: timestamp
+                });
+            }
         }
     }
 
@@ -131,7 +138,7 @@ class Chart extends React.Component {
             xAxisData = "date"
         }
         return (
-            <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} className="stock-show-chart">
+            <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} className="stock-show-chart">
                 <Line type="monotone" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
                 {/* <CartesianGrid stroke="#ccc" /> */}
                 <XAxis dataKey={xAxisData} />
@@ -144,7 +151,10 @@ class Chart extends React.Component {
             </LineChart>
         )
     }
-
+    resetHoverPrice() {
+        debugger
+        return this.setState({ hoverPrice: this.state.intialPrice})
+    }
     render() {
         return (
             <div className="stock-show-chart-wrapper">
@@ -161,6 +171,7 @@ class Chart extends React.Component {
                     <li className={this.activeBtn("1Y")} onClick={this.handleChangeRange}>1Y</li>
                     <li className={this.activeBtn("5Y")} onClick={this.handleChangeRange}>5Y</li>
                 </ul>
+                $<Odometer value={1234} duration={1000} />
             </div>
         )
     }
