@@ -12,7 +12,14 @@ $secondary-color : #030c14;
     // #logo {
     //     // background: url(/assets/robinhood-logo.png);
     // }
+
+    // for chart status of red or green
     --chart-color: #67CF9A;
+
+
+    //expanding window
+    --read-more-height: 82px;
+    --show-more-height: 140px;
 }
 [data-theme="dark"] {
     --background-color: #030c14;
@@ -30,6 +37,12 @@ $secondary-color : #030c14;
 
 [data-status="red"] {
     --chart-color: red;
+}
+[expanded-read="true"] {
+    --read-more-height: 100%;
+}
+[expanded-show="true"] {
+    --show-more-height: 100%;
 }
 $main-font: "DIN Pro", "DIN Web", sans-serif;
 @mixin easeOut {

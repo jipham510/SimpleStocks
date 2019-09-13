@@ -1,8 +1,8 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { parseFloatToDollars } from '../../util/util';
+// import { parseFloatToDollars } from '../../util/util';
 import Odometer from 'react-odometerjs';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
 
 class Chart extends React.Component {
     
@@ -32,22 +32,22 @@ class Chart extends React.Component {
         this.props.fetchStock(this.props.ticker).then(res => {
             return this.setState({ stockName: res.stock.name })
         });
-        this.props.fetchIntradayData(this.props.ticker).then(res => {
-            let data = res.intradayData;
-            let color;
-            if (data[0].close > data[data.length - 1].close) {
-                color = "red";
-            } else {
-                color = "#67CF9A";
-            }
-            return this.setState({
-                intradayData: data,
-                chartData: data,
-                intialPrice: data[0].close,
-                hoverPrice: data[0].close,
-                lineColor: color
-            }, this.setColorStatus )
-        });
+        // this.props.fetchIntradayData(this.props.ticker).then(res => {
+        //     let data = res.intradayData;
+        //     let color;
+        //     if (data[0].close > data[data.length - 1].close) {
+        //         color = "red";
+        //     } else {
+        //         color = "#67CF9A";
+        //     }
+        //     return this.setState({
+        //         intradayData: data,
+        //         chartData: data,
+        //         intialPrice: data[0].close,
+        //         hoverPrice: data[0].close,
+        //         lineColor: color
+        //     }, this.setColorStatus )
+        // });
         // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
     }
     activeBtn(range) {
@@ -102,21 +102,6 @@ class Chart extends React.Component {
         this.setState({ active: range })
         this.changeDates(range);
     }
-    // handleToolTip(e){
-    //     let timestamp = "";
-    //     console.log(this.state.active);
-    //     if ( e.activePayload && e.activePayload[0] !== undefined){
-    //         if (this.state.active === "1D"){
-    //             debugger
-    //             timestamp = e.activePayload[0].payload.label + " ET";
-    //         } else {
-    //             timestamp = e.activePayload[0].payload.date;
-    //         }
-    //     }
-    //     this.setState({
-    //         timestamp: timestamp
-    //     })
-    // }
     handleMouseHover(e) {
         if (e.activePayload) {
             let price = e.activePayload[0].payload.close;

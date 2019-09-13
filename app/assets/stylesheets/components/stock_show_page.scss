@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: flex-start;
     margin: 0px auto;
-    padding-top: 20vh;
+    padding-top: 15vh;
     width: 1000px;
     .stock-show-left-content {
         .stock-show-chart-wrapper {
@@ -69,11 +69,77 @@
         }
         .stock-info {
             text-align: left;
+            width: 700px;
             .stock-info-heading {
-                padding-bottom: 2vh;
+                padding: 2vh 0vh;
+                margin-bottom: 3vh;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
                 border-bottom: 1px solid #F4F4F5;
-                h2 {
+                h3 {
                     font-size: 2em;
+                }
+                .show-more {
+                    color: var(--chart-color); 
+                    position: relative;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .stock-info-description-wrapper {
+                width: 85%;
+                margin-bottom: 4vh;
+                // height: 100%;
+                .stock-info-description {
+                    height: var(--read-more-height);
+                    overflow: hidden;
+                    line-height: 1.5em;
+                }
+                .read-more {
+                    color: var(--chart-color); 
+                    position: relative;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                h4 {
+                    font-size: 1em;
+                    letter-spacing: 0.6px;
+                }
+            }
+            .stock-stats-wrapper {
+                height: var(--show-more-height);
+                overflow: hidden;
+                margin-bottom: 50vh;
+                .stock-stats {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    .stat {
+                        width: 120px; 
+                        margin-right: 50px;
+                        margin-bottom: 25px;
+                        h5 {
+                            font-weight: bold;
+                            margin-bottom: 5px;
+                            letter-spacing: 0.4px;
+                            overflow: visible;
+                            word-wrap: none;
+                        }
+                        .stat-info {
+                            line-height: 2em;
+                        }
+                        .link-CEO {
+                            color: var(--chart-color); 
+                            position: relative;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
                 }
             }
         }

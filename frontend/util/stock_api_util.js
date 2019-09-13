@@ -17,7 +17,7 @@ export const fetchLatestStockPrice = (ticker) => (
 export const fetchCompanyInfo = (ticker) => (
     $.ajax({
         method: "GET",
-        url: `https://cloud.iexapis.com/stable/stock/${ticker}/company/batch?types=quote&filter=description,companyName,city,state,CEO,employees&token=${apiKey}`
+        url: `https://cloud.iexapis.com/stable/stock/${ticker}/company/batch?types=quote&filter=description,exchange,companyName,city,state,CEO,employees&token=${apiKey}`
     })
 )
 export const fetchStockStats = (ticker) => (
