@@ -1,4 +1,4 @@
-import { RECEIVE_STOCK, RECEIVE_STOCKS, RECEIVE_COMPANY_INFO, RECEIVE_STOCK_STATS, RECEIVE_STOCK_CHART, RECEIVE_LATEST_STOCK_PRICE } from '../actions/stock_actions';
+import { RECEIVE_STOCK, RECEIVE_STOCKS, RECEIVE_COMPANY_INFO, RECEIVE_STOCK_STATS, RECEIVE_STOCK_CHART, RECEIVE_LATEST_STOCK_PRICE, RECEIVE_HISTORICAL_DATA, RECEIVE_INTRADAY_DATA } from '../actions/stock_actions';
 import merge from "lodash/merge";
 const stockReducer = ( state={},action) => {
     Object.freeze(state);
@@ -19,6 +19,14 @@ const stockReducer = ( state={},action) => {
         case RECEIVE_STOCK_CHART:
             let chartData = { chartData: action.chartData };
             newStockState = merge({}, state, { [action.ticker]: chartData });
+            return newStockState;
+        case RECEIVE_INTRADAY_DATA:
+            let intradayData = { intradayData: action.intradayData };
+            newStockState = merge({}, state, { [action.ticker]: intradayData });
+            return newStockState;
+        case RECEIVE_HISTORICAL_DATA:
+            let historicalData = { historicalData: action.historicalData };
+            newStockState = merge({}, state, { [action.ticker]: historicalData });
             return newStockState;
         default: 
             return state;

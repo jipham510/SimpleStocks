@@ -37,6 +37,18 @@ export const fetchStockChart = (ticker,range) => (
         url: `https://cloud.iexapis.com/stable/stock/${ticker}/chart/${range}/batch?types=quote&token=pk_507026b3e85f4e4a889d2c112c20b532`
     })
 )
+export const fetchIntradayData = (ticker) => (
+    $.ajax({
+        method: "GET",
+        url: `https://cloud.iexapis.com/stable/stock/${ticker}/chart/1D/batch?&types=quote&chartInterval=5&token=pk_507026b3e85f4e4a889d2c112c20b532`
+    })
+)
+export const fetchHistoricalData = (ticker) => (
+    $.ajax({
+        method: "GET",
+        url: `https://cloud.iexapis.com/stable/stock/${ticker}/chart/5Y/batch?types=quote&token=pk_507026b3e85f4e4a889d2c112c20b532`
+    })
+)
 // /stock/aapl/chart
 // /stock/aapl/chart/max
 // /stock/aapl/chart/5y

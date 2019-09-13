@@ -1,6 +1,8 @@
 import * as APIStockUtil from '../util/stock_api_util';
 
 export const RECEIVE_STOCK = "RECEIVE_STOCK";
+export const RECEIVE_INTRADAY_DATA = "RECEIVE_INTRADAY_DATA";
+export const RECEIVE_HISTORICAL_DATA = "RECEIVE_HISTORICAL_DATA";
 export const RECEIVE_LATEST_STOCK_PRICE = "RECEIVE_LATEST_STOCK_PRICE";
 export const RECEIVE_COMPANY_INFO = "RECEIVE_COMPANY_INFO";
 export const RECEIVE_STOCK_STATS = "RECEIVE_STOCK_STATS";
@@ -40,6 +42,17 @@ const receiveStockChart = (chartData,ticker) => ({
     ticker,
     chartData
 })
+const receiveIntradayData = (intradayData,ticker) => ({
+    type: RECEIVE_INTRADAY_DATA,
+    ticker,
+    intradayData
+})
+
+const receiveHistoricalData = (historicalData,ticker) => ({
+    type: RECEIVE_HISTORICAL_DATA,
+    ticker,
+    historicalData
+})
 
 export const fetchStock = (ticker) => (dispatch) => APIStockUtil.fetchStock(ticker).then( stock => dispatch(receiveStock(stock)))
 
@@ -50,5 +63,9 @@ export const fetchCompanyInfo = (ticker) => (dispatch) => APIStockUtil.fetchComp
 export const fetchStockStats = (ticker) => (dispatch) => APIStockUtil.fetchStockStats(ticker).then(stats => dispatch(receiveStockStats(stats,ticker)))
 
 export const fetchStockChart = (ticker,range) => (dispatch) => APIStockUtil.fetchStockChart(ticker,range).then(stats => dispatch(receiveStockChart(stats,ticker)))
+
+export const fetchIntradayData = (ticker) => (dispatch) => APIStockUtil.fetchIntradayData(ticker).then(stats => dispatch(receiveIntradayData(stats,ticker)))
+
+export const fetchHistoricalData = (ticker) => (dispatch) => APIStockUtil.fetchHistoricalData(ticker).then(stats => dispatch(receiveHistoricalData(stats,ticker)))
 
 export const fetchStocks = () => (dispatch) => APIStockUtil.fetchStocks().then( stocks => dispatch(receiveStocks(stocks)))
