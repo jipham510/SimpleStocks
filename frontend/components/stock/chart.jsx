@@ -1,6 +1,6 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-// import { parseFloatToDollars } from '../../util/util';
+import { parseFloatToDollars, parseFloatToPostNegPercent, parseFloatToPosNegDollars } from '../../util/util';
 import Odometer from 'react-odometerjs';
 // import { render } from 'react-dom';
 
@@ -17,7 +17,9 @@ class Chart extends React.Component {
             active: "1D",
             hoverPrice: 0,
             timestamp:  "",
-            intialPrice: 0
+            intialPrice: 0,
+            flux: 0,
+            fluxPercent: 0
         }
         this.activeBtn = this.activeBtn.bind(this);
         this.handleChangeRange = this.handleChangeRange.bind(this);
@@ -32,23 +34,44 @@ class Chart extends React.Component {
         this.props.fetchStock(this.props.ticker).then(res => {
             return this.setState({ stockName: res.stock.name })
         });
-        // this.props.fetchIntradayData(this.props.ticker).then(res => {
-        //     let data = res.intradayData;
-        //     let color;
-        //     if (data[0].close > data[data.length - 1].close) {
-        //         color = "red";
-        //     } else {
-        //         color = "#67CF9A";
-        //     }
-        //     return this.setState({
-        //         intradayData: data,
-        //         chartData: data,
-        //         intialPrice: data[0].close,
-        //         hoverPrice: data[0].close,
-        //         lineColor: color
-        //     }, this.setColorStatus )
-        // });
-        // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+        this.props.fetchIntradayData(this.props.ticker).then(res => {
+            let data = res.intradayData;
+            data = data.filter(chart => {
+                return chart.close !== null;
+            })
+            let lastIdx = data.length - 1;
+            let color;
+            if (data[0].close > data[lastIdx].close) {
+                color = "red";
+            } else {
+                color = "#67CF9A";
+            }
+            
+            return this.setState({
+                intradayData: data,
+                chartData: data,
+                intialPrice: data[lastIdx].close,
+                hoverPrice: data[lastIdx].close,
+                lineColor: color
+            }, () => {
+                this.setColorStatus(); 
+                this.calculateFlux(data[lastIdx]);
+            })
+        });
+        this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+    }
+    calculateFlux(dataPoint){
+        let flux = 0;
+        let fluxPercent = 0;
+        if (dataPoint) {
+            let firstDataPoint = this.state.chartData[0];
+            flux = dataPoint.close - firstDataPoint.close;
+            fluxPercent = (1 - firstDataPoint.close/dataPoint.close) * 100 ;
+        }
+        return this.setState({
+            flux,
+            fluxPercent
+        });
     }
     activeBtn(range) {
         let res = "range-btn";
@@ -105,11 +128,11 @@ class Chart extends React.Component {
     handleMouseHover(e) {
         if (e.activePayload) {
             let price = e.activePayload[0].payload.close;
+            this.calculateFlux(e.activePayload[0].payload);
             if (price) {
                 price = e.activePayload[0].payload.close;
                 let timestamp;
                 if (this.state.active === "1D") {
-                    debugger
                     timestamp = e.activePayload[0].payload.label + " ET";
                 } else {
                     timestamp = e.activePayload[0].payload.date;
@@ -134,7 +157,7 @@ class Chart extends React.Component {
             <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} className="stock-show-chart">
                 <Line type="monotone" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
                 {/* <CartesianGrid stroke="#ccc" /> */}
-                <XAxis dataKey={xAxisData} />
+                {/* <XAxis dataKey={xAxisData} /> */}
                 <YAxis domain={['dataMin', 'dataMax']} hide={true} />
 
                 <Tooltip content={renderTimeStamp}
@@ -145,7 +168,6 @@ class Chart extends React.Component {
         )
     }
     resetHoverPrice() {
-        // debugger
         return this.setState({ hoverPrice: this.state.intialPrice})
     }
     render() {
@@ -154,6 +176,8 @@ class Chart extends React.Component {
                 <div className="chart-header">
                     <h1>{this.state.stockName}</h1>
                     <h2>$<Odometer value={this.state.hoverPrice} duration={600} /></h2>
+                    <h3>{parseFloatToPosNegDollars(this.state.flux)} ({parseFloatToPostNegPercent(this.state.fluxPercent)})</h3>
+                    
                 </div>
                 {this.renderLineChart()}
                 <ul className="chart-ranges">
