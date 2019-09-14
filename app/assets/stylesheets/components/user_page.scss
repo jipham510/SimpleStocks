@@ -11,20 +11,22 @@
 //         position: relative;
 //     }
 // }
-
+.main-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 13.5vh;
+    padding-left: 13.9vw;
+}
 .portfolio {
-    position: relative;
-    top: 20vh;
-    left: 10vw;
     background-color: green;
-    width: 50vw;
-    height: 40vh;
+    width: 700px;
+    height: 300px;
+    margin-bottom: 10vh;
 }
 .newsfeed {
-    position: relative;
-    top: 30vh;
-    left: 10vw;
-    background-color: orange;
+    // top: 30vh;
+    // left: 10vw;
+    // background-color: orange;
     width: 50vw;
     height: 100vh;
 }

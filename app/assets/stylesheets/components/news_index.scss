@@ -1,0 +1,29 @@
+.news-index {
+    h2 {
+        padding: 2vh 0vh;
+        border-bottom: 1px solid #F4F4F5;
+        font-size: 2em;
+    }
+    .news-index-item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 20px 20px;
+        margin: 0px -20px;
+        .article-info {
+            width: 400px;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+        .article-img {
+            
+            width: 200px;
+            height: 140px;
+        }
+        &:hover {
+            background: grey;
+        }
+    }
+}

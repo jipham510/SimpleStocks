@@ -7,5 +7,5 @@ const receiveNews = (news) => ({
     news
 })
 
-export const fetchNews = () => (dispatch) => APINewsUtil.fetchNews().then(news => dispatch(receiveNews(news)))
-export const fetchCompanyNews = (company) => (dispatch) => APINewsUtil.fetchCompanyNews(company).then(news => dispatch(receiveNews(news)))
+export const fetchNews = () => (dispatch) => APINewsUtil.fetchNews().then(res => dispatch(receiveNews(res.articles)))
+export const fetchCompanyNews = (company) => (dispatch) => APINewsUtil.fetchCompanyNews(company).then(res => dispatch(receiveNews(res.articles)))
