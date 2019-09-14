@@ -34,6 +34,10 @@ class LoginForm extends React.Component {
             this.setState( { disabled: true} );
             let user = "Demo_User";
             let pass = "password";
+            const demoBtn = document.getElementById("demo");
+            const loginBtn = document.getElementById("login-form-button");
+            demoBtn.setAttribute("button-theme", "disabled");
+            loginBtn.setAttribute("button-theme", "disabled");
             this.setState({username: "", password: "" },
                         () => this.demoLogin(user,pass) );
         }
@@ -46,7 +50,7 @@ class LoginForm extends React.Component {
             if (user.length > 0) {
                 let char = user.shift();
                 this.setState({ username: this.state.username + char },
-                    () => setTimeout(() => { _demoUser(user) }, 100)
+                    () => setTimeout(() => { _demoUser(user) }, 50)
                 )
             } else {
                 _demoPass(pass);
@@ -56,7 +60,7 @@ class LoginForm extends React.Component {
             if (pass.length > 0) {
                 let char = pass.shift();
                 this.setState({ password: this.state.password + char },
-                    () => setTimeout(() => { _demoPass(pass) }, 100)
+                    () => setTimeout(() => { _demoPass(pass) }, 50)
                 )
             } else {
                 const demo_user = Object.assign({}, this.state);

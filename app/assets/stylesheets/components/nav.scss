@@ -24,7 +24,7 @@
             background-color: var(--text-color);
             -webkit-mask-image: image-url('logo.svg');
             mask-image: image-url('logo.svg');
-
+            @include easeOut();
         }
         h4 {
             margin-top: 5px;

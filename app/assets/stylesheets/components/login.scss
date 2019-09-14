@@ -50,14 +50,12 @@ body {
             text-decoration: none;
         }
         .forgot-user-pass {
-            // padding: 20px 0px;
             padding-top: 20px;
             padding-bottom: 10px;
             position: relative;
             width: 210px;
             white-space: nowrap;
 
-            // background: black;
             &::after {
                 content: "";
                 position: absolute;

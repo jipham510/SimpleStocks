@@ -1,6 +1,6 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { parseFloatToDollars, parseFloatToPostNegPercent, parseFloatToPosNegDollars } from '../../util/util';
+import { parseFloatToPostNegPercent, parseFloatToPosNegDollars } from '../../util/util';
 import Odometer from 'react-odometerjs';
 // import { render } from 'react-dom';
 
@@ -17,7 +17,7 @@ class Chart extends React.Component {
             active: "1D",
             hoverPrice: 0,
             timestamp:  "",
-            intialPrice: 0,
+            currentPrice: 0,
             flux: 0,
             fluxPercent: 0
         }
@@ -30,7 +30,6 @@ class Chart extends React.Component {
         this.resetHoverPrice = this.resetHoverPrice.bind(this);
     }
     componentDidMount() {
-        // this.props.fetchStockChart(this.props.ticker, "1m").then(res => this.setState(res));
         this.props.fetchStock(this.props.ticker).then(res => {
             return this.setState({ stockName: res.stock.name })
         });
@@ -50,7 +49,7 @@ class Chart extends React.Component {
             return this.setState({
                 intradayData: data,
                 chartData: data,
-                intialPrice: data[lastIdx].close,
+                currentPrice: data[lastIdx].close,
                 hoverPrice: data[lastIdx].close,
                 lineColor: color
             }, () => {
@@ -58,7 +57,7 @@ class Chart extends React.Component {
                 this.calculateFlux(data[lastIdx]);
             })
         });
-        this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+        // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
     }
     calculateFlux(dataPoint){
         let flux = 0;
@@ -168,14 +167,15 @@ class Chart extends React.Component {
         )
     }
     resetHoverPrice() {
-        return this.setState({ hoverPrice: this.state.intialPrice})
+        this.calculateFlux(this.state.chartData[this.state.chartData.length - 1]);
+        return this.setState({ hoverPrice: this.state.currentPrice})
     }
     render() {
         return (
             <div className="stock-show-chart-wrapper">
                 <div className="chart-header">
                     <h1>{this.state.stockName}</h1>
-                    <h2>$<Odometer value={this.state.hoverPrice} duration={600} /></h2>
+                    <h2>$<Odometer value={this.state.hoverPrice} /></h2>
                     <h3>{parseFloatToPosNegDollars(this.state.flux)} ({parseFloatToPostNegPercent(this.state.fluxPercent)})</h3>
                     
                 </div>

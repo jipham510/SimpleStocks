@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavContainer from '../../nav/nav_container';
 import StockIndexContainer from '../../stock/stock_index_container';
-import SeachBarContainer from '../../search_bar/search_bar_container'
+import SearchBarContainer from '../../search_bar/search_bar_container'
 import UserNavContainer from '../../nav/user_nav_container'
 class UserPage extends React.Component {
 
@@ -10,18 +10,11 @@ class UserPage extends React.Component {
         const { currentUser, logout } = this.props;
         return (
             <div className="home">
-
-                {/* <header className="user-page-header">
-                    <NavContainer />
-                    <SeachBarContainer />
-                    <div className="home-menu">
-                        <div className="home-logout">
-                            <div onClick={logout} className="logout-btn">Log Out</div>
-                        </div>
-                    </div>
-                </header> */}
                 <UserNavContainer />
-                <div className="portfolio"> put zigzag lines here</div>
+                <div className="portfolio"> 
+                    <h1>Welcome to Simple Stocks</h1>
+                    put zigzag lines here
+                </div>
                 <div className="newsfeed"> put newsfeed here</div>
                 <div className="watchlist">
                 <StockIndexContainer />

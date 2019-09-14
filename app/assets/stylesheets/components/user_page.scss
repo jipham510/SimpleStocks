@@ -2,15 +2,15 @@
     height: 200vh;
 }
 
-.home-menu {
-    position: absolute;
-    top: 0vh;
-    right: 10vw; 
-    .home-logout {
-        // background: black;
-        position: relative;
-    }
-}
+// .home-menu {
+//     position: absolute;
+//     top: 0vh;
+//     right: 10vw; 
+//     .home-logout {
+//         // background: black;
+//         position: relative;
+//     }
+// }
 
 .portfolio {
     position: relative;
@@ -29,23 +29,6 @@
     height: 100vh;
 }
 
-
-.logout-btn {
-    position: absolute;
-    right: 1vw;
-    margin-top: 26px;
-    white-space: nowrap;
-    font-weight: bold;
-    font-size: 16px;
-    color: var(--text-color);
-    
-    &:hover {
-        cursor: pointer;
-        text-decoration: underline;
-        @include easeOut();
-        color: $primary-color;
-    }
-}
 // .user-page-header {
 //     display: flex;
 //     flex-direction: row;

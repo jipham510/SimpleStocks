@@ -1,5 +1,5 @@
 import React from 'react';
-class SeachBar extends React.Component {
+class SearchBar extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -10,10 +10,10 @@ class SeachBar extends React.Component {
     render() {
         return (
             <div className="searchbar">
-                <input type="text" className="seach-bar-input" placeholder="WIP searchbar"/>
-
+                <div className="searchbar-svg"></div>
+                <input type="text" className="search-bar-input" placeholder="Search"/>
             </div>
         )
     }
 }
-export default SeachBar;
+export default SearchBar;

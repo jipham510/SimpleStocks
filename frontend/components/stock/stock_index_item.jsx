@@ -1,19 +1,8 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-// const StockIndexItem = (props) => {
-//     debugger
-//     return ( 
-//         <Link to={`/stocks/${props.stock.ticker}`}>
-            
-//             <div className="stock-index-item">
-//                 <div className="stock-index-item-ticker">{props.stock.ticker}</div>
-//                 {/* <div className="stock-index-item-ticker">{props.stock.ticker}</div> */}
-//             </div>
-//         </Link>
-//     )
-// }
-// export default StockIndexItem;
+import { parseFloatToDollars } from '../../util/util';
+
 
 class StockIndexItem extends React.Component {
     constructor(props) {
@@ -28,7 +17,7 @@ class StockIndexItem extends React.Component {
 
             <div className="stock-index-item">
                 <div className="stock-index-item-ticker">{this.props.stock.ticker}</div>
-                <div className="stock-index-item-price">${this.props.stock.price}</div>
+                    <div className="stock-index-item-price">{parseFloatToDollars(this.props.stock.price)}</div>
             </div>
         </Link>
         )

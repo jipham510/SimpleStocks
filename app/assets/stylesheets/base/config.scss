@@ -1,36 +1,54 @@
 $background-color: white;
 $primary-color : #67CF9A;
-$secondary-color : #030c14;
+$secondary-color : #1B1B1D;
+// $secondary-color : #030c14;
 :root { 
 
     //variables depending on dark theme
     --background-color: white;
     --text-color: black;
     //#424242
-    --link-color: #030C14;
+    --link-color: #1B1B1D;
     --link-color-hover: #67CF9A;
     // #logo {
     //     // background: url(/assets/robinhood-logo.png);
     // }
-
+    --search-bar-color: #F8F8F9;
     // for chart status of red or green
     --chart-color: #67CF9A;
-
+        
 
     //expanding window
     --read-more-height: 82px;
-    --show-more-height: 140px;
+    --show-more-height: 70px;
 }
 [data-theme="dark"] {
-    --background-color: #030c14;
+    --background-color: #1B1B1D;
     --text-color: #fff;
     --link-color: #67CF9A;
-    --link-color-hover: white; 
+    --link-color-hover: white;
+    --search-bar-color: #0E0C0C; 
     #logo {
         // background: url(/assets/robinhood-logo-green.png);
         color: white;
         &:hover {
             color: #67CF9A;
+        }
+    }
+    .search-bar-input {
+        &:focus {
+            box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(0,0,0,0.6) !important;
+        }
+        &:hover {
+            box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(0,0,0,0.6) !important;
+        }
+
+    }
+    .watchlist {
+        // background: #1b1b1d;
+        box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(0,0,0,0.6);
+        .stock-index-header {
+            border-bottom: 1px solid rgba(0,0,0,0.6);
         }
     }
 }
@@ -44,6 +62,10 @@ $secondary-color : #030c14;
 [expanded-show="true"] {
     --show-more-height: 100%;
 }
+[button-theme="disabled"] {
+    opacity: 0.5;
+}
+
 $main-font: "DIN Pro", "DIN Web", sans-serif;
 @mixin easeOut {
     transition: all 0.3s ease-out;

@@ -39,6 +39,7 @@
             }
             .chart-header {
                 padding: 2vh;
+                margin-bottom: 1vh;
                 h1 {
                     font-size: 2.5em;
                 }
@@ -135,9 +136,26 @@
                         .link-CEO {
                             color: var(--chart-color); 
                             position: relative;
-                            &:hover {
-                                cursor: pointer;
+                            padding-bottom: 5px;
+                            &::after {
+                                    content: "";
+                                    position: absolute;
+                                    left: 0;
+                                    bottom: 0;
+                                    width: 100%;
+                                    height: 2px;
+                                    background: var(--chart-color);
+
+                                    transform: scaleX(0);
+                                    transform-origin: left;
+                                    @include easeIn;
                             }
+                            &:hover::after {
+                                transform-origin: right;
+                                transform: scaleX(1);
+                                cursor: pointer;
+                            }  
+                                                     
                         }
                     }
                 }

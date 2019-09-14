@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchStockChart } from '../../actions/stock_actions';
-import SeachBar from './search_bar';
+import SearchBar from './search_bar';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(SeachBar));
+)(SearchBar));

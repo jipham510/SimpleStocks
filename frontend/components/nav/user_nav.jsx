@@ -42,17 +42,17 @@ class UserNav extends React.Component {
             <header className="user-page-header">
                 <div id="logo" onClick={this.refreshPageOrRedirect}>
                     <div className="logo-image"></div>
-                    <h4>SimpleStocks</h4>
                 </div>
                 <SearchBarContainer />
-                <div className="home-menu">
-                    <div className="home-logout">
-                        <div onClick={this.props.logout} className="logout-btn">Log Out</div>
+
+                <div className="user-nav-menu-wrapper">
+                    <div className="user-nav-menu">
+                        <div className="theme" onClick={this.toggleDarkMode}>Dark Mode</div>
+                        <div className="home-btn" onClick={this.refreshPageOrRedirect}>Home</div>
+                        <div onClick={this.props.logout} className="user-logout-btn">Log Out</div>
                     </div>
                 </div>
-                <div className="menu">
-                    <div className="theme" onClick={this.toggleDarkMode}>Dark Mode</div>
-                </div>
+
             </header>
         )
     }

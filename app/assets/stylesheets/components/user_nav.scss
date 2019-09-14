@@ -1,6 +1,4 @@
 .user-page-header {
-    // display: flex;
-    // flex-direction: row;
     position: fixed;
     z-index: 10;
     width: 100%;
@@ -11,29 +9,20 @@
 
     #logo {
         position: absolute;
-        margin-left: 7vw;
+        margin-left: 3.3vw;
         padding-top: 10px;
-        display: flex;
-        flex-direction: row;
         .logo-image {
             position: relative;
             top: -14px;
-            left: 3px;
             width: 36px;
-            height: 36px;
+            height: 40px;
             background-color: var(--text-color);
             -webkit-mask-image: image-url('logo.svg');
             mask-image: image-url('logo.svg');
-
-        }
-        h4 {
-            margin-top: 5px;
-            padding: 0px 5px;
-            position: relative;
-            width: 150px;
-            z-index: 1;
+            @include easeOut();
         }
         &:hover {
+            @include easeOut();
             cursor: pointer;
             color: $primary-color;
             .logo-image {
@@ -42,48 +31,101 @@
         }
     }
 
-    .menu {
-        position: absolute;
-        z-index: 3;
-        top: 0px;
-        right: 0vw; 
-        margin-right: 9vw;
-        .theme {
+    .searchbar {
+        width: 1024px;
+        position: relative;
+        left: 13.8vw;
+        .searchbar-svg {
+            background-color: #8C8C8E;
+            -webkit-mask-image: image-url('magglass.svg');
+            mask-image: image-url('magglass.svg');
             position: absolute;
-            right: 17vw;
-            margin-top: 26px;
-            white-space: nowrap;
-            font-weight: bold;
-            font-size: 16px;
-            color: var(--text-color);
-            
-            &:hover {
-                cursor: pointer;
-                text-decoration: underline;
-                @include easeOut();
-                color: $primary-color;
-            }
+            margin: 10px;
+            margin-left: 20px;
+            height: 20px;
+            width: 20px;
+
         }
-        .log-in {
-            a {
-                text-decoration: none;
+        .search-bar-input {
+            font-size: 14px;
+            width: 40vw;
+            padding: 12px 0px;
+            padding-left: 48px;
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--search-bar-color);
+            border-radius: 3px;
+            &::-webkit-input-placeholder { 
+                color: #8C8C8E;
+            }
+            &:focus {
+                border: 1px solid transparent;
+                outline-color: transparent;
+                outline-style: none;
+                box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(48,51,51,0.09);
+            }
+            &:hover {
+                border: 1px solid transparent;
+                box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(48,51,51,0.09);
+            }
+
+        }
+    }
+    .user-nav-menu-wrapper {
+        position: absolute;
+        // height: 5vh;
+        left: 65vw;
+        top: 0px;
+        width: 25vw;
+        .user-nav-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items:flex-start;
+            align-content:flex-start;
+
+            margin-top: 26px;
+            z-index: 3;
+
+            .theme {
+                white-space: nowrap;
+                font-weight: bold;
+                font-size: 16px;
                 color: var(--text-color);
+            
                 &:hover {
+                    cursor: pointer;
                     text-decoration: underline;
                     @include easeOut();
                     color: $primary-color;
                 }
             }
-            margin-top: 26px;
-            font-size: 16px;
-            font-weight: bold;
-            position: absolute;
-            right: 10vw;
-            white-space: nowrap;
-        }
-        .sign-up{
-            position: absolute;
-            right: 0vw;
+            .home-btn {
+                font-weight: bold;
+                font-size: 16px;
+                color: var(--text-color);
+
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                    @include easeOut();
+                    color: $primary-color;
+                }
+            }
+            .user-logout-btn {
+                font-weight: bold;
+                font-size: 16px;
+                color: var(--text-color);
+
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                    @include easeOut();
+                    color: $primary-color;
+                }
+            }
+
         }
     }
 }
+

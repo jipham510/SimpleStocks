@@ -4,21 +4,14 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
 // import {fetchStock} from "./util/stock_api_util";
-import { fetchStock, fetchStocks, fetchCompanyInfo, fetchStockStats, fetchStockChart, fetchLatestStockPrice, fetchIntradayData, fetchHistoricalData} from "./actions/stock_actions";
+// import { fetchStock} from "./actions/stock_actions";
+// import { fetchNews } from "./actions/news_actions";
 // import { fetchCompanyInfo, fetchStockStats, fetchStockChart} from "./util/stock_api_util"; 
 document.addEventListener("DOMContentLoaded", () => {
     let store;
 
     //TESTING START
-    window.fetchStock = fetchStock;
-    window.fetchStocks = fetchStocks;
-    window.fetchCompanyInfo = fetchCompanyInfo;
-    window.fetchStockStats = fetchStockStats;
-    window.fetchStockChart = fetchStockChart;
-    window.fetchLatestStockPrice = fetchLatestStockPrice;
-    window.fetchIntradayData = fetchIntradayData;
-    window.fetchHistoricalData = fetchHistoricalData;
-    window.test = "test";
+    // window.fetchNews = fetchNews;
     //TESTING END
     if (window.currentUser) {
         const preloadedState = {
