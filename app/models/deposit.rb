@@ -1,0 +1,2 @@
+class Deposit < ApplicationRecord
+end

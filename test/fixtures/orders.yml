@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  ticker: MyString
+  order_type: MyString
+  price_bought: 1.5
+  shares: 1
+
+two:
+  user_id: 1
+  ticker: MyString
+  order_type: MyString
+  price_bought: 1.5
+  shares: 1
