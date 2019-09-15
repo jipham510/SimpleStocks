@@ -13,7 +13,7 @@ class UserPage extends React.Component {
                 <div className="main-content">
                     <h1>Welcome to Simple Stocks</h1>
                     <div className="portfolio"> 
-                        put zigzag lines here
+                        put zigzag lines here (aka portfolio)
                     </div>
                     <div className="newsfeed"> 
                         <NewsIndexContainer />
