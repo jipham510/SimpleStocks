@@ -28,8 +28,13 @@ ActiveRecord::Base.transaction do
         stock = Stock.create!(ticker: row["Symbol"], name: row["Company Name"])
     end
     
-    # puts "There are now #{Stock.count} rows in the stocks table"
-
+    # stock = Stock.create!(name: "Apple Inc", ticker: "AAPL")
+    # stock = Stock.create!(name: "Google", ticker: "GOOGL")
+    # stock = Stock.create!(name: "Tesla", ticker: "TSLA")
+    # stock = Stock.create!(name: "Netflix", ticker: "NFLX")
+    # stock = Stock.create!(name: "Microsoft", ticker: "MSFT")
+    # stock = Stock.create!(name: "Starbucks", ticker: "SBUX")
+    
     demo_user = User.create!(username: 'Demo_User', first_name: "demo", last_name: "user", email: "demo_user@gmail.com", password: 'password')
     my_login = User.create!(username: 'jpham', first_name: "jimmy", last_name: "pham", email: "demo_user@gmail.com", password: 'password')
     

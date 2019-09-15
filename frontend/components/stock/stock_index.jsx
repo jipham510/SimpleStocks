@@ -5,7 +5,7 @@ class StockIndex extends React.Component {
         super(props);
     }
     componentDidMount(){
-        this.props.fetchStocks();
+        // this.props.fetchStocks();
     }
     render() {
         return (

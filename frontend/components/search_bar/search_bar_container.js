@@ -1,20 +1,19 @@
 import { connect } from 'react-redux';
-import { fetchStockChart } from '../../actions/stock_actions';
+import { fetchStocks } from '../../actions/stock_actions';
 import SearchBar from './search_bar';
-import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-    const stocks = [];
+    let stocks = Object.values(state.entities.stocks);
     return {
         stocks: stocks
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchStockChart: (ticker, range) => dispatch(fetchStockChart(ticker,range))
+    fetchStocks: () => dispatch(fetchStocks())
 });
 
-export default withRouter(connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(SearchBar));
+)(SearchBar);
