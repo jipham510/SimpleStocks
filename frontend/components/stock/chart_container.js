@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchStockChart, fetchHistoricalData } from '../../actions/stock_actions';
+import { fetchStockChart, fetchHistoricalData, fetchStock, fetchIntradayData } from '../../actions/stock_actions';
 import Chart from './chart';
 import { withRouter } from 'react-router-dom';
 

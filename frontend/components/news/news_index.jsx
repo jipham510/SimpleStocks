@@ -18,6 +18,12 @@ class NewsIndex extends React.Component {
                 {this.props.news.map( (article,idx) => (
                     <NewsIndexItem article={article} key={idx} />
                 ))}
+
+                <a href="https://newsapi.org/"> 
+                    <div className="credit-news-api">
+                        Powered by News API
+                    </div> 
+                </a>
             </div>
         )
     }

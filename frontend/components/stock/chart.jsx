@@ -109,7 +109,7 @@ class Chart extends React.Component {
             newChartData = this.state.historicalData
         }
         let newColor;
-        if (newChartData[0].close > newChartData[newChartData.length - 1].close) {
+        if ( newChartData && newChartData[0].close > newChartData[newChartData.length - 1].close) {
             newColor = "red";
         } else {
             newColor = "#67CF9A";
