@@ -23,9 +23,8 @@
         &:hover {
             @include easeOut();
             cursor: pointer;
-            color: $primary-color;
             .logo-image {
-                background-color: $primary-color;
+                background-color: var(--chart-color);
             }
         }
     }

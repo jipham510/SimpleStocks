@@ -81,7 +81,7 @@ class Chart extends React.Component {
     }
 
     setColorStatus(){
-        const stockShowPage = document.querySelector(".stock-show-wrapper");
+        const stockShowPage = document.querySelector("body");
         if (this.state.lineColor === "#67CF9A") {
             stockShowPage.removeAttribute("data-status")
         } else {

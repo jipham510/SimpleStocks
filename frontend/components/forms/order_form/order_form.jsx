@@ -1,4 +1,5 @@
 import React from 'react';
+import {parseFloatToDollars} from '../../../util/util';
 
 class OrderForm extends React.Component {
     constructor(props) {
@@ -18,6 +19,9 @@ class OrderForm extends React.Component {
             const intradayData = this.props.stock.intradayData;
             if (intradayData) this.setState({ price: intradayData[intradayData.length - 1].open });
         } 
+    }
+    componentWillUnmount(){
+        this.props.clearErrors();
     }
     activeBtn(orderType) {
         let res = "order-form";
@@ -70,15 +74,27 @@ class OrderForm extends React.Component {
                         <h3>Shares</h3> 
                         <input type="text" className="input-shares" value={this.state.shares} onChange={this.updateShare} placeholder="0"/>
                     </div>
-                    <input type="submit" value="SUBMIT BUY"/>
+                    <div className="order-form-row">
+                        <h3>Market Price</h3> 
+                        <div className="order-form-price">{parseFloatToDollars(this.state.price)}</div>
+                    </div>
+                    <div className="order-form-row">
+                        <h3>Estimated Cost</h3> 
+                        <div className="order-form-cost">{parseFloatToDollars(this.state.price*this.state.shares)}</div>
+                    </div>
+                    <div className="order-form-row">
+                        <ul className="errors">
+                            {this.props.errors.map((error, i) => (
+                                <li key={i}>
+                                    {error}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="order-form-row">
+                        <input type="submit" value="SUBMIT BUY" className="order-form-submit"/>
+                    </div>
                 </form>
-                <ul className="errors">
-                    {this.props.errors.map((error, i) => (
-                        <li key={i}>
-                            {error}
-                        </li>
-                    ))}
-                </ul>
             </div>
         )
     }
