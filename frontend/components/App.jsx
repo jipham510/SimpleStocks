@@ -1,7 +1,7 @@
 import React from "react";
-import SignUpFormContainer from "./forms/SignUpFormContainer";
-import LoginFormContainer from "./forms/LoginFormContainer";
-import HomeContainer from "./home/HomeContainer"
+import SignUpFormContainer from "./forms/sign_up_form_container";
+import LoginFormContainer from "./forms/login_form_container";
+import HomeContainer from "./home/home_container"
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Route,Switch, Redirect} from 'react-router-dom';
 import StockShowContainer from "./stock/stock_show_container"

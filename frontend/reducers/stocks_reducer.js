@@ -9,7 +9,7 @@ const stockReducer = ( state={},action) => {
         case RECEIVE_LATEST_STOCK_PRICE:
             return merge({}, state, { [action.stock.ticker]: action.stock })
         case RECEIVE_STOCKS:
-            return merge({}, action.stocks);
+            return merge({}, state, action.stocks);
         case RECEIVE_COMPANY_INFO:
             newStockState = merge({}, state, { [action.ticker]: action.company_info});
             return newStockState;

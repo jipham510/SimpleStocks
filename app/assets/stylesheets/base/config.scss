@@ -56,10 +56,21 @@ $secondary-color : #1B1B1D;
             }
         }
     }
+    .news-index-item {
+        &:hover {
+            background: black !important;
+        }
+    }
+    .order-sidebar {
+        box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(0,0,0,0.6) !important;
+        .order-form-header{
+            border-bottom: 1px solid black;
+        }
+    }
 }
 
 [data-status="red"] {
-    --chart-color: red;
+    --chart-color: #EB5333;
 }
 [expanded-read="true"] {
     --read-more-height: 100%;

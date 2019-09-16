@@ -4,8 +4,8 @@ import { parseFloatToPostNegPercent, parseFloatToPosNegDollars } from '../../uti
 import Odometer from 'react-odometerjs';
 // import { render } from 'react-dom';
 
+const RED = "#EB5333"
 class Chart extends React.Component {
-    
     constructor(props) {
         super(props);
         this.state = {
@@ -41,7 +41,7 @@ class Chart extends React.Component {
             let lastIdx = data.length - 1;
             let color;
             if (data[0].close > data[lastIdx].close) {
-                color = "red";
+                color = RED;
             } else {
                 color = "#67CF9A";
             }
@@ -110,7 +110,7 @@ class Chart extends React.Component {
         }
         let newColor;
         if ( newChartData && newChartData[0].close > newChartData[newChartData.length - 1].close) {
-            newColor = "red";
+            newColor = RED;
         } else {
             newColor = "#67CF9A";
         }

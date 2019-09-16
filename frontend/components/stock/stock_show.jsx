@@ -2,6 +2,7 @@ import React from 'react';
 import StockInfoContainer from './stock_info_container';
 import ChartContainer from './chart_container';
 import UserNavContainer from '../nav/user_nav_container';
+import OrderFormContainer from '../forms/order_form/order_form_container';
 
 class StockShow extends React.Component {
     constructor(props) {
@@ -17,9 +18,7 @@ class StockShow extends React.Component {
                         <ChartContainer />
                         <StockInfoContainer />
                     </main>
-                    <div className="order-sidebar">
-                        handle transactions here
-                    </div>
+                    <OrderFormContainer ticker={this.props.ticker}/>
                 </div>
             </div>
         )

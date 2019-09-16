@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import UserPageContainer from './UserPage/UserPageContainer';
+import UserPageContainer from './user_page/user_page_container';
 import Splash from './Splash';
 class Home extends React.Component {
     constructor(props) {

@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
             field = field.toLowerCase();
             return input.length <= field.length && field.slice(0, input.length) === (input); 
         }
-        if ( _match(stock.name) || _match(stock.ticker)) match = true;
+        if (stock.name && (_match(stock.name) || _match(stock.ticker)) ) match = true;
 
         return match;
     }
