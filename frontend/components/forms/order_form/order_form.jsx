@@ -72,7 +72,7 @@ class OrderForm extends React.Component {
         } else {            
             return(
                 <footer className="order-form-footer">
-                    {this.props.ownedShares} Shares Available
+                    {this.props.ownedShares === undefined ? 0 : this.props.ownedShares} Shares Available
                 </footer>
             )
         }

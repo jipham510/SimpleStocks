@@ -3,7 +3,7 @@ class Order < ApplicationRecord
     validates :order_type, inclusion: { in: %w(BUY SELL),
     message: "%{value} is not a valid order type" }
 
-    validate :shares_greater_than_zero, :enough_in_balance
+    validate :shares_greater_than_zero, :enough_in_balance, :enough_shares_to_sell
 
     belongs_to :user
 
@@ -16,6 +16,10 @@ class Order < ApplicationRecord
         unless user.current_balance >= price*shares
             errors[:base] << "Not enough in your balance"
         end
+    end
+    def enough_shares_to_sell
+        return if order_type === "BUY" || shares <= user.owned_shares_of_company(ticker)
+            errors[:base] << "Not enough shares"
     end
 
     def shares_greater_than_zero 

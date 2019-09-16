@@ -30,7 +30,11 @@ class User < ApplicationRecord
     end
     return profit
   end
-
+  def owned_shares_of_company(ticker)
+    shares = 0
+    shares = owned_shares[ticker] if owned_shares[ticker]
+    return shares
+  end
   def owned_shares
     res = Hash.new(0)
     orders.each do |order|
