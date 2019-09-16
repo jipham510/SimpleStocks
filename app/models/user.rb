@@ -7,6 +7,11 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :deposits
+  has_many :watches
+  
+  has_many :watchedStocks,
+  through: :watches,
+  source: :stock
   
   def current_balance
     all_deposits = deposits.inject(0) { |sum, deposit| sum + deposit.deposit_money}

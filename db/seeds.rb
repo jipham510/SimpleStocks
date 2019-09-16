@@ -13,6 +13,7 @@ ActiveRecord::Base.transaction do
     Stock.destroy_all
     Deposit.destroy_all
     Order.destroy_all
+    Watch.destroy_all
 
     # stock data from datahub.io
     # https://pkgstore.datahub.io/core/nyse-other-listings/nyse-listed_csv/data/3c88fab8ec158c3cd55145243fe5fcdf/nyse-listed_csv.csv
@@ -36,12 +37,16 @@ ActiveRecord::Base.transaction do
     # stock = Stock.create!(name: "Netflix", ticker: "NFLX")
     # stock = Stock.create!(name: "Microsoft", ticker: "MSFT")
     # stock = Stock.create!(name: "Starbucks", ticker: "SBUX")
-    
+
     my_login = User.create!(username: 'jpham', first_name: "jimmy", last_name: "pham", email: "demo_user@gmail.com", password: 'password')
     demo_user = User.create!(username: 'Demo_User', first_name: "demo", last_name: "user", email: "demo_user@gmail.com", password: 'password')
     Deposit.create!( user_id: demo_user.id, deposit_money: 100000)
     Deposit.create!( user_id: my_login.id, deposit_money: 10000000)
-    
+
+    Watch.create!(user_id: demo_user.id, ticker: "SBUX")
+    Watch.create!(user_id: demo_user.id, ticker: "MSFT")
+    Watch.create!(user_id: demo_user.id, ticker: "TSLA")
+
     Time.zone = 'Eastern Time (US & Canada)'
     # Time.zone.local(2007, 2, 1, 15, 30, 45) # => Thu, 01 Feb 2007 15:30:45 HST -10:00
     Order.create!( user_id: demo_user.id, ticker: "AAPL", order_type: "BUY", price: 100, shares: 1,created_at: Time.zone.local(2017, 2, 1, 15, 0, 0))

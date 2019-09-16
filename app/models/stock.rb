@@ -6,5 +6,13 @@ class Stock < ApplicationRecord
   primary_key: :id,
   foreign_key: :ticker,
   class_name: "Order"
+
+  has_many :watches,
+  primary_key: :id,
+  foreign_key: :ticker,
+  class_name: "Watch"
   
+  has_many :watchers,
+  through: :watches,
+  source: :user
 end

@@ -28,6 +28,7 @@
         }
         .search-item {
             padding: 5px 20px;
+            z-index: 20;
             &:hover {
                 cursor: pointer;
                 background: grey;

@@ -17,7 +17,6 @@ class NewsIndex extends React.Component {
     componentDidUpdate(prevProps) {
         if ( prevProps.stockName !== this.props.stockName && this.props.stockName !== "NONE") {
             this.props.fetchCompanyNews(this.props.stockName);
-            console.log("fetching company news")
         }
     }
     render() {

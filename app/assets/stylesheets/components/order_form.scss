@@ -6,7 +6,7 @@
     .order-form-footer {
         margin-top: 25px;
         padding: 20px;
-        border-top: 1px solid #EEEEEE;
+        border-top: 1px solid var(--order-form-border-color);
         text-align: center;
     }
     .order-form-header{
@@ -14,7 +14,7 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        border-bottom: 1px solid #EEEEEE;
+        border-bottom: 1px solid var(--order-form-border-color);
         .order-form {
             font-weight: bold;
             font-size: 1.1em;
@@ -81,7 +81,7 @@
                 height: 2px;
                 transform: scaleX(0.85);
                 transform-origin: center;
-                background: #EEEEEE;
+                background: var(--order-form-border-color);
             }
         }
         .input-shares {

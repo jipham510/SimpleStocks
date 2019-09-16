@@ -10,14 +10,12 @@ $secondary-color : #1B1B1D;
     //#424242
     --link-color: #1B1B1D;
     --link-color-hover: #67CF9A;
-    // #logo {
-    //     // background: url(/assets/robinhood-logo.png);
-    // }
+    --order-form-border-color: #EEEEEE;
     --search-bar-color: #F8F8F9;
     // for chart status of red or green
     --chart-color: #67CF9A;
-        
-
+    
+    
     //expanding window
     --read-more-height: 82px;
     --show-more-height: 70px;
@@ -27,6 +25,7 @@ $secondary-color : #1B1B1D;
     --text-color: #fff;
     --link-color: #67CF9A;
     --link-color-hover: white;
+    --order-form-border-color: black;
     --search-bar-color: #0E0C0C; 
     #logo {
         // background: url(/assets/robinhood-logo-green.png);
@@ -59,9 +58,7 @@ $secondary-color : #1B1B1D;
     }
     .order-sidebar {
         box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(0,0,0,0.6) !important;
-        .order-form-header{
-            border-bottom: 1px solid black;
-        }
+
     }
 }
 
