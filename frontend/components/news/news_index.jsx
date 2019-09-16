@@ -9,7 +9,16 @@ class NewsIndex extends React.Component {
         
     }
     componentDidMount() {
-        this.props.fetchNews()
+        let ticker = this.props.match.params.ticker;
+        if (!this.props.match.params.hasOwnProperty("ticker")) {
+            this.props.fetchNews()
+        }
+    }
+    componentDidUpdate(prevProps) {
+        if ( prevProps.stockName !== this.props.stockName && this.props.stockName !== "NONE") {
+            this.props.fetchCompanyNews(this.props.stockName);
+            console.log("fetching company news")
+        }
     }
     render() {
         return (
@@ -28,4 +37,4 @@ class NewsIndex extends React.Component {
         )
     }
 }
-export default withRouter(NewsIndex);
+export default NewsIndex;

@@ -14,7 +14,7 @@ class Order < ApplicationRecord
 
     def enough_in_balance 
         unless user.current_balance >= price*shares
-            errors[:base] << "You do not have enough in your balance to pay for this!"
+            errors[:base] << "Not enough in your balance"
         end
     end
 

@@ -3,8 +3,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    // margin: 0px auto;
-    margin-left: 13.8vw;
+    margin: 0px auto;
+    // margin-left: 13.8vw;
     padding-top: 15vh;
     width: 1050px;
     .stock-show-left-content {
@@ -115,7 +115,7 @@
             .stock-stats-wrapper {
                 height: var(--show-more-height);
                 overflow: hidden;
-                margin-bottom: 50vh;
+                margin-bottom: 10vh;
                 .stock-stats {
                     display: flex;
                     flex-direction: row;

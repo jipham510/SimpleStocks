@@ -4,8 +4,16 @@ import NewsIndex from './news_index';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
+    let stockName = "NONE";
+    if (ownProps.match.params.hasOwnProperty("ticker")){
+        let ticker = ownProps.match.params.ticker;
+        if (state.entities.stocks[ticker]) {
+            stockName = state.entities.stocks[ticker].name;
+        }
+    }
     return {
-        news: state.entities.news
+        news: state.entities.news,
+        stockName
     }
 }
 
@@ -14,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
     fetchCompanyNews: (company) => dispatch(fetchCompanyNews(company)),
 });
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(NewsIndex);
+)(NewsIndex));

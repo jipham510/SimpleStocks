@@ -6,6 +6,9 @@
     background: var(--background-color);
     border-radius: 3px;
     color: var(--text-color);
+    &.focus {
+        box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(48,51,51,0.09);
+    }
     .searchbar-svg {
         background-color: #8C8C8E;
         -webkit-mask-image: image-url('magglass.svg');
@@ -15,10 +18,10 @@
         margin-left: 20px;
         height: 20px;
         width: 20px;
-
+        
     }
     .search-results {
-        box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(48,51,51,0.09); // make it so box-shadow only appears on searchbar class when search-bar-input is focused
+
         .stock-heading {
             padding: 20px;
             font-weight: bold;
@@ -42,16 +45,10 @@
         &::-webkit-input-placeholder { 
             color: #8C8C8E;
         }
-        &:focus {
+        &.focus {
             border: 1px solid transparent;
             outline-color: transparent;
             outline-style: none;
-            box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(48,51,51,0.09);
         }
-        &:hover {
-            border: 1px solid transparent;
-            box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(48,51,51,0.09);
-        }
-
     }
 }

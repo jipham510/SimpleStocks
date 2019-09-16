@@ -13,6 +13,7 @@ class OrderForm extends React.Component {
         this.changeActive = this.changeActive.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateShare = this.updateShare.bind(this);
+        this.renderOrderFormFooter = this.renderOrderFormFooter.bind(this);
     }
     componentDidUpdate(prevProps){
         if (this.props.stock !== prevProps.stock) {
@@ -50,7 +51,10 @@ class OrderForm extends React.Component {
                                               price: this.state.price,
                                               shares
                                             });
-        this.props.postOrder(formOrder);
+        this.props.postOrder(formOrder).then ( res => 
+            window.location.reload()
+        )
+
 
     }
     updateShare(e){
@@ -58,6 +62,22 @@ class OrderForm extends React.Component {
             shares: e.currentTarget.value
         });
     }
+    renderOrderFormFooter() {
+        if(this.state.active === "BUY") {
+            return(
+                <footer className="order-form-footer">
+                    {parseFloatToDollars(this.props.currentBalance)} Buying Power Available
+                </footer>
+            )
+        } else {            
+            return(
+                <footer className="order-form-footer">
+                    {this.props.ownedShares} Shares Available
+                </footer>
+            )
+        }
+    }
+
     render() {
         return (
             <div className="order-sidebar">
@@ -92,9 +112,11 @@ class OrderForm extends React.Component {
                         </ul>
                     </div>
                     <div className="order-form-row">
-                        <input type="submit" value="SUBMIT BUY" className="order-form-submit"/>
+                        <input type="submit" value={this.state.active === "BUY" ? "SUBMIT BUY" : "SUBMIT SELL"} className="order-form-submit"/>
+                        {/* <input type="submit" value="SUBMIT BUY" className="order-form-submit"/> */}
                     </div>
                 </form>
+                {this.renderOrderFormFooter()}
             </div>
         )
     }

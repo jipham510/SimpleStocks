@@ -1,9 +1,26 @@
 export const parseFloatToDollars = (float) => {
     let dollars = "";
+    function addCommas (string){
+        let res = "";
+        let decimalIdx = string.indexOf(".");
+        if (decimalIdx !== -1){
+            res = string.slice(decimalIdx);
+            let dollars = string.slice(0, decimalIdx);
+            dollars = parseInt(dollars, 10).toLocaleString();
+            res = dollars + res;
+        } else {
+            res = parseInt(string, 10).toLocaleString();
+        }
+        return res;
+    }
     if (float < 0) {
+        dollars = parseFloat(-float).toFixed(2);
+        dollars = addCommas(dollars);
         dollars = "-$" + parseFloat(-float).toFixed(2); 
     } else {
-        dollars = "$" + parseFloat(float).toFixed(2); 
+        dollars = parseFloat(float).toFixed(2);
+        dollars = addCommas(dollars);
+        dollars = "$" + dollars;
     }
     return dollars
 }
