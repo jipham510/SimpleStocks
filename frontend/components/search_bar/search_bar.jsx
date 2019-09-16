@@ -13,7 +13,7 @@ class SearchBar extends React.Component {
         this.match = this.match.bind(this);
         this.renderSearchResults = this.renderSearchResults.bind(this);
         this.focusSearchBar = this.focusSearchBar.bind(this);
-        this.blurSearchBar = this.blurSearchBar.bind(this);
+        // this.blurSearchBar = this.blurSearchBar.bind(this);
     }
     componentDidMount(){
         if (!this.props.stocks.length) {
@@ -79,27 +79,28 @@ class SearchBar extends React.Component {
             this.setState({ searchbarFocused: true });
         }
     }
-    blurSearchBar(e){
-        const searchBar = document.querySelector(".searchbar");
-        const searchBarInput = document.querySelector(".search-bar-input");
-        if (this.state.searchbarFocused === false) {
-            if (searchBar) {
-                searchBar.classList.remove('focus');
-            }
-            if (searchBarInput) {
-                searchBarInput.classList.remove('focus');
-            }
-        }
-        if ( e && e.type === "blur") {
-            // debugger
-            this.setState({ searchbarFocused: false }, this.blurSearchBar);
-        }
-    }
+    // blurSearchBar(e){
+    //     const searchBar = document.querySelector(".searchbar");
+    //     const searchBarInput = document.querySelector(".search-bar-input");
+    //     if (this.state.searchbarFocused === false) {
+    //         if (searchBar) {
+    //             searchBar.classList.remove('focus');
+    //         }
+    //         if (searchBarInput) {
+    //             searchBarInput.classList.remove('focus');
+    //         }
+    //     }
+    //     if ( e && e.type === "blur") {
+    //         // debugger
+    //         this.setState({ searchbarFocused: false }, this.blurSearchBar);
+    //     }
+    // }
     render() {
         return (
-            <div className="searchbar" onMouseEnter={this.focusSearchBar} onMouseLeave={this.blurSearchBar}>
+            // <div className="searchbar" onMouseEnter={this.focusSearchBar} onMouseLeave={this.blurSearchBar} onFocus={this.focusSearchBar} onBlur={this.blurSearchBar}>
+            <div className="searchbar" onMouseEnter={this.focusSearchBar} onFocus={this.focusSearchBar} >
                 <div className="searchbar-svg"></div>
-                <input type="text" className="search-bar-input" placeholder="Search" onChange={this.update} onFocus={this.focusSearchBar} onBlur={this.blurSearchBar}/>
+                <input type="text" className="search-bar-input" placeholder="Search" onChange={this.update}/>
                 {this.renderSearchResults()}
             </div>
         )

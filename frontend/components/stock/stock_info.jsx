@@ -15,13 +15,14 @@ class StockInfo extends React.Component {
         this.props.fetchCompanyInfo(ticker).then(res => this.setState(res));
         this.props.fetchStockStats(ticker).then(res => this.setState(res));
     }
-    // componentDidUpdate(prevProps){
-    //     if (this.props.match.params.ticker !== prevProps.match.params.ticker) {
-    //         const ticker = this.props.ticker;
-    //         this.props.fetchCompanyInfo(ticker).then(res => this.setState(res));
-    //         this.props.fetchStockStats(ticker).then(res => this.setState(res));
-    //     } 
-    // }
+    componentDidUpdate(prevProps){
+        if (this.props.match.params.ticker !== prevProps.match.params.ticker) {
+            const ticker = this.props.ticker;
+            this.props.fetchCompanyInfo(ticker).then(res => this.setState(res));
+            this.props.fetchStockStats(ticker).then(res => this.setState(res));
+        } 
+    }
+    
     expandDescription(e){
         const stockShowPage = document.querySelector(".stock-info-description");
         if (stockShowPage.getAttribute("expanded-read")) {
