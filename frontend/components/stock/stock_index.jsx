@@ -11,7 +11,12 @@ class StockIndex extends React.Component {
         return (
             <div>
                 <ul className="Stock-list">
-                <div className="stock-index-header">Owned Stocks, commented out until order table is integrated</div>
+                <div className="stock-index-header">Portfolio</div>
+
+                {this.props.stocks.map( stock => 
+                    (<StockIndexItemContainer stock={stock} key={stock.ticker} />)
+                )}
+
                 {/* {this.props.stocks.map( stock => 
                     (<StockIndexItemContainer stock={stock} key={stock.ticker} />)
                 )} */}

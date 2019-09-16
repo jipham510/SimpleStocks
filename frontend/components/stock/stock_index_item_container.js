@@ -4,8 +4,12 @@ import StockIndexItem from './stock_index_item';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
+    let stock = state.entities.stocks[ownProps.stock.ticker];
+    let price
+    if (stock) price = stock.price;
     return {
-        stock: ownProps.stock
+        stock: ownProps.stock,
+        price
     }
 }
 

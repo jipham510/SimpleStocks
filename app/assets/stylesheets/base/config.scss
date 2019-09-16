@@ -50,6 +50,11 @@ $secondary-color : #1B1B1D;
         .stock-index-header {
             border-bottom: 1px solid rgba(0,0,0,0.6);
         }
+        .stock-index-item {
+            &:hover {
+                background: black;
+            }
+        }
     }
 }
 

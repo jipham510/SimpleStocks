@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_15_194355) do
+ActiveRecord::Schema.define(version: 2019_09_15_212658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_194355) do
     t.integer "user_id", null: false
     t.string "ticker", null: false
     t.string "order_type", null: false
-    t.float "price_bought", null: false
+    t.float "price", null: false
     t.integer "shares", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
