@@ -20,7 +20,7 @@ export const deleteWatchedStock = (watchId) => (
 
 // export const postUser = user => (
 //     $.ajax({
-//         url: '/api/users',
+//         url: '//',
 //         method: 'POST',
 //         data: { user },
 //     })

@@ -6,8 +6,7 @@ class StockIndex extends React.Component {
 
     }
     componentDidMount(){
-        // this.props.fetchWatchedStocks().then(res => this.setState({ watchedStocks: res }))
-        // this.props.fetchWatchedStocks()
+        this.props.fetchWatchedStocks()
     }
 
     render() {

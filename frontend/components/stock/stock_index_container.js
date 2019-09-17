@@ -5,17 +5,22 @@ const mapStateToProps = (state) => {
     let ownedShares = state.entities.users[state.session.id].ownedShares;
     let ownedStocks = Object.keys(ownedShares).map( ticker => ({ticker: ticker, shares: ownedShares[ticker]}))
     
+    let watchedStocks = Object.keys(state.entities.watches).map(ticker => ({ ticker: ticker}))
     return {
         ownedStocks,
-        watchedStocks: state.entities.users[state.session.id].watchedStocks
+        watchedStocks
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    // fetchWatchedStocks: () => dispatch(fetchWatchedStocks()),
+    fetchWatchedStocks: () => dispatch(fetchWatchedStocks()),
 });
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(StocksIndex);
+
+// watches:
+// NFLX: { ticker: "NFLX", id: 22 }
+// SBUX: { ticker: "SBUX", id: 23 }
