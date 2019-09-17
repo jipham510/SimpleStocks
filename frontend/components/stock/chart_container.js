@@ -5,10 +5,17 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
     const stockTicker = ownProps.match.params.ticker;
+    let intradayData = [];
+    let historicalData = [];
+    let stock = state.entities.stocks[stockTicker]
+    if (stock) {
+        if (stock.intradayData) intradayData = stock.intradayData
+        if (stock.historicalData) historicalData = stock.historicalData
+    }
     return {
         ticker: stockTicker,
-        // historicalData: state.entities.stocks[stockTicker].historicalData,
-        // intradayData: state.entities.stocks[stockTicker].intradayData
+        historicalData,
+        intradayData
     }
 }
 

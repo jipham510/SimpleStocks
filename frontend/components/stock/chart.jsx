@@ -28,37 +28,23 @@ class Chart extends React.Component {
         this.handleMouseHover = this.handleMouseHover.bind(this);
         this.setColorStatus = this.setColorStatus.bind(this);
         this.resetHoverPrice = this.resetHoverPrice.bind(this);
+        this.setIntradayData = this.setIntradayData.bind(this);
     }
     componentDidUpdate(prevProps){
         if (this.props.match.params.ticker !== prevProps.match.params.ticker) {
-            const ticker = this.props.ticker;
             this.props.fetchStock(this.props.ticker).then(res => {
                 return this.setState({ stockName: res.stock.name })
             });
             this.props.fetchIntradayData(this.props.ticker).then(res => {
-                let data = res.intradayData;
-                data = data.filter(chart => {
-                    return chart.close !== null;
-                })
-                let lastIdx = data.length - 1;
-                let color;
-                if (data[0].close > data[lastIdx].close) {
-                    color = RED;
-                } else {
-                    color = "#67CF9A";
-                }
+                this.setIntradayData(res)
+            })
+        // implement conditional for when portfolio already fetched for intradaydata on home page
+        // if (this.props.intradayData.length !== 0) {
+        // debugger
+        //     this.props.intradayData
+        // } else {
+        // }
 
-                return this.setState({
-                    intradayData: data,
-                    chartData: data,
-                    currentPrice: data[lastIdx].close,
-                    hoverPrice: data[lastIdx].close,
-                    lineColor: color
-                }, () => {
-                    this.setColorStatus();
-                    this.calculateFlux(data[lastIdx]);
-                })
-            });
             // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
         } 
     }
@@ -66,31 +52,35 @@ class Chart extends React.Component {
         this.props.fetchStock(this.props.ticker).then(res => {
             return this.setState({ stockName: res.stock.name })
         });
-        this.props.fetchIntradayData(this.props.ticker).then(res => {
-            let data = res.intradayData;
-            data = data.filter(chart => {
-                return chart.close !== null;
-            })
-            let lastIdx = data.length - 1;
-            let color;
-            if (data[0].close > data[lastIdx].close) {
-                color = RED;
-            } else {
-                color = "#67CF9A";
-            }
-            
-            return this.setState({
-                intradayData: data,
-                chartData: data,
-                currentPrice: data[lastIdx].close,
-                hoverPrice: data[lastIdx].close,
-                lineColor: color
-            }, () => {
-                this.setColorStatus(); 
-                this.calculateFlux(data[lastIdx]);
-            })
-        });
+        this.props.fetchIntradayData(this.props.ticker).then(res => { 
+            this.setIntradayData(res)
+        })
+
         // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+    }
+    setIntradayData(res) {
+        let data = res.intradayData;
+        data = data.filter(chart => {
+            return chart.close !== null;
+        })
+        let lastIdx = data.length - 1;
+        let color;
+        if (data[0].close > data[lastIdx].close) {
+            color = RED;
+        } else {
+            color = "#67CF9A";
+        }
+
+        return this.setState({
+            intradayData: data,
+            chartData: data,
+            currentPrice: data[lastIdx].close,
+            hoverPrice: data[lastIdx].close,
+            lineColor: color
+        }, () => {
+            this.setColorStatus();
+            this.calculateFlux(data[lastIdx]);
+        })
     }
     calculateFlux(dataPoint){
         let flux = 0;
