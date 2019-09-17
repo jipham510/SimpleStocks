@@ -3,23 +3,27 @@ import StockIndexItemContainer from './stock_index_item_container'
 class StockIndex extends React.Component {
     constructor(props) {
         super(props);
+
     }
     componentDidMount(){
-        // this.props.fetchStocks();
+        // this.props.fetchWatchedStocks().then(res => this.setState({ watchedStocks: res }))
+        this.props.fetchWatchedStocks()
     }
+
     render() {
         return (
             <div>
                 <ul className="Stock-list">
                 <div className="stock-index-header">Stocks Owned</div>
 
-                {this.props.stocks.map( stock => 
+                {this.props.ownedStocks.map( stock => 
                     (<StockIndexItemContainer stock={stock} key={stock.ticker} />)
                 )}
 
-                {/* {this.props.stocks.map( stock => 
+                <div className="stock-index-header">Watch List</div>
+                    {this.props.watchedStocks.map( stock => 
                     (<StockIndexItemContainer stock={stock} key={stock.ticker} />)
-                )} */}
+                )}
                 </ul>
             </div>
         )

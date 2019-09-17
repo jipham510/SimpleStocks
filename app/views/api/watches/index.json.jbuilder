@@ -1,0 +1,1 @@
+json.watchedStocks @watches

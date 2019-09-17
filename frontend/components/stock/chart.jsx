@@ -59,7 +59,7 @@ class Chart extends React.Component {
                     this.calculateFlux(data[lastIdx]);
                 })
             });
-            this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+            // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
         } 
     }
     componentDidMount() {
@@ -90,7 +90,7 @@ class Chart extends React.Component {
                 this.calculateFlux(data[lastIdx]);
             })
         });
-        this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+        // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
     }
     calculateFlux(dataPoint){
         let flux = 0;

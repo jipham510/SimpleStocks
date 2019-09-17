@@ -1,6 +1,6 @@
-// const apiKey = "pk_de82e1c265ce403880d83e5d17770609"; //test api kayn02222
+const apiKey = "pk_de82e1c265ce403880d83e5d17770609"; //test api kayn02222
 
-const apiKey = "pk_213bab875424446b80f0869547f9a6a7" //production api kayn022222
+// const apiKey = "pk_213bab875424446b80f0869547f9a6a7" //production api kayn022222
 export const fetchStock = (ticker) => (
     $.ajax({
         method: "GET",
