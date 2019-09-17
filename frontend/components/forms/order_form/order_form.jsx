@@ -66,7 +66,7 @@ class OrderForm extends React.Component {
         if(this.state.active === "BUY") {
             return(
                 <footer className="order-form-footer">
-                    {parseFloatToDollars(this.props.currentBalance)} Buying Power Available
+                    {parseFloatToDollars(this.props.buyingPower)} Buying Power Available
                 </footer>
             )
         } else {            

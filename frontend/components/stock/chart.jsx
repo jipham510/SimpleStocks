@@ -5,6 +5,7 @@ import Odometer from 'react-odometerjs';
 // import { render } from 'react-dom';
 
 const RED = "#EB5333"
+const GREEN = "#67CF9A"
 class Chart extends React.Component {
     constructor(props) {
         super(props);
@@ -13,7 +14,7 @@ class Chart extends React.Component {
             historicalData: [],
             intradayData: [],
             stockName: "",
-            lineColor: "#67CF9A",
+            lineColor: GREEN,
             active: "1D",
             hoverPrice: 0,
             timestamp:  "",
@@ -65,11 +66,7 @@ class Chart extends React.Component {
         })
         let lastIdx = data.length - 1;
         let color;
-        if (data[0].close > data[lastIdx].close) {
-            color = RED;
-        } else {
-            color = "#67CF9A";
-        }
+        data[0].close > data[lastIdx].close ? color = RED : color = GREEN;
 
         return this.setState({
             intradayData: data,
@@ -105,7 +102,7 @@ class Chart extends React.Component {
 
     setColorStatus(){
         const stockShowPage = document.querySelector("body");
-        if (this.state.lineColor === "#67CF9A") {
+        if (this.state.lineColor === GREEN) {
             stockShowPage.removeAttribute("data-status")
         } else {
             stockShowPage.setAttribute("data-status", "red")
@@ -135,7 +132,7 @@ class Chart extends React.Component {
         if ( newChartData && newChartData[0].close > newChartData[newChartData.length - 1].close) {
             newColor = RED;
         } else {
-            newColor = "#67CF9A";
+            newColor = GREEN;
         }
         this.setState({
             chartData: newChartData,

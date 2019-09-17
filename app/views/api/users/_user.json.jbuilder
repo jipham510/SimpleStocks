@@ -1,3 +1,3 @@
 json.extract! user, :id, :username
-json.currentBalance user.current_balance
+json.buyingPower user.buying_power
 json.ownedShares user.owned_shares

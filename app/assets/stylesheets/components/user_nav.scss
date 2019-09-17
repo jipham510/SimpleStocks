@@ -57,7 +57,7 @@
                     cursor: pointer;
                     text-decoration: underline;
                     @include easeOut();
-                    color: $primary-color;
+                    color: var(--chart-color);
                 }
             }
             .home-btn {
@@ -69,7 +69,7 @@
                     cursor: pointer;
                     text-decoration: underline;
                     @include easeOut();
-                    color: $primary-color;
+                    color: var(--chart-color);
                 }
             }
             .user-logout-btn {
@@ -81,7 +81,7 @@
                     cursor: pointer;
                     text-decoration: underline;
                     @include easeOut();
-                    color: $primary-color;
+                    color: var(--chart-color);
                 }
             }
 

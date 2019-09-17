@@ -3,17 +3,17 @@ import { fetchHistoricalData, fetchIntradayData} from '../../actions/stock_actio
 import Portfolio from './portfolio';
 
 const mapStateToProps = (state, ownProps) => {
-    let ownedShares = state.entities.users[state.session.id].ownedShares;
-    let ownedStockTickers = Object.keys(ownedShares)
+    // let ownedShares = state.entities.users[state.session.id].ownedShares;
+    // let ownedStockTickers = Object.keys(ownedShares)
 
-    let ownedStocksIntradayData = []; //array of intradata arrays
+    // let ownedStocksIntradayData = []; //array of intradata arrays
     // debugger
     // ownedStocks.forEach( stock => {
     //     if (stock.intradayData) ownedStocksIntradayData.push(stock.intradayData);
     // })
     return {
-        ownedStocksIntradayData,
-        ownedStockTickers
+        // ownedStocksIntradayData,
+        // ownedStockTickers
     }
 };
 

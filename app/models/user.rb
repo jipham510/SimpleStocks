@@ -12,8 +12,12 @@ class User < ApplicationRecord
   has_many :watchedStocks,
   through: :watches,
   source: :stock
-  
-  def current_balance
+
+  # https://cloud.iexapis.com/stable/stock/market/batch?types=chart&range=1d&last=5&token=#{your_token_here}&symbols=
+  def owned_shares_value
+    
+  end
+  def buying_power # just buying power rn, buying_power = buying_power + owned_stocks_value
     all_deposits = deposits.inject(0) { |sum, deposit| sum + deposit.deposit_money}
     sum = all_deposits + overall_profit
     return sum

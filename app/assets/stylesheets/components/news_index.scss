@@ -8,7 +8,7 @@
     }
     .credit-news-api {
         font-size: 14px;
-        color: $primary-color;
+        color: var(--chart-color);
         margin-top: 5vh;
         margin-bottom: 15vh;
         padding-bottom: 5px;
@@ -24,7 +24,7 @@
             bottom: 0;
             width: 100%;
             height: 2px;
-            background: $primary-color;
+            background: var(--chart-color);
 
             transform: scaleX(0);
             transform-origin: left;

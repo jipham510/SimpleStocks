@@ -6,13 +6,13 @@ import { withRouter } from 'react-router-dom'
 const mapStateToProps = (state, ownProps) => {
     const stock = state.entities.stocks[ownProps.ticker];
     // debugger
-    const currentBalance = state.entities.users[state.session.id].currentBalance;
+    const buyingPower = state.entities.users[state.session.id].buyingPower;
     const ownedShares = state.entities.users[state.session.id].ownedShares[ownProps.ticker];
     return {
         errors: state.errors.orders,
         stock,
         ticker: ownProps.ticker,
-        currentBalance,
+        buyingPower,
         ownedShares
     }
 };

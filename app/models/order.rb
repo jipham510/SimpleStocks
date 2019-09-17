@@ -13,8 +13,8 @@ class Order < ApplicationRecord
     class_name: "Stock"
 
     def enough_in_balance 
-        unless user.current_balance >= price*shares
-            errors[:base] << "Not enough in your balance"
+        unless user.buying_power >= price*shares
+            errors[:base] << "Not enough buying power"
         end
     end
     def enough_shares_to_sell

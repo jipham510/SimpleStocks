@@ -3,7 +3,52 @@
     // width: 700px;
     // height: 300px;
     width: 50vw;
-    height: 25vw;
+    height: 20vw;
     // background-color: $primary-color;
+    margin-top: 20px;
     margin-bottom: 10vh;
+    .chart-ranges {
+        display: flex;
+        flex-direction: row;
+        .range-btn {
+            margin: 6px;
+            padding: 6px;
+            font-weight: bold;
+            &.active {
+                color: var(--chart-color);
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 2px;
+                    transform: scaleX(0.75);
+                    transform-origin: center;
+                    background: var(--chart-color);
+                }
+            }
+            &:hover {
+                color: var(--chart-color);
+                cursor: pointer;
+            }
+            
+        }
+    }
+    .chart-header {
+        padding: 2vh;
+        margin-bottom: 1vh;
+        h1 {
+            font-size: 2.5em;
+        }
+        h2 {
+            font-size: 3.5em;
+            letter-spacing: 1px;
+            // .odometer {
+            //     display: inline;
+            // }
+        }
+    }
+
 }
