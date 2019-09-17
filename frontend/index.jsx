@@ -1,19 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import { postUser, postSession, deleteSession} from "./util/session_api_util";
 import configureStore from "./store/store";
 import Root from "./components/root";
-// import {fetchStock} from "./util/stock_api_util";
-// import { fetchStock} from "./actions/stock_actions";
-import { fetchWatchedStocks} from "./actions/watch_actions";
-import { fetchNews } from "./actions/news_actions";
-// import { fetchCompanyInfo, fetchStockStats, fetchStockChart} from "./util/stock_api_util"; 
+
 document.addEventListener("DOMContentLoaded", () => {
     let store;
 
     //TESTING START
-    window.fetchNews = fetchNews;
-    window.fetchWatchedStocks = fetchWatchedStocks;
+        // insert functions here
     //TESTING END
     if (window.currentUser) {
         const preloadedState = {
