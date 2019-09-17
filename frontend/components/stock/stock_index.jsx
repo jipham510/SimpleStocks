@@ -7,7 +7,7 @@ class StockIndex extends React.Component {
     }
     componentDidMount(){
         // this.props.fetchWatchedStocks().then(res => this.setState({ watchedStocks: res }))
-        this.props.fetchWatchedStocks()
+        // this.props.fetchWatchedStocks()
     }
 
     render() {
@@ -20,7 +20,7 @@ class StockIndex extends React.Component {
                     (<StockIndexItemContainer stock={stock} key={stock.ticker} />)
                 )}
 
-                <div className="stock-index-header">Watch List</div>
+                <div className="stock-index-header watch-list">Watch List</div>
                     {this.props.watchedStocks.map( stock => 
                     (<StockIndexItemContainer stock={stock} key={stock.ticker} />)
                 )}

@@ -1,25 +1,27 @@
 class Api::WatchesController < ApplicationController
     def create 
-        @watch = Order.new(order_params)
+        @watch = Watch.new(watch_params)
         @watch.user_id = current_user.id
         if @watch.save 
-            render json: ['successfully watched stocks!'], status: 200
+            render :show
         else
             render json: @watch.errors.full_messages, status: 422
         end
     end
 
     def index 
-        @watches = current_user.watchedStocks
+        @watches = current_user.watches
     end
 
     def destroy
-    @watch = Watch.find_by( user_id: current_user.id, ticker: params[:ticker])
+    # debugger
+    @watch = Watch.find( params[:id])
     if @watch
       @watch.destroy
       render :show
     else
-      render ['Could not find watched stock']
+      render json: ['Could not find watched stock'], status: 401
+    #   ['Could not find watched stock']
     end
     end
 

@@ -1,8 +1,26 @@
+.stock-show-right-content {
+    margin-left: 3.5vw;
+}
+
+.watch-btn {
+    padding: 20px 10px;
+    border-radius: 5px;
+    text-align: center;
+    background: transparent; 
+    border: 1px solid var(--chart-color); 
+    width: 180px;
+    margin: 0 auto;
+    color: var(--chart-color);
+    &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+}
 .order-sidebar {
+    margin-bottom: 30px;
     width: 300px;
     height: 450px;
     box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(48,51,51,0.09);
-    margin-left: 3.5vw;
     .order-form-footer {
         margin-top: 25px;
         padding: 20px;
@@ -58,6 +76,7 @@
         }
         .order-form-submit {
             -webkit-appearance: none;
+            color: var(--text-color);
             border-radius: 5px;
             margin-left: 2px;
             padding: 18px 90px;
@@ -66,7 +85,7 @@
             border: 1px solid var(--chart-color);
             font-weight: bold;
             &:hover {
-                opacity: 0.9;
+                opacity: 0.8;
                 cursor: pointer;
             }
         }

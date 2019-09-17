@@ -12,6 +12,8 @@ $secondary-color : #1B1B1D;
     --link-color-hover: #67CF9A;
     --order-form-border-color: #EEEEEE;
     --search-bar-color: #F8F8F9;
+
+    --border-color: #EEEEEE;
     // for chart status of red or green
     --chart-color: #67CF9A;
     
@@ -27,6 +29,8 @@ $secondary-color : #1B1B1D;
     --link-color-hover: white;
     --order-form-border-color: black;
     --search-bar-color: #0E0C0C; 
+
+    --border-color: rgba(0,0,0,0.6);
     #logo {
         // background: url(/assets/robinhood-logo-green.png);
         color: white;
@@ -42,9 +46,7 @@ $secondary-color : #1B1B1D;
     .watchlist {
         // background: #1b1b1d;
         box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(0,0,0,0.6);
-        .stock-index-header {
-            border-bottom: 1px solid rgba(0,0,0,0.6);
-        }
+
         .stock-index-item {
             &:hover {
                 background: black;
