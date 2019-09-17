@@ -3,9 +3,9 @@ import { fetchStocks } from '../../actions/stock_actions';
 import SearchBar from './search_bar';
 
 const mapStateToProps = (state, ownProps) => {
-    let stocks = Object.values(state.entities.stocks);
+    // let stocks = Object.values(state.entities.stocks);
     return {
-        stocks: stocks
+        stocks: state.entities.stocks.allStocks
     }
 }
 

@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
         this.blurSearchBar = this.blurSearchBar.bind(this);
     }
     componentDidMount(){
-        if (!this.props.stocks.length) {
+        if (!this.props.stocks ) {
             this.props.fetchStocks();
         }
     }
@@ -33,14 +33,16 @@ class SearchBar extends React.Component {
     }
     searchStocks(){
         const searchResults = [];
-        const maxSize = 6;
-        let i = 0;
-        while( searchResults.length < maxSize && i < this.props.stocks.length ) {
-            if (this.match(this.props.stocks[i]) ) searchResults.push(this.props.stocks[i]);
-            i++;
+
+        if (this.props.stocks) {
+            const maxSize = 6;
+            let i = 0;
+            while( searchResults.length < maxSize && i < this.props.stocks.length ) {
+                if (this.match(this.props.stocks[i]) ) searchResults.push(this.props.stocks[i]);
+                i++;
+            }
         }
-        console.log("finished searching");
-        console.log(searchResults);
+
         return searchResults;
     }
     update(e){
@@ -56,7 +58,7 @@ class SearchBar extends React.Component {
             return (
                 <ul className="search-results">
                     <div className="stock-heading">Stocks</div>
-                    {this.searchStocks().map( (stock,idx) =>(
+                    {  this.searchStocks().map( (stock,idx) =>(
                         <li key={idx} className="search-item" onMouseDown={() => this.redirectStockPageompanyPage(stock.ticker)}>
                             {stock.ticker}, {stock.name}
                         </li>
