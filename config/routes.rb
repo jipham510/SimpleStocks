@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :stocks, only: [:index]
       resources :orders, only: [:create]
       resources :watches, only: [:create, :destroy, :index]
+      resources :portfolio_snapshots, only: [:create, :index]
       resource :session, only: [:create, :destroy]
     end
 

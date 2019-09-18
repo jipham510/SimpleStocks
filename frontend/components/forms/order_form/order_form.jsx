@@ -7,7 +7,8 @@ class OrderForm extends React.Component {
         this.state = {
             active: "BUY",
             shares: "",
-            price: 0
+            price: null,
+            disabled: false
         }
         this.activeBtn = this.activeBtn.bind(this);
         this.changeActive = this.changeActive.bind(this);
@@ -18,7 +19,16 @@ class OrderForm extends React.Component {
     componentDidUpdate(prevProps){
         if (this.props.stock !== prevProps.stock) {
             const intradayData = this.props.stock.intradayData;
-            if (intradayData) this.setState({ price: intradayData[intradayData.length - 1].open });
+            if (intradayData) {
+                let price;
+                for (let i = intradayData.length - 1; i >= 0; i--) {
+                    if(intradayData[i].close !== null) {
+                        price = intradayData[i].close
+                        break;
+                    }
+                }
+                this.setState({ price });
+            }
         } 
     }
     componentWillUnmount(){
@@ -40,20 +50,24 @@ class OrderForm extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        let shares;
-        if (this.state.shares === "") {
-            shares = 0;
-        } else {
-            shares = this.state.shares
+        this.setState({ disabled: true })
+        if (!this.state.disabled) {
+            let shares;
+            if (this.state.shares === "") {
+                shares = 0;
+            } else {
+                shares = this.state.shares
+            }
+            const formOrder = Object.assign({}, { ticker: this.props.ticker, 
+                                                order_type: this.state.active,
+                                                price: this.state.price,
+                                                shares
+                                                });
+            this.props.postOrder(formOrder).then ( res => 
+                window.location.reload(),
+                () => this.setState({ disabled: false })
+            )
         }
-        const formOrder = Object.assign({}, { ticker: this.props.ticker, 
-                                              order_type: this.state.active,
-                                              price: this.state.price,
-                                              shares
-                                            });
-        this.props.postOrder(formOrder).then ( res => 
-            window.location.reload()
-        )
 
 
     }

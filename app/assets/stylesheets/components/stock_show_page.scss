@@ -8,6 +8,9 @@
     padding-top: 15vh;
     width: 1050px;
     .stock-show-left-content {
+        .news-index {
+            width: 100%;
+        }
         .stock-show-chart-wrapper {
             .chart-ranges {
                 display: flex;

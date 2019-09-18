@@ -1,46 +1,73 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { parseFloatToDollars } from '../../util/util'
+import { parseFloatToPosNegDollars, parseFloatToPostNegPercent } from '../../util/util'
+import { fetchPortfolioSnapshots } from '../../util/portfolio_snapshot_api_util'
+import Odometer from 'react-odometerjs';
+
 const RED = "#EB5333"
 const GREEN = "#67CF9A"
 class Portfolio extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            chartData: [],
+            chartData: undefined,
+            fiveYearData: [],
             lineColor: GREEN,
-            active: "1D",
+            active: "1W",
             timestamp: "",
-            hoverBalance: 0
+            currentBalance: this.props.currentBalance,
+            hoverBalance: this.props.currentBalance,
+            flux: 0,
+            fluxPercent: 0, 
+            initialLoad: 0
         }
         this.renderLineChart = this.renderLineChart.bind(this);
-        this.setData = this.setData.bind(this);
+        this.setData = this.setData.bind(this); 
         this.handleChangeRange = this.handleChangeRange.bind(this);
         this.activeBtn = this.activeBtn.bind(this);
         this.setColorStatus = this.setColorStatus.bind(this);
         this.handleMouseHover = this.handleMouseHover.bind(this); //REWRITE
+        this.changeDates = this.changeDates.bind(this)
+        this.resetHoverBalance = this.resetHoverBalance.bind(this);
+
     }
     componentDidMount(){
-        this.props.fetchIntradayData("GOOGL")
-            .then( res => this.setData(res))
+        fetchPortfolioSnapshots()
+            .then(res => this.setData(res))
     }
-    setData(res){
-        let data = res.intradayData;
-        data = data.filter(chart => {
-            return chart.close !== null;
-        })
-        let lastIdx = data.length - 1;
+    setData(fiveYearBalance){
+        // responseJSON: Array(1258) [0 … 99] 0: balance: 100000 created_at: "2019-09-18T16:33:01.896Z" id: 1258 snapshot_date: "2014-09-18"
+
+        let lastIdx = fiveYearBalance.length - 1;
         let color;
-        data[0].close > data[lastIdx].close ? color = RED : color = GREEN;
+        fiveYearBalance[0].balance > fiveYearBalance[lastIdx].balance ? color = RED : color = GREEN;
 
         return this.setState(
             {
-                chartData: data,
-                lineColor: color
-            }, 
-            this.setColorStatus 
+                chartData: fiveYearBalance,
+                fiveYearData: fiveYearBalance,
+                lineColor: color,
+                initialLoad: 1
+            }, () => {
+                this.setColorStatus();
+                this.calculateFlux(fiveYearBalance[lastIdx]);
+            }
         )
     }
+    calculateFlux(dataPoint) {
+        let flux = 0;
+        let fluxPercent = 0;
+        if (dataPoint) {
+            let firstDataPoint = this.state.chartData[0];
+            flux = dataPoint.balance - firstDataPoint.balance;
+            fluxPercent = (1 - firstDataPoint.balance / dataPoint.balance) * 100;
+        }
+        return this.setState({
+            flux,
+            fluxPercent
+        });
+    }
+
     setColorStatus() {
         const body = document.querySelector("body");
         if (this.state.lineColor === GREEN) {
@@ -51,12 +78,10 @@ class Portfolio extends React.Component {
     }
     handleMouseHover(e) { 
         if (e.activePayload) {
-            let balance = e.activePayload[0].payload.close; 
-///////////////////////////would be BALANCE instead of close
+            let balance = e.activePayload[0].payload.balance; 
             // this.calculateFlux(e.activePayload[0].payload);
             if (balance) {
-                balance = e.activePayload[0].payload.close;
-                let timestamp = e.activePayload[0].payload.date;
+                let timestamp = e.activePayload[0].payload.snapshot_date;
                 this.setState({
                     hoverBalance: balance,
                     timestamp
@@ -65,22 +90,16 @@ class Portfolio extends React.Component {
         }
     }
     renderLineChart() {
-        // const renderTimeStamp = () => (
-        //     <div className="timestamp">
-        //         inside tooltip
-        //     </div>
-        // )
         const renderTimeStamp = () => (
             <div className="timestamp">
                 {this.state.timestamp}
             </div>
         )
-
         return (
-            // <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} className="stock-show-chart">
+            // <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverBalance} className="stock-show-chart">
             <ResponsiveContainer width='100%' height="100%">
-                <LineChart data={this.state.chartData} className="stock-show-chart" onMouseMove={this.handleMouseHover}>
-                    <Line type="monotone" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
+                <LineChart data={this.state.chartData} key={this.state.initialLoad} className="stock-show-chart" onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverBalance} >
+                    <Line type="monotone" dataKey="balance" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
                     {/* <CartesianGrid stroke="#ccc" /> */}
                     {/* <XAxis dataKey={xAxisData} /> */}
                     <YAxis domain={['dataMin', 'dataMax']} hide={true} />
@@ -104,15 +123,53 @@ class Portfolio extends React.Component {
     handleChangeRange(e) {
         let range = e.target.innerText;
         this.setState({ active: range })
-        // this.changeDates(range); WRITE LOGIC FOR THIS AFTER PORTFOLIO SEEDED
+        this.changeDates(range); 
         
+    }
+    changeDates(range) {
+        let newChartData;
+        let fiveYearLength = this.state.fiveYearData.length;
+        if (range === "1D") {
+            newChartData = this.state.chartData
+            // newChartData = this.state.intradayData
+            // newChartData = newChartData.filter(chart => {
+            //     return chart.close !== null;
+            // })
+        } else if (range === "1W") {
+            newChartData = this.state.fiveYearData.slice(fiveYearLength - 5, fiveYearLength)
+        } else if (range === "1M") {
+            newChartData = this.state.fiveYearData.slice(fiveYearLength - 21, fiveYearLength)
+        } else if (range === "3M") {
+            newChartData = this.state.fiveYearData.slice(fiveYearLength - 66, fiveYearLength)
+        } else if (range === "1Y") {
+            newChartData = this.state.fiveYearData.slice(fiveYearLength - 253, fiveYearLength)
+        } else if (range === "5Y") {
+            newChartData = this.state.fiveYearData
+        }
+        let newColor;
+        if (newChartData && newChartData[0].balance > newChartData[newChartData.length - 1].balance) {
+            newColor = RED;
+        } else {
+            newColor = GREEN;
+        }
+        this.setState({
+                chartData: newChartData,
+                lineColor: newColor
+            }, 
+            this.setColorStatus
+        )
+    }
+    resetHoverBalance() {
+        // this.calculateFlux(this.state.chartData[this.state.chartData.length - 1]);
+        return this.setState({ hoverBalance: this.state.currentBalance })
     }
     render() {
         return (
             <div className="portfolio">
                 <div className="chart-header">
-                    {/* <h1>Welcome to Simple Stocks</h1> */}
-                    <h2>{parseFloatToDollars(this.props.currentBalance)}</h2>
+                    <h1>Balance</h1>
+                    <h2>$<Odometer value={this.state.hoverBalance}></Odometer></h2>
+                    <h3>{parseFloatToPosNegDollars(this.state.flux)} ({parseFloatToPostNegPercent(this.state.fluxPercent)})</h3>
                 </div>
                 {this.renderLineChart()}
                 <ul className="chart-ranges">

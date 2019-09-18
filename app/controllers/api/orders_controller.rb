@@ -10,6 +10,8 @@ class Api::OrdersController < ApplicationController
         
     end
 
+    private
+
     def order_params
         params.require(:order).permit(:ticker, :order_type, :price, :shares)
     end

@@ -20,7 +20,8 @@ class Chart extends React.Component {
             timestamp:  "",
             currentPrice: 0,
             flux: 0,
-            fluxPercent: 0
+            fluxPercent: 0,
+            initialLoad: 0
         }
         this.activeBtn = this.activeBtn.bind(this);
         this.handleChangeRange = this.handleChangeRange.bind(this);
@@ -73,7 +74,8 @@ class Chart extends React.Component {
             chartData: data,
             currentPrice: data[lastIdx].close,
             hoverPrice: data[lastIdx].close,
-            lineColor: color
+            lineColor: color,
+            initialLoad: 1
         }, () => {
             this.setColorStatus();
             this.calculateFlux(data[lastIdx]);
@@ -173,7 +175,7 @@ class Chart extends React.Component {
             xAxisData = "date"
         }
         return (
-            <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} className="stock-show-chart">
+            <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
                 <Line type="monotone" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
                 {/* <CartesianGrid stroke="#ccc" /> */}
                 {/* <XAxis dataKey={xAxisData} /> */}

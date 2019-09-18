@@ -25,6 +25,8 @@ class Api::WatchesController < ApplicationController
     end
     end
 
+    private
+    
     def watch_params
         params.require(:watch).permit(:ticker)
     end

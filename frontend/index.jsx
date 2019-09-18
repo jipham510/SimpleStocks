@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
-
+// import { fetchStocks } from "./util/stock_api_util"
 document.addEventListener("DOMContentLoaded", () => {
     let store;
 
     //TESTING START
         // insert functions here
+        // window.fetchStocks = fetchStocks;
     //TESTING END
     if (window.currentUser) {
         const preloadedState = {
