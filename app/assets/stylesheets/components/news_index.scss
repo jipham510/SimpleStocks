@@ -44,12 +44,19 @@
         padding: 20px 20px;
         margin: 0px -20px;
         .article-info {
-            width: 400px;
+            max-width: 600px;
             color: var(--text-color);
-            font-weight: bold;
+            letter-spacing: 1px;
+            h5 {
+                font-weight: bold;
+            }
+            h6 {
+                margin-top: 15px;
+                font-size: 12px
+            }
         }
         .article-img {
-            
+            margin-left: 30px;
             width: 200px;
             height: 140px;
         }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { parseFloatToPosNegDollars, parseFloatToPostNegPercent } from '../../util/util'
 import { fetchPortfolioSnapshots } from '../../util/portfolio_snapshot_api_util'
 import Odometer from 'react-odometerjs';
@@ -79,7 +79,7 @@ class Portfolio extends React.Component {
     handleMouseHover(e) { 
         if (e.activePayload) {
             let balance = e.activePayload[0].payload.balance; 
-            // this.calculateFlux(e.activePayload[0].payload);
+            this.calculateFlux(e.activePayload[0].payload);
             if (balance) {
                 let timestamp = e.activePayload[0].payload.snapshot_date;
                 this.setState({
@@ -100,11 +100,9 @@ class Portfolio extends React.Component {
             <ResponsiveContainer width='100%' height="100%">
                 <LineChart data={this.state.chartData} key={this.state.initialLoad} className="stock-show-chart" onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverBalance} >
                     <Line type="monotone" dataKey="balance" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
-                    {/* <CartesianGrid stroke="#ccc" /> */}
-                    {/* <XAxis dataKey={xAxisData} /> */}
+
                     <YAxis domain={['dataMin', 'dataMax']} hide={true} />
 
-                    {/* <Tooltip content="test" */}
                     <Tooltip content={renderTimeStamp}
                         offset={-40}
                         position={{ y: -15 }}
@@ -160,7 +158,7 @@ class Portfolio extends React.Component {
         )
     }
     resetHoverBalance() {
-        // this.calculateFlux(this.state.chartData[this.state.chartData.length - 1]);
+        this.calculateFlux(this.state.chartData[this.state.chartData.length - 1]);
         return this.setState({ hoverBalance: this.state.currentBalance })
     }
     render() {

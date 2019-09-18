@@ -31,7 +31,7 @@ ActiveRecord::Base.transaction do
         stock = Stock.create!(ticker: row["Symbol"], name: row["Company Name"])
     end
 
-    demo_user = User.create!(username: 'Demo_User', first_name: "demo", last_name: "user", email: "demo_user@gmail.com", password: 'password')
+    demo_user = User.create!(username: 'Demo_User', first_name: "Demo", last_name: "User", email: "demo_user@gmail.com", password: 'password')
     Deposit.create!( user_id: demo_user.id, deposit_money: 100000)
 
     Watch.create!(user_id: demo_user.id, ticker: "SBUX")

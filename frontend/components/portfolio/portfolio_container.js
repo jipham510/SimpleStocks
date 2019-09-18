@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     let currentBalance = state.entities.users[state.session.id].currentBalance;
     return {
         currentBalance
+
         // ownedStocksIntradayData,
         // ownedStockTickers
     }

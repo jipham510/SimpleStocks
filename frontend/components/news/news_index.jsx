@@ -20,10 +20,12 @@ class NewsIndex extends React.Component {
         }
     }
     render() {
+        let news = this.props.news.filter ( article => article.urlToImage );
+        news = news.slice(0,10);
         return (
             <div className="news-index">
                 <h2>Recent News</h2>
-                {this.props.news.map( (article,idx) => (
+                {news.map( (article,idx) => (
                     <NewsIndexItem article={article} key={idx} />
                 ))}
 
