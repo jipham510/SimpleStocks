@@ -16,7 +16,7 @@ class User < ApplicationRecord
   through: :watches,
   source: :stock
 
-  API_TOKEN = "pk_36fe5ad8403a4988a4886842aaa7aa83"
+  API_TOKEN = "pk_05c53b22f2a44ebd8633dd40cb680b46"
 
   # https://cloud.iexapis.com/stable/stock/market/batch?types=chart&range=1d&last=5&token=#{your_token_here}&symbols=
   def current_balance
@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
     shares = Hash.new(0)
     orders.each do |order|
-      if order.order_type === "BUY" 
+      if order.order_type == "BUY" 
         shares[order.ticker] += order.shares
       else 
         shares[order.ticker] -= order.shares
@@ -56,7 +56,7 @@ class User < ApplicationRecord
   def overall_profit
     profit = 0
     orders.each do |order|
-      if order.order_type === "BUY" 
+      if order.order_type == "BUY" 
         profit -= order.price * order.shares
       else 
         profit += order.price * order.shares
@@ -74,7 +74,7 @@ class User < ApplicationRecord
   def owned_shares
     res = Hash.new(0)
     orders.each do |order|
-      if order.order_type === "BUY"
+      if order.order_type == "BUY"
         res[order.ticker] += order.shares
       else
         res[order.ticker] -= order.shares
@@ -122,39 +122,57 @@ class User < ApplicationRecord
 ####### code below is ran one time in seed file ##############################
   def create_five_year_portfolio!
     five_year_charts = create_five_year_charts
-    all_deposits = deposits.inject(0) { |sum, deposit| sum + deposit.deposit_money}
     url = "https://cloud.iexapis.com/stable/stock/market/batch?types=chart&range=5Y&token=#{API_TOKEN}&symbols=AAPL"
-
     response = JSON.parse(open(url).read)
     five_year_chart = response["AAPL"]["chart"]
-    five_year_buying_power = create_five_year_buying_power(all_deposits,five_year_chart)
+    five_year_buying_power = create_five_year_buying_power(five_year_chart)
+    # puts "buying power: #{five_year_buying_power[-1]}"
+
+
     five_year_chart = five_year_chart.each_with_index.map do |day_data,idx| 
       total_balance = 0
       total_balance = five_year_buying_power[idx] 
       five_year_charts.each do |chart| 
         total_balance += chart[idx]
+        # if idx == chart.length - 1
+        #   puts "balance: #{total_balance}"
+        # end
       end
       
       # validates :user_id, :balance, :snapshot_date, presence: true
+
       PortfolioSnapshot.create!( user_id: id, snapshot_date: day_data["date"], balance: total_balance)
     end
     return five_year_chart
   end
 
-  def create_five_year_buying_power(all_deposits,five_year_chart)
+  def create_five_year_buying_power(five_year_chart)
+    all_deposits = deposits.inject(0) { |sum, deposit| sum + deposit.deposit_money}
+
     buying_power_chart = []
     five_year_chart.each do |day|
       orders.each do |order|
         if Date.parse(order.created_at.to_s) == Date.parse( day["date"] )
-          # conditional works if debugger hits!
           if (order.order_type == "BUY")
             all_deposits -= order.shares * order.price
+          else
+            all_deposits += order.shares * order.price
           end
         end
       end
       buying_power_chart.push(all_deposits)
       # Date.parse(demo_user.orders.first.created_at.to_s) == Date.parse("2014-09-19")
     end
+# demo_user = User.find_by(username: "Demo_User")
+# demo_user.portfolio_snapshots
+# [7] pry(main)> sum = 100000 - 259.32*20
+# => 94813.6
+# [8] pry(main)> sum -= 104.21*100
+# => 84392.6
+# [9] pry(main)> sum -= 140.25*200
+# => 56342.600000000006
+# [10] pry(main)> sum -= 70*100
+# => 49342.600000000006
     return buying_power_chart
   end
   def create_five_year_charts
