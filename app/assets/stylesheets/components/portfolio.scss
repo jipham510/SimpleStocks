@@ -6,6 +6,14 @@
     height: 20vw;
     // background-color: $primary-color;
     margin-bottom: 20vh;
+    .tooltip {
+        color: #808080;
+        width: 30%;
+    }
+    .timestamp {
+        color: #808080;
+        font-weight: bold;
+    }
     .chart-ranges {
         display: flex;
         flex-direction: row;

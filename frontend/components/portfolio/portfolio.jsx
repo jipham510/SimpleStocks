@@ -103,7 +103,7 @@ class Portfolio extends React.Component {
 
                     <YAxis domain={['dataMin', 'dataMax']} hide={true} />
 
-                    <Tooltip content={renderTimeStamp}
+                    <Tooltip className="tooltip" content={renderTimeStamp}
                         offset={-40}
                         position={{ y: -15 }}
                         isAnimationActive={false} />

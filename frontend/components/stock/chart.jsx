@@ -181,7 +181,7 @@ class Chart extends React.Component {
                 {/* <XAxis dataKey={xAxisData} /> */}
                 <YAxis domain={['dataMin', 'dataMax']} hide={true} />
 
-                <Tooltip content={renderTimeStamp}
+                <Tooltip className="tooltip" content={renderTimeStamp}
                     offset={-40}
                     position={{ y: -20 }}
                     isAnimationActive={false} />

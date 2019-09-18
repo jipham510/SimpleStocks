@@ -14,6 +14,7 @@ class SearchBar extends React.Component {
         this.renderSearchResults = this.renderSearchResults.bind(this);
         this.focusSearchBar = this.focusSearchBar.bind(this);
         this.blurSearchBar = this.blurSearchBar.bind(this);
+        this.addColorIfMatch = this.addColorIfMatch.bind(this);
     }
     componentDidMount(){
         if (!this.props.stocks ) {
@@ -53,14 +54,33 @@ class SearchBar extends React.Component {
     redirectStockPageompanyPage(ticker) {
         this.props.history.push(`/stocks/${ticker}`);
     }
+    addColorIfMatch(string){
+        for (let i = 0; i < string.length - this.state.user_input.length + 1; i++) {
+            if (string.slice(i, this.state.user_input.length).toLowerCase() === this.state.user_input.toLowerCase()) {
+                let divText = string.slice(i, this.state.user_input.length);
+                return (
+                    <span>
+                        <span className="colorResult">
+                            {divText}
+                        </span>
+                        {string.slice(this.state.user_input.length)}
+                    </span>
+                )
+            }
+        }
+
+        return string;
+    }
     renderSearchResults(){
         if(this.state.user_input.length > 0 && this.state.searchbarFocused) {
+
             return (
                 <ul className="search-results">
                     <div className="stock-heading">Stocks</div>
                     {  this.searchStocks().map( (stock,idx) =>(
                         <li key={idx} className="search-item" onMouseDown={() => this.redirectStockPageompanyPage(stock.ticker)}>
-                            {stock.ticker}, {stock.name}
+                            <div className="search-item-ticker" >{this.addColorIfMatch(stock.ticker)}</div>
+                            <div className="search-item-name">{this.addColorIfMatch(stock.name)}</div>
                         </li>
                     ))}
                 </ul>

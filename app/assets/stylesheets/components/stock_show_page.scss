@@ -12,6 +12,14 @@
             width: 100%;
         }
         .stock-show-chart-wrapper {
+            .tooltip {
+                color: #808080;
+                width: 30%;
+            }
+            .timestamp {
+                color: #808080;
+                // font-weight: bold;
+            }
             .chart-ranges {
                 display: flex;
                 flex-direction: row;
