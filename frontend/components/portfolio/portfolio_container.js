@@ -11,7 +11,9 @@ const mapStateToProps = (state, ownProps) => {
     // ownedStocks.forEach( stock => {
     //     if (stock.intradayData) ownedStocksIntradayData.push(stock.intradayData);
     // })
+    let currentBalance = state.entities.users[state.session.id].currentBalance;
     return {
+        currentBalance
         // ownedStocksIntradayData,
         // ownedStockTickers
     }

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  balance: 1.5
+  snapshot_date: 2019-09-17
+  price_bought: 1.5
+
+two:
+  user_id: 1
+  balance: 1.5
+  snapshot_date: 2019-09-17
+  price_bought: 1.5

@@ -1,6 +1,6 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-
+import { parseFloatToDollars } from '../../util/util'
 const RED = "#EB5333"
 const GREEN = "#67CF9A"
 class Portfolio extends React.Component {
@@ -42,7 +42,6 @@ class Portfolio extends React.Component {
         )
     }
     setColorStatus() {
-        // debugger
         const body = document.querySelector("body");
         if (this.state.lineColor === GREEN) {
             body.removeAttribute("data-status")
@@ -111,7 +110,10 @@ class Portfolio extends React.Component {
     render() {
         return (
             <div className="portfolio">
-                {/* <h1>Inside Portfolio component</h1> */}
+                <div className="chart-header">
+                    {/* <h1>Welcome to Simple Stocks</h1> */}
+                    <h2>{parseFloatToDollars(this.props.currentBalance)}</h2>
+                </div>
                 {this.renderLineChart()}
                 <ul className="chart-ranges">
                     <li className={this.activeBtn("1D")} onClick={this.handleChangeRange}>1D</li>

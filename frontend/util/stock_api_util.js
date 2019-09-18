@@ -1,4 +1,4 @@
-const apiKey = "pk_de82e1c265ce403880d83e5d17770609"; //test api kayn02222
+const apiKey = "pk_36fe5ad8403a4988a4886842aaa7aa83"; //throwaway email
 
 // const apiKey = "pk_213bab875424446b80f0869547f9a6a7" //production api kayn022222
 export const fetchStock = (ticker) => (
@@ -10,9 +10,11 @@ export const fetchStock = (ticker) => (
 export const fetchLatestStockPrice = (ticker) => (
     $.ajax({
         method: "GET",
-        url: `https://cloud.iexapis.com/stable/stock/${ticker}/chart/5d/?filter=close&chartLast=1&token=${apiKey}`
+        url: `https://cloud.iexapis.com/stable/stock/market/batch?types=quote&token=${apiKey}&symbols=${ticker}`
     })
 )
+// https://cloud.iexapis.com/stable/stock/market/batch?types=quote&token=${apiKey}&symbols=${ticker}
+
 
 // url: `https://cloud.iexapis.com/stable/stock/${ticker}/company/batch?&types=quote&token=${window.iexAPIKey}`,
 

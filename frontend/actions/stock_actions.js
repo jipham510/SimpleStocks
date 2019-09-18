@@ -16,10 +16,9 @@ const receiveStock = (stock) => {
     }
 }
 const receiveLatestStockPrice = (stock,ticker) => {
-    
     return {
         type: RECEIVE_LATEST_STOCK_PRICE,
-        stock: { price: stock[0].close, ticker: ticker }
+        stock: { price: stock[ticker].quote.latestPrice, ticker: ticker }
     }
 }
 const receiveStocks = (stocks) => ({

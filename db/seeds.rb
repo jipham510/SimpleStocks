@@ -30,18 +30,9 @@ ActiveRecord::Base.transaction do
     nyse.each do |row|
         stock = Stock.create!(ticker: row["Symbol"], name: row["Company Name"])
     end
-    
-    # stock = Stock.create!(name: "Apple Inc", ticker: "AAPL")
-    # stock = Stock.create!(name: "Google", ticker: "GOOGL")
-    # stock = Stock.create!(name: "Tesla", ticker: "TSLA")
-    # stock = Stock.create!(name: "Netflix", ticker: "NFLX")
-    # stock = Stock.create!(name: "Microsoft", ticker: "MSFT")
-    # stock = Stock.create!(name: "Starbucks", ticker: "SBUX")
 
-    my_login = User.create!(username: 'jpham', first_name: "jimmy", last_name: "pham", email: "demo_user@gmail.com", password: 'password')
     demo_user = User.create!(username: 'Demo_User', first_name: "demo", last_name: "user", email: "demo_user@gmail.com", password: 'password')
     Deposit.create!( user_id: demo_user.id, deposit_money: 100000)
-    Deposit.create!( user_id: my_login.id, deposit_money: 10000000)
 
     Watch.create!(user_id: demo_user.id, ticker: "SBUX")
     Watch.create!(user_id: demo_user.id, ticker: "MSFT")
@@ -49,14 +40,10 @@ ActiveRecord::Base.transaction do
 
     Time.zone = 'Eastern Time (US & Canada)'
     # Time.zone.local(2007, 2, 1, 15, 30, 45) # => Thu, 01 Feb 2007 15:30:45 HST -10:00
-    Order.create!( user_id: demo_user.id, ticker: "AAPL", order_type: "BUY", price: 100, shares: 1,created_at: Time.zone.local(2017, 2, 1, 15, 0, 0))
-    Order.create!( user_id: demo_user.id, ticker: "AAPL", order_type: "BUY", price: 100, shares: 2, created_at: Time.zone.local(2017, 6, 2, 12, 0, 0))
-    Order.create!( user_id: demo_user.id, ticker: "GOOGL", order_type: "BUY", price: 200, shares: 2, created_at: Time.zone.local(2018, 2, 1, 14, 0, 0))
-    Order.create!( user_id: demo_user.id, ticker: "GOOGL", order_type: "SELL", price: 250, shares: 1, created_at: Time.zone.local(2019, 5, 1, 10, 0, 0))
-    Order.create!( user_id: demo_user.id, ticker: "TSLA", order_type: "BUY", price: 1000, shares: 10, created_at: Time.zone.local(2019, 5, 3, 10, 0, 0))
-    Order.create!( user_id: demo_user.id, ticker: "NFLX", order_type: "BUY", price: 1200, shares: 4, created_at: Time.zone.local(2019, 5, 5, 10, 0, 0))
-    Order.create!( user_id: demo_user.id, ticker: "MSFT", order_type: "BUY", price: 500, shares: 5, created_at: Time.zone.local(2019, 5, 7, 10, 0, 0))
-    Order.create!( user_id: demo_user.id, ticker: "SBUX", order_type: "BUY", price: 400, shares: 3, created_at: Time.zone.local(2019, 5, 9, 10, 0, 0))
+    Order.create!( user_id: demo_user.id, ticker: "TSLA", order_type: "BUY", price: 259.32, shares: 20, created_at: Time.zone.local(2014, 9, 19, 10, 0, 0))
+    Order.create!( user_id: demo_user.id, ticker: "AAPL", order_type: "BUY", price: 104.21, shares: 100,created_at: Time.zone.local(2016, 7, 29, 15, 0, 0))
+    Order.create!( user_id: demo_user.id, ticker: "NFLX", order_type: "BUY", price: 140.25, shares: 200, created_at: Time.zone.local(2018, 2, 3, 10, 0, 0))
+    Order.create!( user_id: demo_user.id, ticker: "SBUX", order_type: "BUY", price: 70, shares: 100, created_at: Time.zone.local(2019, 3, 1, 10, 0, 0))
 
-# 
+    demo_user.create_five_year_portfolio!
 end

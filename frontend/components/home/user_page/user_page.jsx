@@ -10,13 +10,12 @@ class UserPage extends React.Component {
             <div className="home">
                 <UserNavContainer />
                 <div className="main-content">
-                    <h1>Welcome to Simple Stocks</h1>
                     <PortfolioContainer />
                     <NewsIndexContainer />
                 </div>
 
                 <div className="watchlist">
-                <StockIndexContainer />
+                    <StockIndexContainer />
                 </div>
             </div>
         )
