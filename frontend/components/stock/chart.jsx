@@ -176,7 +176,7 @@ class Chart extends React.Component {
         }
         return (
             <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
-                <Line type="monotone" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
+                <Line type="linear" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
                 {/* <CartesianGrid stroke="#ccc" /> */}
                 {/* <XAxis dataKey={xAxisData} /> */}
                 <YAxis domain={['dataMin', 'dataMax']} hide={true} />

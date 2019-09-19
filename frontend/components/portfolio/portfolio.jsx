@@ -10,10 +10,11 @@ class Portfolio extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            chartData: undefined,
+            chartData: [],
             fiveYearData: [],
+            intradayData: [],
             lineColor: GREEN,
-            active: "1W",
+            active: "1D",
             timestamp: "",
             currentBalance: this.props.currentBalance,
             hoverBalance: this.props.currentBalance,
@@ -32,26 +33,27 @@ class Portfolio extends React.Component {
 
     }
     componentDidMount(){
-        
-        fetchPortfolioSnapshots()
+        fetchPortfolioSnapshot()
             .then(res => this.setData(res))
+        fetchPortfolioSnapshots()
+            .then(res => this.setState({ fiveYearData: res}))
     }
-    setData(fiveYearBalance){
+    setData(intradayData){
         // responseJSON: Array(1258) [0 … 99] 0: balance: 100000 created_at: "2019-09-18T16:33:01.896Z" id: 1258 snapshot_date: "2014-09-18"
 
-        let lastIdx = fiveYearBalance.length - 1;
+        let lastIdx = intradayData.length - 1;
         let color;
-        fiveYearBalance[0].balance > fiveYearBalance[lastIdx].balance ? color = RED : color = GREEN;
+        intradayData[0].balance > intradayData[lastIdx].balance ? color = RED : color = GREEN;
 
         return this.setState(
             {
-                chartData: fiveYearBalance,
-                fiveYearData: fiveYearBalance,
+                chartData: intradayData,
+                intradayData,
                 lineColor: color,
                 initialLoad: 1
             }, () => {
                 this.setColorStatus();
-                this.calculateFlux(fiveYearBalance[lastIdx]);
+                this.calculateFlux(intradayData[lastIdx]);
             }
         )
     }
@@ -82,7 +84,12 @@ class Portfolio extends React.Component {
             let balance = e.activePayload[0].payload.balance; 
             this.calculateFlux(e.activePayload[0].payload);
             if (balance) {
-                let timestamp = e.activePayload[0].payload.snapshot_date;
+                let timestamp;
+                if (this.state.active === "1D") {
+                    timestamp = e.activePayload[0].payload.date + " PT";
+                } else {
+                    timestamp = e.activePayload[0].payload.snapshot_date;
+                }
                 this.setState({
                     hoverBalance: balance,
                     timestamp
@@ -100,7 +107,7 @@ class Portfolio extends React.Component {
             // <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverBalance} className="stock-show-chart">
             <ResponsiveContainer width='100%' height="100%">
                 <LineChart data={this.state.chartData} key={this.state.initialLoad} className="stock-show-chart" onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverBalance} >
-                    <Line type="monotone" dataKey="balance" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
+                    <Line type="linear" dataKey="balance" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
 
                     <YAxis domain={['dataMin', 'dataMax']} hide={true} />
 
@@ -129,11 +136,7 @@ class Portfolio extends React.Component {
         let newChartData;
         let fiveYearLength = this.state.fiveYearData.length;
         if (range === "1D") {
-            newChartData = this.state.chartData
-            // newChartData = this.state.intradayData
-            // newChartData = newChartData.filter(chart => {
-            //     return chart.close !== null;
-            // })
+            newChartData = this.state.intradayData
         } else if (range === "1W") {
             newChartData = this.state.fiveYearData.slice(fiveYearLength - 5, fiveYearLength)
         } else if (range === "1M") {
