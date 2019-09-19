@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
     fetchStock: (ticker) => dispatch(fetchStock(ticker)),
     fetchHistoricalData: (ticker) => dispatch(fetchHistoricalData(ticker)),
-    fetchIntradayData: (ticker) => dispatch(fetchIntradayData(ticker)),
+    // fetchIntradayData: (ticker) => dispatch(fetchIntradayData(ticker)),
 });
 
 export default withRouter(connect(

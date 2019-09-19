@@ -6,7 +6,14 @@
     height: 83vh;
     background-color: transparent;
     box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(48,51,51,0.09);
-    overflow: auto;
+    // overflow: auto;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+    &::-webkit-scrollbar { /* WebKit */
+        width: 0;
+        height: 0;
+    }
     .stock-index-header {
         padding: 2vh;
         font-size: 1.2em;

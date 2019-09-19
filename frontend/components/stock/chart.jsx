@@ -2,7 +2,9 @@ import React from 'react';
 import { LineChart, Line, YAxis, Tooltip } from 'recharts';
 import { parseFloatToPostNegPercent, parseFloatToPosNegDollars } from '../../util/util';
 import Odometer from 'react-odometerjs';
-// import { render } from 'react-dom';
+import { css } from '@emotion/core';
+import { BeatLoader } from 'react-spinners';
+
 
 const RED = "#EB5333"
 const GREEN = "#67CF9A"
@@ -38,7 +40,8 @@ class Chart extends React.Component {
                 return this.setState({ stockName: res.stock.name })
             });
             this.props.fetchIntradayData(this.props.ticker).then(res => {
-                this.setIntradayData(res)
+                debugger
+                this.setIntradayData(res.intradayData)
             })
         // implement conditional for when portfolio already fetched for intradaydata on home page
         // if (this.props.intradayData.length !== 0) {
@@ -54,14 +57,16 @@ class Chart extends React.Component {
         this.props.fetchStock(this.props.ticker).then(res => {
             return this.setState({ stockName: res.stock.name })
         });
-        this.props.fetchIntradayData(this.props.ticker).then(res => { 
-            this.setIntradayData(res)
-        })
-
+        // this.props.fetchIntradayData(this.props.ticker).then(res => { 
+        //     this.setIntradayData(res)
+        // })
+        if (this.props.intradayData.length !== 0) {
+            this.setIntradayData(this.props.intradayData)
+        }
         // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
     }
     setIntradayData(res) {
-        let data = res.intradayData;
+        let data = res;
         data = data.filter(chart => {
             return chart.close !== null;
         })
@@ -175,15 +180,17 @@ class Chart extends React.Component {
             xAxisData = "date"
         }
         return (
-            <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
-                <Line type="linear" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
-                <YAxis domain={['dataMin', 'dataMax']} hide={true} />
+            <div className="line-chart-stock-show-page">
+                    <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
+                        <Line type="linear" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
+                        <YAxis domain={['dataMin', 'dataMax']} hide={true} />
 
-                <Tooltip className="tooltip" content={renderTimeStamp}
-                    offset={-40}
-                    position={{ y: -20 }}
-                    isAnimationActive={false} />
-            </LineChart>
+                        <Tooltip className="tooltip" content={renderTimeStamp}
+                            offset={-40}
+                            position={{ y: -20 }}
+                            isAnimationActive={false} />
+                    </LineChart>
+            </div>
         )
     }
     resetHoverPrice() {
@@ -208,7 +215,6 @@ class Chart extends React.Component {
                     <li className={this.activeBtn("1Y")} onClick={this.handleChangeRange}>1Y</li>
                     <li className={this.activeBtn("5Y")} onClick={this.handleChangeRange}>5Y</li>
                 </ul>
-        
             </div>
         )
     }

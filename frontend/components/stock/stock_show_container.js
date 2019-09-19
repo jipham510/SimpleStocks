@@ -1,15 +1,24 @@
 import { connect } from 'react-redux';
 import StockShow from './stock_show';
 import { withRouter } from 'react-router-dom';
+import { fetchIntradayData } from '../../actions/stock_actions';
+
 
 const mapStateToProps = (state,ownProps) => {
     const stockTicker = ownProps.match.params.ticker;
+    let stock = state.entities.stocks[stockTicker]
+    let intradayData = [];
+    if (stock && stock.intradayData) {
+        intradayData = stock.intradayData
+    }
     return {
-        ticker: stockTicker
+        ticker: stockTicker, 
+        intradayData
     }
 }
 const mapDispatchToProps = dispatch => ({
-    logout: () => dispatch(logout())
+    fetchIntradayData: (ticker) => dispatch(fetchIntradayData(ticker)),
+
 });
 
 export default withRouter(connect(

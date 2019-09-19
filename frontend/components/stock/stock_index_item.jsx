@@ -3,6 +3,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { parseFloatToDollars } from '../../util/util';
 import TinyChart from '../stock/tiny_chart'
+import { css } from '@emotion/core';
+import { BeatLoader } from 'react-spinners';
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 class StockIndexItem extends React.Component {
     constructor(props) {
@@ -54,17 +62,32 @@ class StockIndexItem extends React.Component {
         return(
         <Link to={`/stocks/${this.props.stock.ticker}`}>
 
-            <div className="stock-index-item">
-                <div className="stock-index-item-left-wrapper">
-                    <div className="stock-index-item-ticker">
-                        {this.props.stock.ticker}
+            <div>
+                {(this.props.intradayData) ? (
+                    <div className="stock-index-item">
+                        <div className="stock-index-item-left-wrapper">
+                            <div className="stock-index-item-ticker">
+                                {this.props.stock.ticker}
+                            </div>
+                            {this.renderShares()}
+                        </div>
+                        <TinyChart intradayData={this.state.intradayData} initialLoad={this.state.initialLoad}/>
+                        <div className="stock-index-item-price">
+                            {parseFloatToDollars(this.state.price)}
+                        </div>
                     </div>
-                    {this.renderShares()}
-                </div>
-                <TinyChart intradayData={this.state.intradayData} initialLoad={this.state.initialLoad}/>
-                <div className="stock-index-item-price">
-                    {parseFloatToDollars(this.state.price)}
-                </div>
+                    ) : (
+                        <div className="stock-index-item">
+                            <BeatLoader
+                                className={override}
+                                sizeUnit={"px"}
+                                size={10}
+                                color={"#67CF9A"}
+                                loading={true}
+                            />
+                        </div>
+                    )
+                }
             </div>
         </Link>
         )

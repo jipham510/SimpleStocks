@@ -8,7 +8,7 @@ class Nav extends React.Component {
     }
 
     refreshPageOrRedirect() {
-        if(this.props.match.path === "/") {
+        if (this.props.match.path === "/") {
             window.location.reload();
         } else {
             this.props.history.push("/");
