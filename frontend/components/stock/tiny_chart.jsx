@@ -11,8 +11,8 @@ const TinyChart = (props) => {
 
     return (
         <div className="mini-chart">
-            <ResponsiveContainer width='100%' height="100%">
-                <LineChart data={props.chartData} key={props.initialLoad} className="stock-show-chart">
+            {/* <ResponsiveContainer width='100%' height="100%"> */}
+                <LineChart data={props.chartData} width={200} height={100} key={props.initialLoad} className="stock-show-chart">
                     <Line type="linear" dataKey="close" stroke={lineColor()} strokeWidth={2} dot={false} />
                     <YAxis domain={['dataMin', 'dataMax']} hide={true} />
                     <Tooltip className="tooltip" content={renderTimeStamp}
@@ -20,7 +20,7 @@ const TinyChart = (props) => {
                         position={{ y: -20 }}
                         isAnimationActive={false} />
                 </LineChart>
-            </ResponsiveContainer>
+            {/* </ResponsiveContainer> */}
         </div>
     )
 }
