@@ -34,9 +34,9 @@ class Portfolio extends React.Component {
     }
     componentDidMount(){
         fetchPortfolioSnapshot()
-            .then(res => this.setData(res))
+            .then(res => this.setData(res));
         fetchPortfolioSnapshots()
-            .then(res => this.setState({ fiveYearData: res}))
+            .then(res => this.setState({ fiveYearData: res}));
     }
     setData(intradayData){
         // responseJSON: Array(1258) [0 … 99] 0: balance: 100000 created_at: "2019-09-18T16:33:01.896Z" id: 1258 snapshot_date: "2014-09-18"
@@ -86,7 +86,7 @@ class Portfolio extends React.Component {
             if (balance) {
                 let timestamp;
                 if (this.state.active === "1D") {
-                    timestamp = e.activePayload[0].payload.date + " PT";
+                    timestamp = e.activePayload[0].payload.date + " ET";
                 } else {
                     timestamp = e.activePayload[0].payload.snapshot_date;
                 }
@@ -104,7 +104,6 @@ class Portfolio extends React.Component {
             </div>
         )
         return (
-            // <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverBalance} className="stock-show-chart">
             <ResponsiveContainer width='100%' height="100%">
                 <LineChart data={this.state.chartData} key={this.state.initialLoad} className="stock-show-chart" onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverBalance} >
                     <Line type="linear" dataKey="balance" stroke={this.state.lineColor} strokeWidth={2} dot={false} />

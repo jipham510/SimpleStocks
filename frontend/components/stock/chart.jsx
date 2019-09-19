@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, YAxis, Tooltip } from 'recharts';
 import { parseFloatToPostNegPercent, parseFloatToPosNegDollars } from '../../util/util';
 import Odometer from 'react-odometerjs';
 // import { render } from 'react-dom';
@@ -154,7 +154,7 @@ class Chart extends React.Component {
                 price = e.activePayload[0].payload.close;
                 let timestamp;
                 if (this.state.active === "1D") {
-                    timestamp = e.activePayload[0].payload.label + " PT";
+                    timestamp = e.activePayload[0].payload.label + " ET";
                 } else {
                     timestamp = e.activePayload[0].payload.date;
                 }
@@ -177,8 +177,6 @@ class Chart extends React.Component {
         return (
             <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
                 <Line type="linear" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
-                {/* <CartesianGrid stroke="#ccc" /> */}
-                {/* <XAxis dataKey={xAxisData} /> */}
                 <YAxis domain={['dataMin', 'dataMax']} hide={true} />
 
                 <Tooltip className="tooltip" content={renderTimeStamp}
