@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :orders, only: [:create]
       resources :watches, only: [:create, :destroy, :index]
       resources :portfolio_snapshots, only: [:create, :index]
+      get '/portfolio/daily', to: 'portfolio_snapshots#single_day_portfolio'
       resource :session, only: [:create, :destroy]
     end
 

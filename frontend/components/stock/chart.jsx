@@ -154,7 +154,7 @@ class Chart extends React.Component {
                 price = e.activePayload[0].payload.close;
                 let timestamp;
                 if (this.state.active === "1D") {
-                    timestamp = e.activePayload[0].payload.label + " ET";
+                    timestamp = e.activePayload[0].payload.label + " PT";
                 } else {
                     timestamp = e.activePayload[0].payload.date;
                 }

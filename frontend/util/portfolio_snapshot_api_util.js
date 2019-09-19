@@ -6,3 +6,10 @@ export const fetchPortfolioSnapshots = () => (
         method: 'GET',
     })
 );
+
+export const fetchPortfolioSnapshot = () => (
+    $.ajax({
+        url: `api/portfolio/daily`,
+        method: 'GET',
+    })
+);

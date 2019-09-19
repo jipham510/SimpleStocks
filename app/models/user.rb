@@ -12,11 +12,81 @@ class User < ApplicationRecord
   has_many :watches
   has_many :portfolio_snapshots
   
+
   has_many :watchedStocks,
   through: :watches,
   source: :stock
 
   API_TOKEN = "pk_05c53b22f2a44ebd8633dd40cb680b46"
+# demo_user = User.find_by(username: "Demo_User")
+
+  def create_one_day_portfolio 
+    url = "https://cloud.iexapis.com/stable/stock/market/batch?types=chart&range=1d&chartInterval=5&last=5&token=#{API_TOKEN}&symbols="
+
+    stock_orders = Hash.new { |h, k| h[k] = [] }
+    orders.each do |order|
+      stock_orders[order.ticker].push(order)
+    end
+    request = url + stock_orders.keys.join(',')
+    response = JSON.parse(open(request).read)
+
+    all_deposits = deposits.inject(0) { |sum, deposit| sum + deposit.deposit_money}
+    one_day_charts = []
+    buying_power_chart = Hash.new(0)
+
+    response.keys.each do |ticker|
+      stock_chart = []
+      current_owned = 0
+      buying_power_one_day = 0
+      response[ticker]["chart"].each_with_index do |day_data,idx|
+        stock_orders[ticker].each do |order|
+          if Time.zone.parse(order["created_at"].to_s) < Time.zone.parse(day_data["label"])
+            if order.order_type == "BUY"
+              buying_power_one_day -= order.net_value
+              current_owned += order.shares
+            else
+              buying_power_one_day += order.net_value
+              current_owned -= order.shares
+            end
+            stock_orders[ticker].delete(order)
+          end
+        end
+        buying_power_chart[idx] += buying_power_one_day
+        if current_owned > 0
+          day_data["close"].nil? ? stock_chart.push(stock_chart[-1]) : stock_chart.push(day_data["close"] * current_owned)
+        else
+          stock_chart.push(0)
+        end
+      end
+      one_day_charts.push(stock_chart)
+    end
+    result = []
+    response[response.keys.first]["chart"].each_with_index do |day_data,idx|
+      balance = 0
+      one_day_charts.each do |chart|
+        balance += chart[idx] 
+      end
+      balance += buying_power_chart[idx] + all_deposits
+      result.push( { balance: balance, date: day_data["label"] } )
+    end
+    
+    return result
+  end
+
+
+  def owned_shares_before(date_time) # Fri, 19 Sep 2014 14:00:00 UTC +00:00 (want input like this)
+    res = Hash.new(0)
+    orders.each do |order|
+      if order.order_type == "BUY"
+        res[order.ticker] += order.shares
+      else
+        res[order.ticker] -= order.shares
+      end
+    end
+    return res.select { |ticker, shares| shares > 0 }
+  end
+
+
 
   # https://cloud.iexapis.com/stable/stock/market/batch?types=chart&range=1d&last=5&token=#{your_token_here}&symbols=
   def current_balance
@@ -82,8 +152,6 @@ class User < ApplicationRecord
     end
     return res.select { |ticker, shares| shares > 0 }
   end
-
-
 
 
 
@@ -163,16 +231,7 @@ class User < ApplicationRecord
       buying_power_chart.push(all_deposits)
       # Date.parse(demo_user.orders.first.created_at.to_s) == Date.parse("2014-09-19")
     end
-# demo_user = User.find_by(username: "Demo_User")
-# demo_user.portfolio_snapshots
-# [7] pry(main)> sum = 100000 - 259.32*20
-# => 94813.6
-# [8] pry(main)> sum -= 104.21*100
-# => 84392.6
-# [9] pry(main)> sum -= 140.25*200
-# => 56342.600000000006
-# [10] pry(main)> sum -= 70*100
-# => 49342.600000000006
+
     return buying_power_chart
   end
   def create_five_year_charts

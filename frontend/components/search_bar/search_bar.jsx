@@ -102,7 +102,6 @@ class SearchBar extends React.Component {
         }
     }
     blurSearchBar(e){
-        // debugger
         const searchBar = document.querySelector(".searchbar");
         const searchBarInput = document.querySelector(".search-bar-input");
         if (this.state.searchbarFocused === false) {
@@ -114,7 +113,6 @@ class SearchBar extends React.Component {
             }
         }
         if ( e && e.type === "blur") {
-            // debugger
             this.setState({ searchbarFocused: false }, this.blurSearchBar);
         }
     }

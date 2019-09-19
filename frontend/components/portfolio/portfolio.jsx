@@ -1,7 +1,7 @@
 import React from 'react';
 import { LineChart, Line, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { parseFloatToPosNegDollars, parseFloatToPostNegPercent } from '../../util/util'
-import { fetchPortfolioSnapshots } from '../../util/portfolio_snapshot_api_util'
+import { fetchPortfolioSnapshots, fetchPortfolioSnapshot } from '../../util/portfolio_snapshot_api_util'
 import Odometer from 'react-odometerjs';
 
 const RED = "#EB5333"
@@ -32,6 +32,7 @@ class Portfolio extends React.Component {
 
     }
     componentDidMount(){
+        
         fetchPortfolioSnapshots()
             .then(res => this.setData(res))
     }

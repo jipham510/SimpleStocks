@@ -15,6 +15,10 @@ class Api::PortfolioSnapshotsController < ApplicationController
         render json: @portfolio_snapshots
     end
 
+    def single_day_portfolio
+        @single_day_portfolio = current_user.create_one_day_portfolio
+        render json: @single_day_portfolio
+    end
     private
     def portfolio_snapshot_params
         params.require(:portfolio_snapshot).permit(:balance, :snapshot_date)

@@ -12,6 +12,10 @@ class Order < ApplicationRecord
     foreign_key: :ticker,
     class_name: "Stock"
 
+    def net_value
+        shares * price
+    end
+
     def enough_in_balance 
         unless user.buying_power >= price*shares
             errors[:base] << "Not enough buying power"
