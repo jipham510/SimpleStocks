@@ -1,24 +1,31 @@
 import React from 'react';
-import { LineChart, Line, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, YAxis, ResponsiveContainer } from 'recharts';
 
 const RED = "#EB5333"
 const GREEN = "#67CF9A"
 
 const TinyChart = (props) => {
     const lineColor = () => {
-        return GREEN;
+
+        if (props.intradayData.length !== 0 && props.intradayData[0].close > props.intradayData[props.intradayData.length - 1].close) {
+            return RED;
+        } else {
+            return GREEN;
+        }
     }
+
+    // const counter = (function () {
+    //     var counter = 0;
+    //     return function () { counter += 1; return counter }
+    // })();
 
     return (
         <div className="mini-chart">
             {/* <ResponsiveContainer width='100%' height="100%"> */}
-                <LineChart data={props.chartData} width={200} height={100} key={props.initialLoad} className="stock-show-chart">
+            <LineChart data={props.intradayData} width={100} height={50}  key={props.initialLoad} cursor="pointer">
                     <Line type="linear" dataKey="close" stroke={lineColor()} strokeWidth={2} dot={false} />
                     <YAxis domain={['dataMin', 'dataMax']} hide={true} />
-                    <Tooltip className="tooltip" content={renderTimeStamp}
-                        offset={-40}
-                        position={{ y: -20 }}
-                        isAnimationActive={false} />
+    
                 </LineChart>
             {/* </ResponsiveContainer> */}
         </div>

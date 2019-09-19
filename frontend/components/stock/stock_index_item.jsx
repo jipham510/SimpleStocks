@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { parseFloatToDollars } from '../../util/util';
-// import TinyChart from '../stock/tiny_chart'
+import TinyChart from '../stock/tiny_chart'
 
 class StockIndexItem extends React.Component {
     constructor(props) {
@@ -10,7 +10,8 @@ class StockIndexItem extends React.Component {
         this.renderShares = this.renderShares.bind(this);
         this.state = {
             intradayData: [],
-            price: 0
+            price: 0,
+            initialLoad: 0
         }
         this.setData = this.setData.bind(this);
     }
@@ -32,7 +33,8 @@ class StockIndexItem extends React.Component {
         })
         return this.setState({
             intradayData: chart,
-            price: chart[chart.length - 1].close
+            price: chart[chart.length - 1].close,
+            initialLoad: 1
         })        
 
     }
@@ -48,6 +50,7 @@ class StockIndexItem extends React.Component {
     }
 
     render(){  
+
         return(
         <Link to={`/stocks/${this.props.stock.ticker}`}>
 
@@ -58,7 +61,7 @@ class StockIndexItem extends React.Component {
                     </div>
                     {this.renderShares()}
                 </div>
-                {/* <TinyChart /> */}
+                <TinyChart intradayData={this.state.intradayData} initialLoad={this.state.initialLoad}/>
                 <div className="stock-index-item-price">
                     {parseFloatToDollars(this.state.price)}
                 </div>

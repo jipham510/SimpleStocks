@@ -27,6 +27,7 @@
         .stock-index-item-left-wrapper {
             display: flex;
             flex-direction: column;
+            width: 75px;
             .stock-index-item-ticker {
                 font-weight: bold;
             }
@@ -35,8 +36,15 @@
                 color: grey;
             }
         }
+        .mini-chart {
+            &:hover {
+                cursor: pointer;
+            }
+        }
         .stock-index-item-price {
-            font-size: 1.5em;
+            width: 75px;
+            font-size: 1.2em;
+
         }
         &:hover {
             background: #EEEEEE;
