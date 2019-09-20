@@ -40,17 +40,14 @@ class Chart extends React.Component {
                 return this.setState({ stockName: res.stock.name })
             });
             this.props.fetchIntradayData(this.props.ticker).then(res => {
-                debugger
                 this.setIntradayData(res.intradayData)
             })
-        // implement conditional for when portfolio already fetched for intradaydata on home page
-        // if (this.props.intradayData.length !== 0) {
-        // debugger
-        //     this.props.intradayData
-        // } else {
-        // }
 
-            // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+            if (this.props.historicalData.length === 0) {
+                this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+            } else {
+                this.setState({ historicalData: this.props.historicalData})
+            }
         } 
     }
     componentDidMount() {
@@ -63,7 +60,11 @@ class Chart extends React.Component {
         if (this.props.intradayData.length !== 0) {
             this.setIntradayData(this.props.intradayData)
         }
-        // this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+        if (this.props.historicalData.length === 0) {
+            this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+        } else {
+            this.setState( {historicalData: this.props.historicalData} )
+        }
     }
     setIntradayData(res) {
         let data = res;
@@ -72,19 +73,20 @@ class Chart extends React.Component {
         })
         let lastIdx = data.length - 1;
         let color;
-        data[0].close > data[lastIdx].close ? color = RED : color = GREEN;
-
-        return this.setState({
-            intradayData: data,
-            chartData: data,
-            currentPrice: data[lastIdx].close,
-            hoverPrice: data[lastIdx].close,
-            lineColor: color,
-            initialLoad: 1
-        }, () => {
-            this.setColorStatus();
-            this.calculateFlux(data[lastIdx]);
-        })
+        if(data.length > 0) {
+            data[0].close > data[lastIdx].close ? color = RED : color = GREEN;
+            return this.setState({
+                intradayData: data,
+                chartData: data,
+                currentPrice: data[lastIdx].close,
+                hoverPrice: data[lastIdx].close,
+                lineColor: color,
+                initialLoad: 1
+            }, () => {
+                this.setColorStatus();
+                this.calculateFlux(data[lastIdx]);
+            })
+        }
     }
     calculateFlux(dataPoint){
         let flux = 0;
@@ -136,7 +138,7 @@ class Chart extends React.Component {
             newChartData = this.state.historicalData
         }
         let newColor;
-        if ( newChartData && newChartData[0].close > newChartData[newChartData.length - 1].close) {
+        if (newChartData.length !== 0 && newChartData[0].close > newChartData[newChartData.length - 1].close) {
             newColor = RED;
         } else {
             newColor = GREEN;

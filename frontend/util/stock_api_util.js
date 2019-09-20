@@ -1,6 +1,7 @@
-const apiKey = "pk_36fe5ad8403a4988a4886842aaa7aa83"; //throwaway email
+// const apiKey = "pk_b357a793cf184f798b22ece36112c791"; //throwaway email
 
 // const apiKey = "pk_213bab875424446b80f0869547f9a6a7" //production api kayn022222
+const apiKey = "pk_fa06e2b91bce45c6a774b2a1ae8c678b" //production2 api kayn05555
 export const fetchStock = (ticker) => (
     $.ajax({
         method: "GET",

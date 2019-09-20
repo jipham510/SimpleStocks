@@ -156,7 +156,7 @@ class Portfolio extends React.Component {
             newChartData = this.state.fiveYearData
         }
         let newColor;
-        if (newChartData && newChartData[0].balance > newChartData[newChartData.length - 1].balance) {
+        if ( newChartData.length !== 0 && newChartData[0].balance > newChartData[newChartData.length - 1].balance) {
             newColor = RED;
         } else {
             newColor = GREEN;

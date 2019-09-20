@@ -67,7 +67,7 @@ export const fetchIntradayData = (ticker) => (dispatch) => APIStockUtil.fetchInt
     .then(stats => dispatch(receiveIntradayData(stats,ticker)))
 // export const fetchIntradayData = (ticker) => (dispatch) => APIStockUtil.fetchIntradayData(ticker)
 //     .then(stats => dispatch(receiveIntradayData(stats,ticker)), 
-//         () => "failed to fetch stock"
+//         () => window.history.push("/404") //fix history push
 //     )
 
 export const fetchHistoricalData = (ticker) => (dispatch) => APIStockUtil.fetchHistoricalData(ticker).then(stats => dispatch(receiveHistoricalData(stats,ticker)))

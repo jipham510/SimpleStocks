@@ -17,7 +17,9 @@ class User < ApplicationRecord
   through: :watches,
   source: :stock
 
-  API_TOKEN = "pk_05c53b22f2a44ebd8633dd40cb680b46"
+  # API_TOKEN = "pk_b357a793cf184f798b22ece36112c791" //throwaway email
+  API_TOKEN = "pk_fa06e2b91bce45c6a774b2a1ae8c678b" #production2 api kayn05555
+
 # demo_user = User.find_by(username: "Demo_User")
 
   def create_one_day_portfolio 
