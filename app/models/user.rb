@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class User < ApplicationRecord
-  attr_reader :password
+  attr_reader :passwodr
   validates :username, presence: true, uniqueness: true 
   validates :password_digest, :session_token, :first_name, :last_name, :email, presence: true
   validates :password, length: { minimum: 6}, allow_nil: true
@@ -17,8 +17,9 @@ class User < ApplicationRecord
   through: :watches,
   source: :stock
 
-  # API_TOKEN = "pk_b357a793cf184f798b22ece36112c791" //throwaway email
-  API_TOKEN = "pk_fa06e2b91bce45c6a774b2a1ae8c678b" #production2 api kayn05555
+  # API_TOKEN = "pk_b357a793cf184f798b22ece36112c791" #throwaway email
+  API_TOKEN = "pk_2829b7a80f7b43e1ae31342f9bfd10a4" #throwaway email
+  # API_TOKEN = "pk_fa06e2b91bce45c6a774b2a1ae8c678b" #production2 api kayn05555
 
 # demo_user = User.find_by(username: "Demo_User")
 
