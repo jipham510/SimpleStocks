@@ -84,6 +84,9 @@
             background: var(--chart-color);
             border: 1px solid var(--chart-color);
             font-weight: bold;
+            &:disabled {
+                opacity: 0.8;
+            }
             &:hover {
                 opacity: 0.8;
                 cursor: pointer;

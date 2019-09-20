@@ -51,6 +51,8 @@ class OrderForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.setState({ disabled: true })
+        const orderFormSubmit = document.querySelector(".order-form-submit");
+        orderFormSubmit.classList.add("disabled")
         if (!this.state.disabled) {
             let shares;
             if (this.state.shares === "") {

@@ -4,6 +4,16 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
+      #default settings when user is created
+      Deposit.create!( user_id: @user.id, deposit_money: 100000)
+      Watch.create!(user_id: @user.id, ticker: "SBUX")
+      Watch.create!(user_id: @user.id, ticker: "MSFT")
+      Watch.create!(user_id: @user.id, ticker: "TSLA")
+      Watch.create!(user_id: @user.id, ticker: "AAPL")
+      Watch.create!(user_id: @user.id, ticker: "TWTR")
+      Watch.create!(user_id: @user.id, ticker: "FB")
+      Watch.create!(user_id: @user.id, ticker: "DIS")
+      Watch.create!(user_id: @user.id, ticker: "GOOG")
       login!(@user)
       render :show
     else

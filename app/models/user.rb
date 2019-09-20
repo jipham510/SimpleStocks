@@ -21,55 +21,62 @@ class User < ApplicationRecord
 # demo_user = User.find_by(username: "Demo_User")
 
   def create_one_day_portfolio 
+    result = []
     url = "https://cloud.iexapis.com/stable/stock/market/batch?types=chart&range=1d&chartInterval=5&last=5&token=#{API_TOKEN}&symbols="
 
     stock_orders = Hash.new { |h, k| h[k] = [] }
     orders.each do |order|
       stock_orders[order.ticker].push(order)
     end
-    request = url + stock_orders.keys.join(',')
-    response = JSON.parse(open(request).read)
+    if stock_orders.length > 0
+      request = url + stock_orders.keys.join(',')
+      response = JSON.parse(open(request).read)
 
-    all_deposits = deposits.inject(0) { |sum, deposit| sum + deposit.deposit_money}
-    one_day_charts = []
-    buying_power_chart = Hash.new(0)
+      all_deposits = deposits.inject(0) { |sum, deposit| sum + deposit.deposit_money}
+      one_day_charts = []
+      buying_power_chart = Hash.new(0)
 
-    response.keys.each do |ticker|
-      stock_chart = []
-      current_owned = 0
-      buying_power_one_day = 0
-      response[ticker]["chart"].each_with_index do |day_data,idx|
-        stock_orders[ticker].each do |order|
-          if Time.zone.parse(order["created_at"].to_s) < Time.zone.parse(day_data["label"])
-            if order.order_type == "BUY"
-              buying_power_one_day -= order.net_value
-              current_owned += order.shares
-            else
-              buying_power_one_day += order.net_value
-              current_owned -= order.shares
+      response.keys.each do |ticker|
+        stock_chart = []
+        current_owned = 0
+        buying_power_one_day = 0
+        response[ticker]["chart"].each_with_index do |day_data,idx|
+          stock_orders[ticker].each do |order|
+            if Time.zone.parse(order["created_at"].to_s) < Time.zone.parse(day_data["label"])
+              if order.order_type == "BUY"
+                buying_power_one_day -= order.net_value
+                current_owned += order.shares
+              else
+                buying_power_one_day += order.net_value
+                current_owned -= order.shares
+              end
+              stock_orders[ticker].delete(order)
             end
-            stock_orders[ticker].delete(order)
+          end
+          buying_power_chart[idx] += buying_power_one_day
+          if current_owned > 0
+            if idx == 0 && day_data["close"].nil? 
+              fetch_latest_stock_price = "https://cloud.iexapis.com/stable/stock/market/batch?types=quote&token=#{API_TOKEN}&symbols=#{ticker}"
+              latest_stock_price_response = JSON.parse(open(fetch_latest_stock_price).read)
+              stock_chart.push(latest_stock_price_response[ticker]["quote"]["previousClose"])
+            else
+              day_data["close"].nil? ? stock_chart.push(stock_chart[-1]) : stock_chart.push(day_data["close"] * current_owned)
+            end
+          else
+            stock_chart.push(0)
           end
         end
-        buying_power_chart[idx] += buying_power_one_day
-        if current_owned > 0
-          day_data["close"].nil? ? stock_chart.push(stock_chart[-1]) : stock_chart.push(day_data["close"] * current_owned)
-        else
-          stock_chart.push(0)
+        one_day_charts.push(stock_chart)
+      end
+      response[response.keys.first]["chart"].each_with_index do |day_data,idx|
+        balance = 0
+        one_day_charts.each do |chart|
+          balance += chart[idx] 
         end
+        balance += buying_power_chart[idx] + all_deposits
+        result.push( { balance: balance, date: day_data["label"] } )
       end
-      one_day_charts.push(stock_chart)
     end
-    result = []
-    response[response.keys.first]["chart"].each_with_index do |day_data,idx|
-      balance = 0
-      one_day_charts.each do |chart|
-        balance += chart[idx] 
-      end
-      balance += buying_power_chart[idx] + all_deposits
-      result.push( { balance: balance, date: day_data["label"] } )
-    end
-    
     return result
   end
 
@@ -107,13 +114,14 @@ class User < ApplicationRecord
 
     total_shares_value = 0;
     request = url + shares.keys.join(',')
-
-    response = JSON.parse(open(request).read)
-    response.keys.each do |ticker| 
-      latestPrice = response[ticker]["quote"]["latestPrice"]
-      total_shares_value += shares[ticker] * latestPrice
+    if shares.keys.length > 0
+      response = JSON.parse(open(request).read)
+      response.keys.each do |ticker| 
+        latestPrice = response[ticker]["quote"]["latestPrice"]
+        total_shares_value += shares[ticker] * latestPrice
+      end
     end
-
+    
     return total_shares_value
   end
 
