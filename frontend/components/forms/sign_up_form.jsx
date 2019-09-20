@@ -13,7 +13,6 @@ class SignUpForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.redirectDemo = this.redirectDemo.bind(this);
-        this.handleLogoClick = this.handleLogoClick.bind(this);
         this.formatErrors = this.formatErrors.bind(this);
     }
     componentWillUnmount() {
@@ -32,9 +31,7 @@ class SignUpForm extends React.Component {
     redirectDemo() {
 
     }
-    handleLogoClick(){
-        this.props.history.push("/");
-    }
+
     formatErrors(){
         return this.props.errors.join(", ")
         }

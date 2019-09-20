@@ -7,6 +7,7 @@ import NewsIndexContainer from '../news/news_index_container';
 import WatchButtonContainer from '../watches/watch_button_container';
 import { css } from '@emotion/core';
 import { BeatLoader } from 'react-spinners';
+import { Redirect } from 'react-router-dom';
 
 const override = css`
   display: block;
@@ -20,7 +21,12 @@ class StockShow extends React.Component {
         super(props);
     }
     componentDidMount() {
-        this.props.fetchIntradayData(this.props.ticker)
+        this.props.fetchIntradayData(this.props.ticker).fail( (res) => console.log(res, "test"));
+    }
+    componentDidUpdate(prevProps) {
+        if(prevProps.ticker !== this.props.ticker ){
+            this.props.fetchIntradayData(this.props.ticker)
+        }
     }
     render() {
         return (

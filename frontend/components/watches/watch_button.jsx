@@ -19,7 +19,6 @@ class WatchButton extends React.Component {
             let watched = false;
             if (this.props.watches[this.props.ticker]) watched = true;
             this.setState({ watched});
-            console.log("updating")
         }
     }
     handleClick(e){

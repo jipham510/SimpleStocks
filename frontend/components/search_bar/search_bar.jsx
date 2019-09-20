@@ -90,12 +90,16 @@ class SearchBar extends React.Component {
     focusSearchBar(e){
         const searchBar = document.querySelector(".searchbar");
         const searchBarInput = document.querySelector(".search-bar-input");
+        const searchBarSvg = document.querySelector(".searchbar-svg");
 
         if (searchBar) {
             searchBar.classList.add('focus');
         }
         if (searchBarInput) {
             searchBarInput.classList.add('focus');
+        }
+        if (searchBarSvg) {
+            searchBarSvg.classList.add('focus');
         }
         if (e.type === "focus") {
             this.setState({ searchbarFocused: true });
@@ -104,12 +108,16 @@ class SearchBar extends React.Component {
     blurSearchBar(e){
         const searchBar = document.querySelector(".searchbar");
         const searchBarInput = document.querySelector(".search-bar-input");
+        const searchBarSvg = document.querySelector(".searchbar-svg");
         if (this.state.searchbarFocused === false) {
             if (searchBar) {
                 searchBar.classList.remove('focus');
             }
             if (searchBarInput) {
                 searchBarInput.classList.remove('focus');
+            }
+            if (searchBarSvg) {
+                searchBarSvg.classList.remove('focus');
             }
         }
         if ( e && e.type === "blur") {

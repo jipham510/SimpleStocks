@@ -23,13 +23,17 @@
         margin-left: 20px;
         height: 20px;
         width: 20px;
-        
+        &.focus {
+            background-color: var(--text-color);
+        }
+
     }
     .search-results {
-
+        font-weight: bold;
         .stock-heading {
             padding: 20px;
-            font-weight: bold;
+            // font-weight: bold;
+            color: #8C8C8E;
         }
         .search-item {
             display: flex;
@@ -55,8 +59,11 @@
         background: transparent;
         color: var(--text-color);
         border: 1px solid var(--search-bar-color);
-        &::-webkit-input-placeholder { 
-            color: #8C8C8E;
+
+        &.focus {
+            &::placeholder{
+                color: var(--text-color)
+            }
         }
         &.focus {
             border: 1px solid transparent;

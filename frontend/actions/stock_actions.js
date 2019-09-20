@@ -63,7 +63,12 @@ export const fetchStockStats = (ticker) => (dispatch) => APIStockUtil.fetchStock
 
 export const fetchStockChart = (ticker,range) => (dispatch) => APIStockUtil.fetchStockChart(ticker,range).then(stats => dispatch(receiveStockChart(stats,ticker)))
 
-export const fetchIntradayData = (ticker) => (dispatch) => APIStockUtil.fetchIntradayData(ticker).then(stats => dispatch(receiveIntradayData(stats,ticker)))
+export const fetchIntradayData = (ticker) => (dispatch) => APIStockUtil.fetchIntradayData(ticker)
+    .then(stats => dispatch(receiveIntradayData(stats,ticker)))
+// export const fetchIntradayData = (ticker) => (dispatch) => APIStockUtil.fetchIntradayData(ticker)
+//     .then(stats => dispatch(receiveIntradayData(stats,ticker)), 
+//         () => "failed to fetch stock"
+//     )
 
 export const fetchHistoricalData = (ticker) => (dispatch) => APIStockUtil.fetchHistoricalData(ticker).then(stats => dispatch(receiveHistoricalData(stats,ticker)))
 
