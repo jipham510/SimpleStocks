@@ -61,7 +61,7 @@ class User < ApplicationRecord
             if idx == 0 && day_data["close"].nil? 
               fetch_latest_stock_price = "https://cloud.iexapis.com/stable/stock/market/batch?types=quote&token=#{API_TOKEN}&symbols=#{ticker}"
               latest_stock_price_response = JSON.parse(open(fetch_latest_stock_price).read)
-              stock_chart.push(latest_stock_price_response[ticker]["quote"]["previousClose"])
+              stock_chart.push(latest_stock_price_response[ticker]["quote"]["previousClose"]* current_owned)
             else
               day_data["close"].nil? ? stock_chart.push(stock_chart[-1]) : stock_chart.push(day_data["close"] * current_owned)
             end

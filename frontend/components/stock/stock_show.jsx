@@ -32,7 +32,7 @@ class StockShow extends React.Component {
         return (
             <div>
                 <UserNavContainer />
-                {(this.props.intradayData.length > 2) ? (
+                {(this.props.intradayData.length !== 0) ? (
                     <div className="stock-show-wrapper">
                         <main className="stock-show-left-content">
                             <ChartContainer />
