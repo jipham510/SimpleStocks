@@ -1,5 +1,7 @@
 .doge-404 {
     // background: red;
+    display: flex;
+    flex-flow: row nowrap;
     width: 80vw;
     // background: red;
     margin: 0 auto;
@@ -13,7 +15,9 @@
         font-weight: 200;
         letter-spacing: 1px;
     }
-    
+    .doge {
+        height: 100vh;
+    }
     .error-body {
         letter-spacing: 1px;
         margin-top: 8vh;

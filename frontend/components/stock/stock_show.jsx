@@ -42,7 +42,7 @@ class StockShow extends React.Component {
         return (
             <div>
                 <UserNavContainer />
-                {(this.props.intradayData.length !== 0) ? (
+                {/* {(this.props.intradayData.length !== 0) ? ( */}
                     <div className="stock-show-wrapper">
                         <main className="stock-show-left-content">
                             <ChartContainer />
@@ -54,7 +54,7 @@ class StockShow extends React.Component {
                             <WatchButtonContainer ticker={this.props.ticker}/>
                         </div>
                     </div>
-                    ) : (
+                    {/* ) : (
                     <div className="stock-show-wrapper">
                         <BeatLoader
                             className={override}
@@ -63,7 +63,7 @@ class StockShow extends React.Component {
                                 color={"#67CF9A"}
                             loading={true}
                         />
-                    </div>
+                    </div> */}
 
                 )}
             </div>

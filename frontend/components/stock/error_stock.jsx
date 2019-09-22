@@ -25,7 +25,7 @@ class ErrorStock extends React.Component {
                         <h2>Such 404</h2>
                         <div className="error-body">
                             <h3>We couldn't find the stock you were looking for.</h3>
-                            <h3>It seems you may have taken a wrong turn.</h3>
+                            <h3>The stock market is also down for weekends and holidays</h3>
                         </div>
 
                         <div className="error-home-btn" onMouseEnter={this.handleHover} onMouseLeave={this.handleReset} onClick={() => this.props.history.push("/") }>
@@ -34,6 +34,7 @@ class ErrorStock extends React.Component {
                             </h4>
                         </div>
                     </div>
+                    <img src={window.dogeError} className="doge"/>
                 </div>
             </div>
         )
