@@ -39,10 +39,9 @@ class Chart extends React.Component {
             this.props.fetchStock(this.props.ticker).then(res => {
                 return this.setState({ stockName: res.stock.name })
             });
-            this.props.fetchIntradayData(this.props.ticker).then(res => {
-                this.setIntradayData(res.intradayData)
-            })
-
+            if (this.props.intradayData.length !== 0) {
+                this.setIntradayData(this.props.intradayData)
+            }
             if (this.props.historicalData.length === 0) {
                 this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
             } else {
@@ -54,9 +53,6 @@ class Chart extends React.Component {
         this.props.fetchStock(this.props.ticker).then(res => {
             return this.setState({ stockName: res.stock.name })
         });
-        // this.props.fetchIntradayData(this.props.ticker).then(res => { 
-        //     this.setIntradayData(res)
-        // })
         if (this.props.intradayData.length !== 0) {
             this.setIntradayData(this.props.intradayData)
         }

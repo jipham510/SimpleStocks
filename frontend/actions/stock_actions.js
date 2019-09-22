@@ -8,6 +8,7 @@ export const RECEIVE_COMPANY_INFO = "RECEIVE_COMPANY_INFO";
 export const RECEIVE_STOCK_STATS = "RECEIVE_STOCK_STATS";
 export const RECEIVE_STOCK_CHART = "RECEIVE_STOCK_CHART";
 export const RECEIVE_STOCKS = "RECEIVE_STOCKS";
+export const TICKER_NOT_FOUND = "TICKER_NOT_FOUND";
 
 const receiveStock = (stock) => {
     return {
@@ -52,6 +53,7 @@ const receiveHistoricalData = (historicalData,ticker) => ({
     ticker,
     historicalData
 })
+const tickerNotFound = ticker => ({ type: TICKER_NOT_FOUND, ticker });
 
 export const fetchStock = (ticker) => (dispatch) => APIStockUtil.fetchStock(ticker).then( stock => dispatch(receiveStock(stock)))
 
@@ -63,12 +65,12 @@ export const fetchStockStats = (ticker) => (dispatch) => APIStockUtil.fetchStock
 
 export const fetchStockChart = (ticker,range) => (dispatch) => APIStockUtil.fetchStockChart(ticker,range).then(stats => dispatch(receiveStockChart(stats,ticker)))
 
-export const fetchIntradayData = (ticker) => (dispatch) => APIStockUtil.fetchIntradayData(ticker)
-    .then(stats => dispatch(receiveIntradayData(stats,ticker)))
 // export const fetchIntradayData = (ticker) => (dispatch) => APIStockUtil.fetchIntradayData(ticker)
-//     .then(stats => dispatch(receiveIntradayData(stats,ticker)), 
-//         () => dispatch(intradayDataNotFound)
-//     )
+//     .then(stats => dispatch(receiveIntradayData(stats,ticker)))
+export const fetchIntradayData = (ticker) => (dispatch) => APIStockUtil.fetchIntradayData(ticker)
+    .then(stats => dispatch(receiveIntradayData(stats,ticker)), 
+        () => dispatch(tickerNotFound(ticker))
+    )
 
 export const fetchHistoricalData = (ticker) => (dispatch) => APIStockUtil.fetchHistoricalData(ticker).then(stats => dispatch(receiveHistoricalData(stats,ticker)))
 

@@ -21,11 +21,21 @@ class StockShow extends React.Component {
         super(props);
     }
     componentDidMount() {
-        this.props.fetchIntradayData(this.props.ticker).fail( (res) => console.log(res, "test"));
+        this.props.fetchIntradayData(this.props.ticker);
+        if (this.props.stock === "Not Found") {
+            this.props.history.push("/404");
+        }
+
     }
     componentDidUpdate(prevProps) {
         if(prevProps.ticker !== this.props.ticker ){
-            this.props.fetchIntradayData(this.props.ticker)
+            this.props.fetchIntradayData(this.props.ticker);
+        }
+        if(prevProps.stock !== this.props.stock){
+            // debugger
+            if (this.props.stock === "Not Found") {
+                this.props.history.push("/404");
+            }
         }
     }
     render() {

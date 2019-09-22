@@ -1,4 +1,4 @@
-import { RECEIVE_STOCK, RECEIVE_STOCKS, RECEIVE_COMPANY_INFO, RECEIVE_STOCK_STATS, RECEIVE_STOCK_CHART, RECEIVE_LATEST_STOCK_PRICE, RECEIVE_HISTORICAL_DATA, RECEIVE_INTRADAY_DATA } from '../actions/stock_actions';
+import { RECEIVE_STOCK, RECEIVE_STOCKS, RECEIVE_COMPANY_INFO, RECEIVE_STOCK_STATS, RECEIVE_STOCK_CHART, RECEIVE_LATEST_STOCK_PRICE, RECEIVE_HISTORICAL_DATA, RECEIVE_INTRADAY_DATA, TICKER_NOT_FOUND } from '../actions/stock_actions';
 import merge from "lodash/merge";
 const stockReducer = ( state={},action) => {
     Object.freeze(state);
@@ -28,6 +28,8 @@ const stockReducer = ( state={},action) => {
             let historicalData = { historicalData: action.historicalData };
             newStockState = merge({}, state, { [action.ticker]: historicalData });
             return newStockState;
+        case TICKER_NOT_FOUND:
+            return merge({}, state, {[action.ticker]: "Not Found"})
         default: 
             return state;
     }

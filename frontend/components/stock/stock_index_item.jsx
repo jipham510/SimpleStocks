@@ -24,14 +24,15 @@ class StockIndexItem extends React.Component {
         this.setData = this.setData.bind(this);
     }
     componentDidMount(){
-        if (this.props.intradayData) {
+        if (this.props.intradayData && this.props.intradayData.length > 0) {
             this.setData(this.props.intradayData)
         } else {
             this.props.fetchIntradayData(this.props.stock.ticker)
         }
     }
     componentDidUpdate(prevProps){
-        if(this.props.intradayData !== prevProps.intradayData){
+        if (this.props.intradayData && this.props.intradayData.length > 0 && this.props.intradayData !== prevProps.intradayData){
+            debugger
             this.setData(this.props.intradayData)
         }
     }

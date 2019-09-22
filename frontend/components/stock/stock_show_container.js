@@ -13,6 +13,7 @@ const mapStateToProps = (state,ownProps) => {
     }
     return {
         ticker: stockTicker, 
+        stock,
         intradayData
     }
 }
