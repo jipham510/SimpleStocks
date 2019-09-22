@@ -16,7 +16,7 @@ SimpleStocks is an investment app which simplifies stock trading and lets users 
 
 ## Features
 ### Dark Mode
-Dark mode is togglable on every page of the application. Using CSS variables, I made my css dynamic by having a corresponding color be triggered depending on whether or not my dark theme was applied to the body. 
+Dark mode is togglable on every page of the application through the top right menu. Using CSS variables, I made my css dynamic by having a corresponding color be triggered depending on whether or not my dark theme was applied to the body. 
 
 ![alt text](https://i.imgur.com/V7dhg70.png)
 
