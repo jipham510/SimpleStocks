@@ -19,7 +19,7 @@ class Chart extends React.Component {
             lineColor: GREEN,
             active: "1D",
             hoverPrice: 0,
-            timestamp:  "",
+            timestamp: "",
             currentPrice: 0,
             flux: 0,
             fluxPercent: 0,
@@ -34,7 +34,7 @@ class Chart extends React.Component {
         this.resetHoverPrice = this.resetHoverPrice.bind(this);
         this.setIntradayData = this.setIntradayData.bind(this);
     }
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps) {
         if (this.props.match.params.ticker !== prevProps.match.params.ticker) {
             this.props.fetchStock(this.props.ticker).then(res => {
                 return this.setState({ stockName: res.stock.name })
@@ -45,9 +45,9 @@ class Chart extends React.Component {
             if (this.props.historicalData.length === 0) {
                 this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
             } else {
-                this.setState({ historicalData: this.props.historicalData})
+                this.setState({ historicalData: this.props.historicalData })
             }
-        } 
+        }
     }
     componentDidMount() {
         this.props.fetchStock(this.props.ticker).then(res => {
@@ -59,7 +59,7 @@ class Chart extends React.Component {
         if (this.props.historicalData.length === 0) {
             this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
         } else {
-            this.setState( {historicalData: this.props.historicalData} )
+            this.setState({ historicalData: this.props.historicalData })
         }
     }
     setIntradayData(res) {
@@ -69,7 +69,7 @@ class Chart extends React.Component {
         })
         let lastIdx = data.length - 1;
         let color;
-        if(data.length > 0) {
+        if (data.length > 0) {
             data[0].close > data[lastIdx].close ? color = RED : color = GREEN;
             return this.setState({
                 intradayData: data,
@@ -84,13 +84,13 @@ class Chart extends React.Component {
             })
         }
     }
-    calculateFlux(dataPoint){
+    calculateFlux(dataPoint) {
         let flux = 0;
         let fluxPercent = 0;
         if (dataPoint) {
             let firstDataPoint = this.state.chartData[0];
             flux = dataPoint.close - firstDataPoint.close;
-            fluxPercent = (1 - firstDataPoint.close/dataPoint.close) * 100 ;
+            fluxPercent = (1 - firstDataPoint.close / dataPoint.close) * 100;
         }
         return this.setState({
             flux,
@@ -105,7 +105,7 @@ class Chart extends React.Component {
         return res;
     }
 
-    setColorStatus(){
+    setColorStatus() {
         const stockShowPage = document.querySelector("body");
         if (this.state.lineColor === GREEN) {
             stockShowPage.removeAttribute("data-status")
@@ -142,7 +142,7 @@ class Chart extends React.Component {
         this.setState({
             chartData: newChartData,
             lineColor: newColor
-        }, this.setColorStatus )
+        }, this.setColorStatus)
     }
     handleChangeRange(e) {
         let range = e.target.innerText;
@@ -179,21 +179,21 @@ class Chart extends React.Component {
         }
         return (
             <div className="line-chart-stock-show-page">
-                    <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
-                        <Line type="linear" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
-                        <YAxis domain={['dataMin', 'dataMax']} hide={true} />
+                <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
+                    <Line type="linear" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
+                    <YAxis domain={['dataMin', 'dataMax']} hide={true} />
 
-                        <Tooltip className="tooltip" content={renderTimeStamp}
-                            offset={-40}
-                            position={{ y: -20 }}
-                            isAnimationActive={false} />
-                    </LineChart>
+                    <Tooltip className="tooltip" content={renderTimeStamp}
+                        offset={-40}
+                        position={{ y: -20 }}
+                        isAnimationActive={false} />
+                </LineChart>
             </div>
         )
     }
     resetHoverPrice() {
         this.calculateFlux(this.state.chartData[this.state.chartData.length - 1]);
-        return this.setState({ hoverPrice: this.state.currentPrice})
+        return this.setState({ hoverPrice: this.state.currentPrice })
     }
     render() {
         return (
@@ -202,7 +202,7 @@ class Chart extends React.Component {
                     <h1>{this.state.stockName}</h1>
                     <h2>$<Odometer value={this.state.hoverPrice} /></h2>
                     <h3>{parseFloatToPosNegDollars(this.state.flux)} ({parseFloatToPostNegPercent(this.state.fluxPercent)})</h3>
-                    
+
                 </div>
                 {this.renderLineChart()}
                 <ul className="chart-ranges">

@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => {
     const stock = state.entities.stocks[ownProps.ticker];
-    // debugger
     const buyingPower = state.entities.users[state.session.id].buyingPower;
     const ownedShares = state.entities.users[state.session.id].ownedShares[ownProps.ticker];
     return {

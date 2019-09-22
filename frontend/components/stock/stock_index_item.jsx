@@ -23,20 +23,19 @@ class StockIndexItem extends React.Component {
         }
         this.setData = this.setData.bind(this);
     }
-    componentDidMount(){
+    componentDidMount() {
         if (this.props.intradayData && this.props.intradayData.length > 0) {
             this.setData(this.props.intradayData)
         } else {
             this.props.fetchIntradayData(this.props.stock.ticker)
         }
     }
-    componentDidUpdate(prevProps){
-        if (this.props.intradayData && this.props.intradayData.length > 0 && this.props.intradayData !== prevProps.intradayData){
-            debugger
+    componentDidUpdate(prevProps) {
+        if (this.props.intradayData && this.props.intradayData.length > 0 && this.props.intradayData !== prevProps.intradayData) {
             this.setData(this.props.intradayData)
         }
     }
-    setData(data){
+    setData(data) {
         const chart = data.filter(chart => {
             return chart.close !== null;
         })
@@ -44,12 +43,11 @@ class StockIndexItem extends React.Component {
             intradayData: chart,
             price: chart[chart.length - 1].close,
             initialLoad: 1
-        })        
+        })
 
     }
-    renderShares(){
-        if (this.props.stock.shares) 
-        {
+    renderShares() {
+        if (this.props.stock.shares) {
             return (
                 <div className="stock-index-item-shares">
                     {this.props.stock.shares} shares
@@ -58,39 +56,39 @@ class StockIndexItem extends React.Component {
         }
     }
 
-    render(){  
+    render() {
 
-        return(
-        <Link to={`/stocks/${this.props.stock.ticker}`}>
+        return (
+            <Link to={`/stocks/${this.props.stock.ticker}`}>
 
-            <div>
-                {(this.props.intradayData) ? (
-                    <div className="stock-index-item">
-                        <div className="stock-index-item-left-wrapper">
-                            <div className="stock-index-item-ticker">
-                                {this.props.stock.ticker}
-                            </div>
-                            {this.renderShares()}
-                        </div>
-                        <TinyChart intradayData={this.state.intradayData} initialLoad={this.state.initialLoad}/>
-                        <div className="stock-index-item-price">
-                            {parseFloatToDollars(this.state.price)}
-                        </div>
-                    </div>
-                    ) : (
+                <div>
+                    {(this.props.intradayData) ? (
                         <div className="stock-index-item">
-                            <BeatLoader
-                                className={override}
-                                sizeUnit={"px"}
-                                size={10}
-                                color={"#67CF9A"}
-                                loading={true}
-                            />
+                            <div className="stock-index-item-left-wrapper">
+                                <div className="stock-index-item-ticker">
+                                    {this.props.stock.ticker}
+                                </div>
+                                {this.renderShares()}
+                            </div>
+                            <TinyChart intradayData={this.state.intradayData} initialLoad={this.state.initialLoad} />
+                            <div className="stock-index-item-price">
+                                {parseFloatToDollars(this.state.price)}
+                            </div>
                         </div>
-                    )
-                }
-            </div>
-        </Link>
+                    ) : (
+                            <div className="stock-index-item">
+                                <BeatLoader
+                                    className={override}
+                                    sizeUnit={"px"}
+                                    size={10}
+                                    color={"#67CF9A"}
+                                    loading={true}
+                                />
+                            </div>
+                        )
+                    }
+                </div>
+            </Link>
         )
     }
 }
