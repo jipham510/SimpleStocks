@@ -1,24 +1,15 @@
-# README
+# SimpleStocks
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+SimpleStocks is an investment app which simplifies stock trading and lets users practice investing for free.
 
-Things you may want to cover:
+[Live Demo](https://simplestocks-fsp.herokuapp.com/#/)
 
-* Ruby version
+## Technologies
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Frontend: React, Redux
+* Backend: Ruby on Rails, PostgreSQL
+* Data Visualization: Recharts Library
+* IEX Trading API
+* [News API]
+* [Odometer JS](https://github.hubspot.com/odometer/docs/welcome/)
+* CSS and HTML5
