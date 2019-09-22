@@ -14,7 +14,9 @@ ActiveRecord::Base.transaction do
     Deposit.destroy_all
     Order.destroy_all
     Watch.destroy_all
-
+    Watch.destroy_all
+    PortfolioSnapshot.destroy_all
+    
     # stock data from datahub.io
     # https://pkgstore.datahub.io/core/nyse-other-listings/nyse-listed_csv/data/3c88fab8ec158c3cd55145243fe5fcdf/nyse-listed_csv.csv
     # https://pkgstore.datahub.io/core/nasdaq-listings/nasdaq-listed-symbols_csv/data/595a1f263719c09a8a0b4a64f17112c6/nasdaq-listed-symbols_csv.csv
