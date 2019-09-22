@@ -40,6 +40,7 @@ class Chart extends React.Component {
                 return this.setState({ stockName: res.stock.name })
             });
             if (this.props.intradayData.length !== 0) {
+                debugger
                 this.setIntradayData(this.props.intradayData)
             }
             if (this.props.historicalData.length === 0) {
