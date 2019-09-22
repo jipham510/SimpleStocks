@@ -48,7 +48,6 @@ class Portfolio extends React.Component {
     }
     setData(intradayData){
         // responseJSON: Array(1258) [0 … 99] 0: balance: 100000 created_at: "2019-09-18T16:33:01.896Z" id: 1258 snapshot_date: "2014-09-18"
-        debugger
         let lastIdx = intradayData.length - 1;
         let color;
         intradayData[0].balance > intradayData[lastIdx].balance ? color = RED : color = GREEN;
