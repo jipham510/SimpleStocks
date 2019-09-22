@@ -18,7 +18,7 @@ SimpleStocks is an investment app which simplifies stock trading and lets users 
 ### Dark Mode
 Dark mode is togglable on every page of the application. Using CSS variables, I made my css dynamic by having a corresponding color be triggered depending on whether or not my dark theme was applied to the body. 
 
-![alt text](https://imgur.com/V7dhg70)
+![alt text](https://i.imgur.com/V7dhg70.png)
 
 ### Data Visualization
 Using IEX Cloud to pull historical stock info and recharts JS to transform the data into line charts, I made visualizations of the stock data prices in real time. Once my chart component is mounted, it fetches the historical data of the past 5 years of a stock's value. Event handlers are set on the 1D, 1W, 1M, 3M, 1Y, and 5Y buttons. The chart component has a data state that changes its range depending on what event handler is triggered.
