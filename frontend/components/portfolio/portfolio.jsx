@@ -174,7 +174,7 @@ class Portfolio extends React.Component {
     render() {
         return (
             <div>
-
+                {(this.state.chartData.length !== 0) ? ( 
                     <div className="portfolio">
                         <div className="chart-header">
                             <h1>Balance</h1>
@@ -191,7 +191,20 @@ class Portfolio extends React.Component {
                             <li className={this.activeBtn("5Y")} onClick={this.handleChangeRange}>5Y</li>
                         </ul>
                     </div>
+                ) : (
+                        <div className="portfolio">
+                            <BeatLoader
+                                className={override}
+                                sizeUnit={"px"}
+                                size={10}
+                                color={"#67CF9A"}
+                                loading={true}
+                            />
+                        </div>
 
+                    )
+
+                }
 
             </div>
 
@@ -200,18 +213,42 @@ class Portfolio extends React.Component {
     }
 }
 export default Portfolio;
+// {(this.props.intradayData.length !== 0) ? ( 
+// <div className="stock-show-wrapper">
+//     <main className="stock-show-left-content">
+//         <ChartContainer />
+//         <StockInfoContainer />
+//         <NewsIndexContainer />
+//     </main>
+//     <div className="stock-show-right-content">
+//         <OrderFormContainer ticker={this.props.ticker} />
+//         <WatchButtonContainer ticker={this.props.ticker} />
+//     </div>
+// </div>
+// ) : (
+//                     <div className="stock-show-wrapper">
+//                         <BeatLoader
+//                             className={override}
+//                             sizeUnit={"px"}
+//                             size={10}
+//                                 color={"#67CF9A"}
+//                             loading={true}
+//                         />
+//                     </div> 
 
 
-// {/* {(this.state.chartData.length !== 0) ? ( */ }
-//                 // ) : (
-//                 //     <div className="portfolio"> 
-//                 //         <BeatLoader
-//                 //             className = { override }
-//                 //             sizeUnit = { "px" }
-//                 //             size = { 10 }
-//                 //             color = { "#67CF9A" }
-//                 //             loading = { true }
-//                 //         />
-//                 //     </div>
+// { (this.state.chartData.length !== 0) ? ( 
+//                 ) : (
+//                     <div className="portfolio"> 
+//                         <BeatLoader
+//                             className = { override }
+//                             sizeUnit = { "px" }
+//                             size = { 10 }
+//                             color = { "#67CF9A" }
+//                             loading = { true }
+//                         />
+//                     </div>
 
-//                 // )}
+//                 )
+            
+// }

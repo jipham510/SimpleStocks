@@ -21,11 +21,11 @@ const stockReducer = ( state={},action) => {
             newStockState = merge({}, state, { [action.ticker]: chartData });
             return newStockState;
         case RECEIVE_INTRADAY_DATA:
-            let intradayData = { intradayData: action.intradayData };
+            let intradayData = { intradayData: action.intradayData.chart };
             newStockState = merge({}, state, { [action.ticker]: intradayData });
             return newStockState;
         case RECEIVE_HISTORICAL_DATA:
-            let historicalData = { historicalData: action.historicalData };
+            let historicalData = { historicalData: action.historicalData.chart };
             newStockState = merge({}, state, { [action.ticker]: historicalData });
             return newStockState;
         case TICKER_NOT_FOUND:

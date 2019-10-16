@@ -18,8 +18,9 @@ class OrderForm extends React.Component {
     }
     componentDidUpdate(prevProps){
         if (this.props.stock !== prevProps.stock) {
-            const intradayData = this.props.stock.intradayData;
-            if (intradayData) {
+            if (!this.props.stock) return;
+            if ('intradayData' in this.props.stock) {
+                const intradayData = this.props.stock.intradayData;
                 let price;
                 for (let i = intradayData.length - 1; i >= 0; i--) {
                     if(intradayData[i].close !== null) {

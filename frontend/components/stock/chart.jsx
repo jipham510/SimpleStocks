@@ -36,15 +36,18 @@ class Chart extends React.Component {
     }
     componentDidUpdate(prevProps) {
         if (this.props.match.params.ticker !== prevProps.match.params.ticker) {
+            // debugger
             this.props.fetchStock(this.props.ticker).then(res => {
                 return this.setState({ stockName: res.stock.name })
             });
-            if (this.props.intradayData.length !== 0) {
-                debugger
+            if (this.props.intradayData.length === 0) {
+                this.props.fetchIntradayData(this.props.ticker).then(res => this.setIntradayData(res.intradayData.chart))
+
+            } else {
                 this.setIntradayData(this.props.intradayData)
             }
             if (this.props.historicalData.length === 0) {
-                this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+                this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState( {historicalData: res.historicalData.chart}));
             } else {
                 this.setState({ historicalData: this.props.historicalData })
             }
@@ -54,11 +57,17 @@ class Chart extends React.Component {
         this.props.fetchStock(this.props.ticker).then(res => {
             return this.setState({ stockName: res.stock.name })
         });
-        if (this.props.intradayData.length !== 0) {
+        if (this.props.intradayData.length === 0) {
+            this.props.fetchIntradayData(this.props.ticker).then(res => this.setIntradayData(res.intradayData.chart))
+
+        } else {
             this.setIntradayData(this.props.intradayData)
         }
         if (this.props.historicalData.length === 0) {
-            this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState(res));
+            this.props.fetchHistoricalData(this.props.ticker).then(res => {
+                // debugger
+                this.setState({ historicalData: res.historicalData.chart })
+            });
         } else {
             this.setState({ historicalData: this.props.historicalData })
         }

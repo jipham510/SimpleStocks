@@ -17,7 +17,7 @@ class User < ApplicationRecord
   through: :watches,
   source: :stock
 
-  API_TOKEN = "pk_4ff0e6bae6db470582f72a974c4a6501" #throwaway email
+  API_TOKEN = "pk_4f9e50b094df4d02875f0fbbe622fc5a" #throwaway email
   # API_TOKEN = "pk_fa06e2b91bce45c6a774b2a1ae8c678b" #production2 api kayn05555
 
 # demo_user = User.find_by(username: "Demo_User")
@@ -47,6 +47,7 @@ class User < ApplicationRecord
             if Time.zone.parse(order["created_at"].to_s) < Time.zone.parse(day_data["label"])
               if order.order_type == "BUY"
                 buying_power_one_day -= order.net_value
+                
                 current_owned += order.shares
               else
                 buying_power_one_day += order.net_value
@@ -212,13 +213,7 @@ class User < ApplicationRecord
       total_balance = five_year_buying_power[idx] 
       five_year_charts.each do |chart| 
         total_balance += chart[idx]
-        # if idx == chart.length - 1
-        #   puts "balance: #{total_balance}"
-        # end
       end
-      
-      # validates :user_id, :balance, :snapshot_date, presence: true
-
       PortfolioSnapshot.create!( user_id: id, snapshot_date: day_data["date"], balance: total_balance)
     end
     return five_year_chart
