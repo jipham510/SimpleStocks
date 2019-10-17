@@ -97,8 +97,6 @@ class User < ApplicationRecord
   end
 
 
-
-  # https://cloud.iexapis.com/stable/stock/market/batch?types=chart&range=1d&last=5&token=#{your_token_here}&symbols=
   def current_balance
     return owned_shares_value + buying_power
   end
@@ -205,7 +203,6 @@ class User < ApplicationRecord
     response = JSON.parse(open(url).read)
     five_year_chart = response["AAPL"]["chart"]
     five_year_buying_power = create_five_year_buying_power(five_year_chart)
-    # puts "buying power: #{five_year_buying_power[-1]}"
 
 
     five_year_chart = five_year_chart.each_with_index.map do |day_data,idx| 
@@ -241,7 +238,6 @@ class User < ApplicationRecord
   end
   def create_five_year_charts
     charts = []
-    # https://cloud.iexapis.com/stable/stock/market/batch?types=chart&range=5Y&token=pk_de82e1c265ce403880d83e5d17770609&symbols=AAPL,GOOGL,
     
     url = "https://cloud.iexapis.com/stable/stock/market/batch?types=chart&range=5Y&token=#{API_TOKEN}&symbols="
     tickers = orders.map { |order| order.ticker }

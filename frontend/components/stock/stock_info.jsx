@@ -79,7 +79,7 @@ class StockInfo extends React.Component {
                         <li className="stat">
                             <h5>CEO</h5>
                             <div className="stat-info">
-                                <a className="link-CEO" href={this.parseCEOToLink(this.state.company_info.CEO)}>
+                                <a target="_blank" className="link-CEO" href={this.parseCEOToLink(this.state.company_info.CEO)}>
                                     {this.parseCEOName(this.state.company_info.CEO)}
                                 </a>
                             </div>

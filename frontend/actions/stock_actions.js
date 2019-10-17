@@ -72,6 +72,8 @@ export const fetchIntradayData = (ticker) => (dispatch) => APIStockUtil.fetchInt
         () => dispatch(tickerNotFound(ticker))
     )
 
-export const fetchHistoricalData = (ticker) => (dispatch) => APIStockUtil.fetchHistoricalData(ticker).then(stats => dispatch(receiveHistoricalData(stats,ticker)))
+export const fetch5YrHistoricalData = (ticker) => (dispatch) => APIStockUtil.fetch5YrHistoricalData(ticker).then(stats => dispatch(receiveHistoricalData(stats,ticker)))
+
+export const fetch1YrHistoricalData = (ticker) => (dispatch) => APIStockUtil.fetch1YrHistoricalData(ticker).then(stats => dispatch(receiveHistoricalData(stats,ticker)))
 
 export const fetchStocks = () => (dispatch) => APIStockUtil.fetchStocks().then( stocks => dispatch(receiveStocks(stocks)))

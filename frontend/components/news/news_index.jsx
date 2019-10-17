@@ -29,7 +29,7 @@ class NewsIndex extends React.Component {
                     <NewsIndexItem article={article} key={idx} />
                 ))}
 
-                <a href="https://newsapi.org/"> 
+                <a target="_blank" href="https://newsapi.org/"> 
                     <div className="credit-news-api">
                         Powered by News API
                     </div> 

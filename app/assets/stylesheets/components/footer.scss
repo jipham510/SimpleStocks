@@ -1,0 +1,24 @@
+.contact-me-footer {
+  margin-top: 4vh;
+  h2 {
+    padding: 2vh 0vh;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .icons {
+    margin-bottom: 10vh;
+    margin-left: 4px;
+    a {
+      color: var(--text-color);
+    }
+    a:hover {
+      color: var(--chart-color);
+    }
+    .fa-2x {
+        padding-right: 5px;
+    }
+    .fa-envelope {
+        margin-top: 2px;
+    }
+  }
+}

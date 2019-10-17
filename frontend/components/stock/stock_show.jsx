@@ -1,14 +1,13 @@
 import React from 'react';
 import StockInfoContainer from './stock_info_container';
 import ChartContainer from './chart_container';
-// import Footer from './footer';
+import Footer from '../home/footer';
 import UserNavContainer from '../nav/user_nav_container';
 import OrderFormContainer from '../forms/order_form/order_form_container';
 import NewsIndexContainer from '../news/news_index_container';
 import WatchButtonContainer from '../watches/watch_button_container';
 import { css } from '@emotion/core';
-import { BeatLoader } from 'react-spinners';
-import { Redirect } from 'react-router-dom';
+
 
 const override = css`
   display: block;
@@ -49,7 +48,7 @@ class StockShow extends React.Component {
                             <ChartContainer />
                             <StockInfoContainer />
                             <NewsIndexContainer />
-                            {/* <Footer /> */}
+                            <Footer />
                         </main>
                         <div className="stock-show-right-content">
                             <OrderFormContainer ticker={this.props.ticker}/>

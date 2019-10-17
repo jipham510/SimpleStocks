@@ -1,5 +1,6 @@
 .news-index {
     width: 50vw;
+    border-bottom: 1px solid #F4F4F5;
 
     h2 {
         padding: 2vh 0vh;
@@ -9,8 +10,7 @@
     .credit-news-api {
         font-size: 14px;
         color: var(--chart-color);
-        margin-top: 5vh;
-        margin-bottom: 15vh;
+        margin: 15px 0px;
         padding-bottom: 5px;
         position: relative;
         width: 140px;

@@ -8,7 +8,6 @@
 }
 
 body {
-    overflow: hidden;
     font-size: 14px;
     font-family: $main-font;
     position: relative;
@@ -23,6 +22,7 @@ body {
         }
     }
 }
+
 a {
     text-decoration: none;
 }
@@ -52,7 +52,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    height: 110vh;
+    height: 100vh;
     overflow: hidden;
     margin-left: 9vw;
     margin-right: 9vw;

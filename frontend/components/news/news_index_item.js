@@ -4,7 +4,7 @@ import React from 'react';
 const NewsIndexItem = ( props) => {
     return (
         <li >
-            <a href={props.article.url} className="news-index-item">
+            <a target="_blank" href={props.article.url} className="news-index-item">
                 <div className="article-info"> 
                     <h5>{props.article.title}</h5> 
                     <h6>{props.article.description}</h6> 

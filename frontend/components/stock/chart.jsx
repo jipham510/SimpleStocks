@@ -5,6 +5,11 @@ import Odometer from 'react-odometerjs';
 import { css } from '@emotion/core';
 import { BeatLoader } from 'react-spinners';
 
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 const RED = "#EB5333"
 const GREEN = "#67CF9A"
@@ -36,7 +41,6 @@ class Chart extends React.Component {
     }
     componentDidUpdate(prevProps) {
         if (this.props.match.params.ticker !== prevProps.match.params.ticker) {
-            // debugger
             this.props.fetchStock(this.props.ticker).then(res => {
                 return this.setState({ stockName: res.stock.name })
             });
@@ -47,7 +51,7 @@ class Chart extends React.Component {
                 this.setIntradayData(this.props.intradayData)
             }
             if (this.props.historicalData.length === 0) {
-                this.props.fetchHistoricalData(this.props.ticker).then(res => this.setState( {historicalData: res.historicalData.chart}));
+                this.props.fetch1YrHistoricalData(this.props.ticker).then(res => this.setState( {historicalData: res.historicalData.chart}));
             } else {
                 this.setState({ historicalData: this.props.historicalData })
             }
@@ -64,8 +68,7 @@ class Chart extends React.Component {
             this.setIntradayData(this.props.intradayData)
         }
         if (this.props.historicalData.length === 0) {
-            this.props.fetchHistoricalData(this.props.ticker).then(res => {
-                // debugger
+            this.props.fetch1YrHistoricalData(this.props.ticker).then(res => {
                 this.setState({ historicalData: res.historicalData.chart })
             });
         } else {
@@ -142,6 +145,16 @@ class Chart extends React.Component {
             newChartData = this.state.historicalData.slice(historicalLength - 264, historicalLength)
         } else if (range === "5Y") {
             newChartData = this.state.historicalData
+            if (newChartData.length < 300 ) {
+                this.props.fetch5YrHistoricalData(this.props.ticker).then(res => 
+                    this.setState({ 
+                        historicalData: res.historicalData.chart,
+                        chartData: res.historicalData.chart
+                    })
+                );
+            } else {
+                newChartData = this.state.historicalData
+            }
         }
         let newColor;
         if (newChartData.length !== 0 && newChartData[0].close > newChartData[newChartData.length - 1].close) {
@@ -207,14 +220,31 @@ class Chart extends React.Component {
     }
     render() {
         return (
+            
             <div className="stock-show-chart-wrapper">
+
                 <div className="chart-header">
                     <h1>{this.state.stockName}</h1>
                     <h2>$<Odometer value={this.state.hoverPrice} /></h2>
                     <h3>{parseFloatToPosNegDollars(this.state.flux)} ({parseFloatToPostNegPercent(this.state.fluxPercent)})</h3>
 
                 </div>
-                {this.renderLineChart()}
+                {(this.state.active !== "5Y" || this.state.chartData.length > 300) ? ( 
+                    <div>
+                        {this.renderLineChart()} 
+                    </div>
+                ) : (
+                    <div className="line-chart-stock-show-page">
+
+                    <BeatLoader
+                        className={override}
+                        sizeUnit={"px"}
+                        size={10}
+                        color={"#67CF9A"}
+                        loading={true}
+                        />
+                    </div>
+                )}
                 <ul className="chart-ranges">
                     <li className={this.activeBtn("1D")} onClick={this.handleChangeRange}>1D</li>
                     <li className={this.activeBtn("1W")} onClick={this.handleChangeRange}>1W</li>

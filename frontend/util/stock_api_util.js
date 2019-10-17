@@ -49,10 +49,16 @@ export const fetchIntradayData = (ticker) => (
         url: `https://cloud.iexapis.com/stable/stock/${ticker}/batch?&types=quote,chart&range=1D&chartInterval=5&token=${API_TOKEN}`
     })
 )
-export const fetchHistoricalData = (ticker) => (
+export const fetch5YrHistoricalData = (ticker) => (
     $.ajax({
         method: "GET",
-        url: `https://cloud.iexapis.com/stable/stock/${ticker}/batch?&types=quote,chart&range=5Y&chartInterval=5&token=${API_TOKEN}`
+        url: `https://cloud.iexapis.com/stable/stock/${ticker}/batch?&types=quote,chart&range=5Y&token=${API_TOKEN}`
+    })
+)
+export const fetch1YrHistoricalData = (ticker) => (
+    $.ajax({
+        method: "GET",
+        url: `https://cloud.iexapis.com/stable/stock/${ticker}/batch?&types=quote,chart&range=1Y&token=${API_TOKEN}`
     })
 )
 // /stock/aapl/chart
