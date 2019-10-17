@@ -13,6 +13,10 @@ class LoginForm extends React.Component {
         this.handleDemo = this.handleDemo.bind(this);
         this.demoLogin = this.demoLogin.bind(this);
     }
+    componentDidMount(){
+        const state = this.props.history.location.state;
+        if (state && state.demoActive) this.handleDemo();
+    }
     componentWillUnmount(){
         this.props.clearErrors();
     }

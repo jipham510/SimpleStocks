@@ -1,6 +1,7 @@
 import React from 'react';
 import StockInfoContainer from './stock_info_container';
 import ChartContainer from './chart_container';
+// import Footer from './footer';
 import UserNavContainer from '../nav/user_nav_container';
 import OrderFormContainer from '../forms/order_form/order_form_container';
 import NewsIndexContainer from '../news/news_index_container';
@@ -48,6 +49,7 @@ class StockShow extends React.Component {
                             <ChartContainer />
                             <StockInfoContainer />
                             <NewsIndexContainer />
+                            {/* <Footer /> */}
                         </main>
                         <div className="stock-show-right-content">
                             <OrderFormContainer ticker={this.props.ticker}/>

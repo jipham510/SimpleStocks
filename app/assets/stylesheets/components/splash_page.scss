@@ -8,6 +8,8 @@
 }
 
 body {
+    overflow: hidden;
+    font-size: 14px;
     font-family: $main-font;
     position: relative;
     background: var(--background-color);
@@ -40,6 +42,7 @@ a {
         margin-top: 17px;
     }
     &:hover {
+        cursor: pointer;
         text-decoration: underline;
         box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }

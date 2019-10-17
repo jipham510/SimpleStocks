@@ -1,12 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router'
 
 class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.refreshPageOrRedirect = this.refreshPageOrRedirect.bind(this);
         this.toggleDarkMode = this.toggleDarkMode.bind(this);
+        this.handleRedirectToDemo = this.handleRedirectToDemo.bind(this);
     }
+    handleRedirectToDemo(){
+        this.props.history.push({ pathname: "/login", state: { demoActive: true }});
+        // document.getElementById("demo").click();
 
+    }
     refreshPageOrRedirect() {
         if (this.props.match.path === "/") {
             window.location.reload();
@@ -47,6 +54,8 @@ class Nav extends React.Component {
 
                 <div className="menu">
                     <div className="theme" onClick={this.toggleDarkMode}>Dark Mode</div>
+                    <div className="log-in"> <Link to="/login"> Log In </Link></div>
+                    <div className="sign-up" onClick={this.handleRedirectToDemo}> <h4>Demo</h4> </div> 
                 </div>
             </nav>
         )

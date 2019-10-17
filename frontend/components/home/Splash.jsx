@@ -17,12 +17,11 @@ const Splash = (props) => {
                     <a href="#!" className="hoverlinks">
                         <i className="fab fa-github fa-2x"></i>
                     </a>
+                    <a href="#!" className="hoverlinks">
+                        <i class="fas fa-user-alt"></i>
+                    </a>
                     
                 </div> */}
-                <div className="menu">
-                    <div className="log-in"> <Link to="/login"> Log In </Link></div>
-                    <Link to="/signup"> <div className="sign-up"> <h4 className="sign-up-text"> Sign Up</h4> </div> </Link>
-                </div>
 
             </header>
 
