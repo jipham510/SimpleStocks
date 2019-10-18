@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Asap|Covered+By+Your+Grace&display=swap');
+
 $background-color: white;
-$primary-color : #67CF9A;
-$secondary-color : #1B1B1D;
+$primary-color: #67CF9A;
+$secondary-color: #1B1B1D;
 // $secondary-color : #030c14;
 :root { 
     //variables depending on dark theme
@@ -76,6 +78,7 @@ $secondary-color : #1B1B1D;
 }
 
 $main-font: "DIN Pro", "DIN Web", sans-serif;
+$secondary-font: 'Asap', sans-serif;
 @mixin easeOut {
     transition: all 0.3s ease-out;
 }
