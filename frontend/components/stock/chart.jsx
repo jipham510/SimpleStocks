@@ -41,6 +41,7 @@ class Chart extends React.Component {
     }
     componentDidUpdate(prevProps) {
         if (this.props.match.params.ticker !== prevProps.match.params.ticker) {
+            this.setState({active: "1D"});
             this.props.fetchStock(this.props.ticker).then(res => {
                 return this.setState({ stockName: res.stock.name })
             });
