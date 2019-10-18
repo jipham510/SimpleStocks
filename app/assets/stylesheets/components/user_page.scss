@@ -15,7 +15,10 @@
 .main-content {
     display: flex;
     flex-direction: column;
-    padding-top: 13.5vh;
+    // align-items: center;
+    // justify-content: center;
+
+    padding-top: 120px;
     padding-left: 13.9vw;
     h1{
         font-size: 2em;

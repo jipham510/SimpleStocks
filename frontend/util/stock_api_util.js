@@ -1,7 +1,7 @@
 // const API_TOKEN = "pk_b357a793cf184f798b22ece36112c791"; //throwaway email
 // const API_TOKEN = "pk_213bab875424446b80f0869547f9a6a7" //production api kayn022222
 // const API_TOKEN = "pk_fa06e2b91bce45c6a774b2a1ae8c678b" //production2 api kayn05555
-const API_TOKEN = "pk_4f9e50b094df4d02875f0fbbe622fc5a" //kayn0222
+const API_TOKEN = "pk_507026b3e85f4e4a889d2c112c20b532" //kayn0222
 export const fetchStock = (ticker) => (
     $.ajax({
         method: "GET",

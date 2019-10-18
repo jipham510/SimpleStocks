@@ -57,8 +57,8 @@
         }
         .article-img {
             margin-left: 30px;
-            width: 200px;
-            height: 140px;
+            max-width: 200px;
+            // height: 140px;
         }
         &:hover {
             background: #EEEEEE;
