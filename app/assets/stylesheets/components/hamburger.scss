@@ -1,0 +1,68 @@
+.hamburger-btn{
+    display: none;
+    position: absolute;
+    z-index: 3;
+    right: 20px;
+    top: 25px;
+    cursor: pointer;
+    @include easeOut;
+    .btn-line{
+        width: 28px;
+        height: 3px;
+        margin: 0 0 5px 0;
+        background: var(--text-color);
+        @include easeOut;
+    }
+    &.close {
+        transform: rotate(180deg);
+        .btn-line {
+            &:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+                background: #EB5333;
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+                background: #EB5333;
+            }
+        }
+    }
+}
+
+// .hamburger {
+//     position: fixed;
+//     top: -200px;
+//     width: 100%;
+//     opacity: 1;
+//     // visibility: hidden;
+//     @include easeOut;
+//     &.open {
+//         @include easeOut;
+//         top: 0px;
+//         // visibility: visible;
+//     }
+//     &-nav {
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: center;
+//         background: white;
+//         li {
+//             font-family: 'Asap', sans-serif;
+//             padding: 40px 100px;
+//             font-size: 20px;
+//             transition: font-size 0.5s ease-out;
+//         }
+//         li:hover {
+//             @include easeOut();
+//             color: white;
+//             font-weight: bold;
+//             font-size: 30px;
+//             opacity: 1;
+            
+//         }
+
+//     }
+
+// }

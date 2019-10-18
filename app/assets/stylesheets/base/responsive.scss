@@ -21,6 +21,10 @@ TOC :
 }
 
 @media only screen and (max-width: 1024px) {
+  .hamburger-btn{
+    display: block;
+  }
+
   .main-content {
     // padding-left: 13.9vw;
     padding-left: 5vw;
