@@ -29,6 +29,12 @@ TOC :
     padding-left: 5vw;
     padding-top: 80px;
   }
+  .stock-show-wrapper { 
+    display: block;
+    padding-left: 5vw;
+    padding-top: 80px;
+
+  }
   .user-page-header .user-nav-menu-wrapper {
     // left: 66vw;
     left: 59vw;
@@ -44,15 +50,22 @@ TOC :
     margin-bottom: 17vw;
   }
   .stock-show-left-content {
-    width: 50vw !important ;
-    height: 20vw !important ;
-    
+    width: 90vw !important ;
   }
   .stock-show-wrapper .stock-show-left-content .stock-info { 
-    width: 50vw !important ;
+    width: 100% ;
   }
-  // .stock-show-left-content .stock-show-chart-wrapper .line-chart-stock-show-page {
-  // }
+  .stock-show-left-content .stock-show-chart-wrapper .line-chart-stock-show-page {
+    width: 90vw !important;
+    height: 20vh !important;
+  }
+
+  .stock-show-wrapper .stock-show-left-content .stock-show-chart-wrapper .chart-header {
+    padding: 2vh 0vh;
+  }
+  .stock-show-wrapper .stock-show-left-content .stock-info .stock-info-description-wrapper {
+    width: 90%;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -74,6 +87,9 @@ TOC :
     width: 68vw;
   }
   .user-page-header .user-nav-menu-wrapper .user-nav-menu  {
+    display: none;
+  }
+  .stock-show-right-content {
     display: none;
   }
   .watchlist {
@@ -98,12 +114,12 @@ TOC :
 
   }
   .news-index {
-    width: 100vw;
+    width: 90vw;
     h2 {
       padding: 15px 0px;
     }
     .article-img {
-      margin-right: 30px;
+      margin-left: 30px;
     }
   }
 
@@ -115,7 +131,7 @@ TOC :
     // }
     
     .article-img {
-      max-width: 130px !important;
+      max-width: 140px !important;
     }
   }
   .watchlist .stock-index-item .mini-chart {
