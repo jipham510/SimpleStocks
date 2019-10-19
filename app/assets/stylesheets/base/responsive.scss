@@ -61,10 +61,53 @@ TOC :
   }
 
   .stock-show-wrapper .stock-show-left-content .stock-show-chart-wrapper .chart-header {
-    padding: 2vh 0vh;
+    padding: 0vh 0vh;
+    padding-bottom: 15px;
   }
   .stock-show-wrapper .stock-show-left-content .stock-info .stock-info-description-wrapper {
     width: 90%;
+  }
+
+  .mobile-stock-show {
+    display: flex;
+  }
+  .mobile-stock-show .watch-btn {
+    padding: 20px 0px;
+    margin: 15px 0px;
+    margin-right: 15px;
+    // color: var(--text-color);
+    // background: var(--chart-color);
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .stock-show-right-content {
+    position: fixed;
+    z-index: 15;
+    width: 100vw;
+    height: 100vh;
+    left: 100vw;
+    top: 0px;
+    padding-bottom: 0;
+    background-color: var(--background-color);
+    // visibility: hidden;
+    @include easeOut;
+    &.open {
+        @include easeOut;
+        left: 0vw;
+        // visibility: visible;
+    }
+    .order-sidebar {
+     margin-bottom: 0px; 
+     width: 100%; 
+     height: 100%;
+    }
+    .order-form-footer {
+      text-align: left;
+    }
+    .watch-btn {
+      display: none;
+    }
   }
 }
 
@@ -87,9 +130,6 @@ TOC :
     width: 68vw;
   }
   .user-page-header .user-nav-menu-wrapper .user-nav-menu  {
-    display: none;
-  }
-  .stock-show-right-content {
     display: none;
   }
   .watchlist {
@@ -137,5 +177,8 @@ TOC :
   .watchlist .stock-index-item .mini-chart {
     width: 120px;
     height: 60px;
+  }
+  .stock-show-wrapper .stock-show-left-content .stock-info .stock-stats-wrapper .stock-stats .stat {
+    margin-right: 30px;
   }
 }

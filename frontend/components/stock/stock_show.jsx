@@ -19,6 +19,7 @@ const override = css`
 class StockShow extends React.Component {
     constructor(props) {
         super(props);
+        this.showOrderForm = this.showOrderForm.bind(this);
     }
     componentDidMount() {
         this.props.fetchIntradayData(this.props.ticker);
@@ -38,6 +39,15 @@ class StockShow extends React.Component {
             }
         }
     }
+    showOrderForm(){
+        const orderForm = document.querySelector('.stock-show-right-content');
+        // const closeStocks = document.querySelector('.closeStocks .hamburger-btn');
+        if (orderForm.classList.contains("open")) {
+            orderForm.classList.remove("open");
+        } else {
+            orderForm.classList.add("open");
+        }
+    }
     render() {
         return (
             <div>
@@ -46,6 +56,14 @@ class StockShow extends React.Component {
                     <div className="stock-show-wrapper">
                         <main className="stock-show-left-content">
                             <ChartContainer />
+                            <div className="mobile-stock-show-wrapper">
+                                <div className="mobile-stock-show">
+                                    <div className="show-order-form" onClick={this.showOrderForm}>
+                                        Buy/Sell Stock
+                                    </div>
+                                    <WatchButtonContainer ticker={this.props.ticker}/>
+                                </div>
+                            </div>
                             <StockInfoContainer />
                             <NewsIndexContainer />
                             <Footer />

@@ -15,6 +15,7 @@ class OrderForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateShare = this.updateShare.bind(this);
         this.renderOrderFormFooter = this.renderOrderFormFooter.bind(this);
+        this.hideOrderForm = this.hideOrderForm.bind(this);
     }
     componentDidUpdate(prevProps){
         if (this.props.stock !== prevProps.stock) {
@@ -94,7 +95,14 @@ class OrderForm extends React.Component {
             )
         }
     }
-
+    hideOrderForm() {
+        const orderForm = document.querySelector('.stock-show-right-content');
+        if (orderForm.classList.contains("open")) {
+            orderForm.classList.remove("open");
+        } else {
+            orderForm.classList.add("open");
+        }
+    }
     render() {
         return (
             <div className="order-sidebar">
@@ -104,6 +112,11 @@ class OrderForm extends React.Component {
                     </div>
                     <div className={this.activeBtn("SELL")} onClick={ () => this.changeActive("SELL")}>
                         SELL {this.props.ticker}
+                    </div>
+                    <div className="hamburger-btn close" onClick={this.hideOrderForm}>
+                        <div className="btn-line"></div>
+                        <div className="btn-line"></div>
+                        <div className="btn-line"></div>
                     </div>
                 </header>
                 <form onSubmit={this.handleSubmit}>

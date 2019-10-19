@@ -27,7 +27,7 @@ class StockIndex extends React.Component {
                         <div className="btn-line"></div>
                     </div>
                 <div className="stock-index-header">Stocks Owned</div>
-
+                
                 {this.props.ownedStocks.map( stock => 
                     (<StockIndexItemContainer stock={stock} key={stock.ticker} />)
                 )}
