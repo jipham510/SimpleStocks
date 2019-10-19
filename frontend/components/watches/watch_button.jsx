@@ -15,7 +15,8 @@ class WatchButton extends React.Component {
         this.props.fetchWatchedStocks();
     }
     componentDidUpdate(prevProps) {
-        if (this.props.watches !== prevProps.watches) {
+        
+        if (this.props.match.params.ticker !== prevProps.match.params.ticker) {
             let watched = false;
             if (this.props.watches[this.props.ticker]) watched = true;
             this.setState({ watched});

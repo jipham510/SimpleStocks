@@ -11,7 +11,7 @@ class Nav extends React.Component {
     }
     handleRedirectToDemo(){
         this.props.history.push({ pathname: "/login", state: { demoActive: true }});
-        // document.getElementById("demo").click();
+        // document.getElementBy Id("demo").click();
 
     }
     refreshPageOrRedirect() {

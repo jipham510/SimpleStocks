@@ -21,10 +21,6 @@ TOC :
 }
 
 @media only screen and (max-width: 1024px) {
-  .hamburger-btn{
-    display: block;
-  }
-
   .main-content {
     // padding-left: 13.9vw;
     padding-left: 5vw;
@@ -47,6 +43,14 @@ TOC :
 }
 
 @media only screen and (max-width: 767px) {
+  .hamburger-btn{
+    display: block;
+  }
+  .Stock-list .hamburger-btn{
+    display: block;
+    
+  }
+
   .portfolio {
     width: 90vw;
     height: 20vh;
@@ -60,7 +64,20 @@ TOC :
     display: none;
   }
   .watchlist {
-    display: none;
+    z-index: 15;
+    width: 100vw;
+    height: 100vh;
+    left: 100vw;
+    top: 0px;
+    background-color: var(--background-color);
+    // visibility: hidden;
+    @include easeOut;
+    &.open {
+        @include easeOut;
+        left: 0vw;
+        // visibility: visible;
+    }
+
   }
   .news-index {
     width: 100vw;

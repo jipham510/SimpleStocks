@@ -4,12 +4,20 @@ import Hamburger from './hamburger';
 class UserNav extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            refreshing: false
+        }
         this.refreshPageOrRedirect = this.refreshPageOrRedirect.bind(this);
         this.toggleDarkMode = this.toggleDarkMode.bind(this);
+        this.showStocks = this.showStocks.bind(this);
+        this.handleCloseStocks = this.handleCloseStocks.bind(this);
+        this.decideRenderStock = this.decideRenderStock.bind(this);
     }
 
     refreshPageOrRedirect() {
+        if(this.state.refreshing) return;
         if (this.props.match.path === "/") {
+            this.setState({ refreshing: true});
             window.location.reload();
         } else {
             this.props.history.push("/");
@@ -37,8 +45,8 @@ class UserNav extends React.Component {
             body.setAttribute("data-theme", "dark")
         }
     }
-    handleHamburgerClick(e){
-        const hamburgerBtn = e.currentTarget;
+    handleHamburgerClick(){
+        const hamburgerBtn = document.querySelector('.hamburger-btn');
         const menu = document.querySelector('.menu');
         const menuNav = document.querySelector('.menu-nav');
         const menuItems = document.querySelector('.menu-items'); 
@@ -54,6 +62,28 @@ class UserNav extends React.Component {
             menuItems.classList.add("open");
         }
     }
+    showStocks(){
+        const watchlist = document.querySelector('.watchlist');
+        if (watchlist.classList.contains("open")) {
+            watchlist.classList.remove("open");
+        } else {
+            watchlist.classList.add("open");
+            this.handleHamburgerClick();
+        }
+    }
+    handleCloseStocks(){
+        const watchlist = document.querySelector('.watchlist');
+
+    }
+    decideRenderStock(){
+        if (this.props.match.path === "/") {
+            return (
+                <li className="menu-items" onClick={this.showStocks}>
+                    Stocks
+                </li>
+            )
+        }
+    }
     render() {
         return (
             <header className="user-page-header">
@@ -62,6 +92,7 @@ class UserNav extends React.Component {
                 </div>
                 <SearchBarContainer />
                 <Hamburger handleHamburgerClick={this.handleHamburgerClick}/>
+
                 <div className="menu">
                     <ul className="menu-nav">
                         <li className="menu-items" onClick={this.refreshPageOrRedirect}>
@@ -70,6 +101,7 @@ class UserNav extends React.Component {
                         <li className="menu-items" onClick={this.toggleDarkMode}>
                             Dark Mode
                         </li>
+                        { this.decideRenderStock()}
                         <li className="menu-items" onClick={this.props.logout} >
                             Log Out
                         </li>
