@@ -83,6 +83,13 @@ class UserNav extends React.Component {
                 </li>
             )
         }
+        else {
+            return (
+                <li className="menu-items" onClick={this.refreshPageOrRedirect}>
+                    Home
+                </li>
+            )
+        }
     }
     render() {
         return (
@@ -95,8 +102,8 @@ class UserNav extends React.Component {
 
                 <div className="menu">
                     <ul className="menu-nav">
-                        <li className="menu-items" onClick={this.refreshPageOrRedirect}>
-                            Home
+                        <li className="menu-header">
+                            Menu
                         </li>
                         <li className="menu-items" onClick={this.toggleDarkMode}>
                             Dark Mode

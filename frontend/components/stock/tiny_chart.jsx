@@ -21,13 +21,13 @@ const TinyChart = (props) => {
 
     return (
         <div className="mini-chart">
-            {/* <ResponsiveContainer width='100%' height="100%"> */}
-            <LineChart data={props.intradayData} width={100} height={50}  key={props.initialLoad} cursor="pointer">
+            <ResponsiveContainer width='100%' height="100%">
+            <LineChart data={props.intradayData} key={props.initialLoad} cursor="pointer">
                     <Line type="linear" dataKey="close" stroke={lineColor()} strokeWidth={2} dot={false} />
                     <YAxis domain={['dataMin', 'dataMax']} hide={true} />
     
                 </LineChart>
-            {/* </ResponsiveContainer> */}
+            </ResponsiveContainer>
         </div>
     )
 }

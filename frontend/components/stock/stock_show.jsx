@@ -66,7 +66,7 @@ class StockShow extends React.Component {
                         />
                     </div> */}
 
-                )}
+            
             </div>
         )
     }

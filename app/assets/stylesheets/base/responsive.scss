@@ -18,6 +18,9 @@ TOC :
   .watchlist {
     width: 25vw;
   }
+  .stock-show-right-content {
+    margin-left: 0vw;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -40,6 +43,16 @@ TOC :
   .portfolio {
     margin-bottom: 17vw;
   }
+  .stock-show-left-content {
+    width: 50vw !important ;
+    height: 20vw !important ;
+    
+  }
+  .stock-show-wrapper .stock-show-left-content .stock-info { 
+    width: 50vw !important ;
+  }
+  // .stock-show-left-content .stock-show-chart-wrapper .line-chart-stock-show-page {
+  // }
 }
 
 @media only screen and (max-width: 767px) {
@@ -69,8 +82,13 @@ TOC :
     height: 100vh;
     left: 100vw;
     top: 0px;
+    padding-bottom: 100px;
     background-color: var(--background-color);
     // visibility: hidden;
+    .stock-index-item .mini-chart {
+      width: 200px;
+      height: 100px;
+    }
     @include easeOut;
     &.open {
         @include easeOut;
@@ -95,9 +113,13 @@ TOC :
     // .article-info h5 {
     //   width: 100px;
     // }
+    
     .article-img {
       max-width: 130px !important;
     }
   }
-
+  .watchlist .stock-index-item .mini-chart {
+    width: 120px;
+    height: 60px;
+  }
 }

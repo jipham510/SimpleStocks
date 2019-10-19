@@ -33,7 +33,7 @@ class StockIndex extends React.Component {
                 )}
 
                 <div className="stock-index-header watch-list">Watch List</div>
-                    {this.props.watchedStocks.map( stock => 
+                {this.props.watchedStocks.map( stock => 
                     (<StockIndexItemContainer stock={stock} key={stock.ticker} />)
                 )}
                 </ul>

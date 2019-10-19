@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { parseFloatToPostNegPercent, parseFloatToPosNegDollars } from '../../util/util';
 import Odometer from 'react-odometerjs';
 import { css } from '@emotion/core';
@@ -52,7 +52,7 @@ class Chart extends React.Component {
                 this.setIntradayData(this.props.intradayData)
             }
             if (this.props.historicalData.length === 0) {
-                this.props.fetch1YrHistoricalData(this.props.ticker).then(res => this.setState( {historicalData: res.historicalData.chart}));
+                // this.props.fetch1YrHistoricalData(this.props.ticker).then(res => this.setState( {historicalData: res.historicalData.chart}));
             } else {
                 this.setState({ historicalData: this.props.historicalData })
             }
@@ -69,9 +69,9 @@ class Chart extends React.Component {
             this.setIntradayData(this.props.intradayData)
         }
         if (this.props.historicalData.length === 0) {
-            this.props.fetch1YrHistoricalData(this.props.ticker).then(res => {
-                this.setState({ historicalData: res.historicalData.chart })
-            });
+            // this.props.fetch1YrHistoricalData(this.props.ticker).then(res => {
+            //     this.setState({ historicalData: res.historicalData.chart })
+            // });
         } else {
             this.setState({ historicalData: this.props.historicalData })
         }
@@ -147,12 +147,12 @@ class Chart extends React.Component {
         } else if (range === "5Y") {
             newChartData = this.state.historicalData
             if (newChartData.length < 300 ) {
-                this.props.fetch5YrHistoricalData(this.props.ticker).then(res => 
-                    this.setState({ 
-                        historicalData: res.historicalData.chart,
-                        chartData: res.historicalData.chart
-                    })
-                );
+                // this.props.fetch5YrHistoricalData(this.props.ticker).then(res => 
+                //     this.setState({ 
+                //         historicalData: res.historicalData.chart,
+                //         chartData: res.historicalData.chart
+                //     })
+                // );
             } else {
                 newChartData = this.state.historicalData
             }
@@ -203,15 +203,17 @@ class Chart extends React.Component {
         }
         return (
             <div className="line-chart-stock-show-page">
-                <LineChart data={this.state.chartData} width={700} height={300} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
-                    <Line type="linear" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
-                    <YAxis domain={['dataMin', 'dataMax']} hide={true} />
+                <ResponsiveContainer width='100%' height="100%">
+                    <LineChart data={this.state.chartData} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
+                        <Line type="linear" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
+                        <YAxis domain={['dataMin', 'dataMax']} hide={true} />
 
-                    <Tooltip className="tooltip" content={renderTimeStamp}
-                        offset={-40}
-                        position={{ y: -20 }}
-                        isAnimationActive={false} />
-                </LineChart>
+                        <Tooltip className="tooltip" content={renderTimeStamp}
+                            offset={-40}
+                            position={{ y: -20 }}
+                            isAnimationActive={false} />
+                    </LineChart>
+                </ResponsiveContainer>
             </div>
         )
     }
