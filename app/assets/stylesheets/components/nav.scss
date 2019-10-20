@@ -31,7 +31,6 @@
             padding: 0px 5px;
             position: relative;
             width: 150px;
-            z-index: 1;
         }
         &:hover {
             cursor: pointer;
@@ -44,46 +43,47 @@
 
     .splash-menu-wrapper {
         position: absolute;
-        z-index: 3;
         top: 0px;
-        right: 0vw; 
-        margin-right: 9vw;
-        .theme {
-            position: absolute;
-            right: 17vw;
+        left: 66vw;
+        width: 25vw;
+        .splash-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items:flex-start;
+            align-content:flex-start;
             margin-top: 26px;
-            white-space: nowrap;
-            font-weight: bold;
-            font-size: 16px;
-            color: var(--text-color);
-            
-            &:hover {
-                cursor: pointer;
-                text-decoration: underline;
-                @include easeOut();
-                color: $primary-color;
-            }
-        }
-        .log-in {
-            a {
-                text-decoration: none;
+            z-index: 3;
+
+            .theme {
+                white-space: nowrap;
+                font-weight: bold;
+                font-size: 16px;
                 color: var(--text-color);
+                
                 &:hover {
+                    cursor: pointer;
                     text-decoration: underline;
                     @include easeOut();
                     color: $primary-color;
                 }
             }
-            margin-top: 26px;
-            font-size: 16px;
-            font-weight: bold;
-            position: absolute;
-            right: 10vw;
-            white-space: nowrap;
-        }
-        .sign-up{
-            position: absolute;
-            right: 0vw;
+            .log-in {
+                a {
+                    text-decoration: none;
+                    color: var(--text-color);
+                    &:hover {
+                        text-decoration: underline;
+                        @include easeOut();
+                        color: $primary-color;
+                    }
+                }
+                font-size: 16px;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+            .sign-up{
+                margin-top: -15px;
+            }
         }
     }
 }

@@ -21,6 +21,9 @@ TOC :
   .stock-show-right-content {
     margin-left: 0vw;
   }
+  .front-page-wrapper .front-page-pic-container .front-page-pic {
+    margin-left: -150px;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -109,6 +112,65 @@ TOC :
       display: none;
     }
   }
+
+  .front-page-wrapper .front-page-pic-container .front-page-pic { 
+    display: none;
+  }
+  .splash-menu-wrapper {
+    display: none;
+  }
+  .splash-nav .hamburger-btn {
+    display: block;
+  }
+  .background-img {
+    background: none;
+    .splash-nav {
+      display: block;
+    }
+    .login-form {
+      // position: relative;
+      left: 9vw;
+      top: 22.5vh;
+    }
+  }
+  .right-side-content {
+    display: none;
+  }
+  .SignUpForm .signup-body .signup-form {
+    width: 80vw;
+  }
+  .SignUpForm .signup-body .signup-form .input-field {
+    width: 80vw;
+  }
+  .SignUpForm .signup-body .signup-form .first-name {
+    width: 38vw;
+    margin-right: 4vw;
+  }
+  .SignUpForm .signup-body .signup-form .last-name {
+    width: 38vw;
+  }
+  .front-page-wrapper .front-page-intro .cover {
+    width: 100vw !important;
+
+  }
+  .sign-up-submit-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .SignUpForm .signup-body .signup-form .sign-up-submit-wrapper #signup-form-button {
+    margin-right: 4vw;
+  }
+  .sign-up-submit-wrapper .form-button 
+  {
+    width: 38vw;
+    h4 {
+      font-size: 1.5em;
+      margin-top: -3px;
+    }
+  }
+
 }
 
 @media only screen and (max-width: 767px) {
@@ -187,9 +249,6 @@ TOC :
 
   .front-page-wrapper {
     .front-page-intro {
-      .cover {
-        width: 100vw;
-      }
       h1 {
       font-size: 2.5em;
       }
@@ -197,6 +256,20 @@ TOC :
       font-size: 1.3em;
 
       }
+    }
+  }
+  .background-img .login-form .input-field {
+    width: 80vw;
+  }
+  .SignUpForm .signup-body .signup-form {
+    h1 {
+      font-size: 25px;
+      white-space: nowrap;
+
+    }
+    h3 {
+      font-size: 20px;
+      
     }
   }
 }

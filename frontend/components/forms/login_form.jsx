@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NavContainer from '../nav/nav_container';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -78,6 +79,9 @@ class LoginForm extends React.Component {
 
         return (
             <div className="background-img">
+                <header className="splash-nav">
+                    <NavContainer />
+                </header>
                 <div className="login-form">
                     <div className="text1"><h1>Welcome to SimpleStocks</h1></div>
                     <form onSubmit={this.handleSubmit}>

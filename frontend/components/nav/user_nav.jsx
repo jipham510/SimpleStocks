@@ -46,7 +46,7 @@ class UserNav extends React.Component {
         }
     }
     handleHamburgerClick(){
-        const hamburgerBtn = document.querySelector('.hamburger-btn');
+        const hamburgerBtn = document.querySelector('.user-page-header .hamburger-btn');
         const menu = document.querySelector('.menu');
         const menuNav = document.querySelector('.menu-nav');
         const menuItems = document.querySelector('.menu-items'); 

@@ -6,9 +6,13 @@ import Hamburger from './hamburger';
 class Nav extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            refreshing: false
+        }
         this.refreshPageOrRedirect = this.refreshPageOrRedirect.bind(this);
         this.toggleDarkMode = this.toggleDarkMode.bind(this);
         this.handleRedirectToDemo = this.handleRedirectToDemo.bind(this);
+        this.handleHamburgerClick = this.handleHamburgerClick.bind(this);
     }
     handleRedirectToDemo(){
         this.props.history.push({ pathname: "/login", state: { demoActive: true }});
@@ -16,7 +20,9 @@ class Nav extends React.Component {
 
     }
     refreshPageOrRedirect() {
+        if (this.state.refreshing) return;
         if (this.props.match.path === "/") {
+            this.setState({ refreshing: true });
             window.location.reload();
         } else {
             this.props.history.push("/");
@@ -44,22 +50,82 @@ class Nav extends React.Component {
             body.setAttribute("data-theme", "dark")
         }
     }
-
+    handleHamburgerClick() {
+        const hamburgerBtn = document.querySelector('.splash-nav .hamburger-btn');
+        const menu = document.querySelector('.menu');
+        const menuNav = document.querySelector('.menu-nav');
+        const menuItems = document.querySelector('.menu-items');
+        if (hamburgerBtn.classList.contains("close")) {
+            hamburgerBtn.classList.remove("close");
+            menu.classList.remove("open");
+            menuNav.classList.remove("open");
+            menuItems.classList.remove("open");
+        } else {
+            hamburgerBtn.classList.add("close");
+            menu.classList.add("open");
+            menuNav.classList.add("open");
+            menuItems.classList.add("open");
+        }
+    }
     render() {
         return (
-            <nav>
+            <nav className="splash-nav">
                 <div id="logo" onClick={this.refreshPageOrRedirect}>
                     <div className="logo-image"></div>
                     <h4>SimpleStocks</h4>
                 </div>
 
+                <Hamburger handleHamburgerClick={this.handleHamburgerClick} />
+
+                <div className="menu">
+                    <ul className="menu-nav">
+                        <li className="menu-header">
+                            Menu
+                        </li>
+                        <li className="menu-items" onClick={this.toggleDarkMode}>
+                            Dark Mode
+                        </li>
+                        {(this.props.match.path !== "/login") ? 
+                            (
+                                <li className="menu-items" onClick={this.handleRedirectToDemo} >
+                                    Demo
+                                </li>
+                            ) : ""
+                        }
+                        { (this.props.match.path !== "/") ? 
+                            (
+                                <li className="menu-items" onClick={this.refreshPageOrRedirect}>
+                                    Home
+                                </li>
+                            ) : ""
+                        }
+                        {
+                            (this.props.match.path !== "/login") ? 
+                            (
+                                <li className="menu-items" onClick={() => this.props.history.push("/login")} >
+                                    Log In
+                                </li>
+                            ) : ""
+                        }
+                        {
+                            (this.props.match.path !== "/signup") ? 
+                            (
+                                <li className="menu-items" onClick={() => this.props.history.push("/signup")} >
+                                    Sign Up
+                                </li>
+                            ) : ""
+                        }
+                        
+                    </ul>
+                </div>
                 <div className="splash-menu-wrapper">
                     <div className="splash-menu">
                         <div className="theme" onClick={this.toggleDarkMode}>Dark Mode</div>
                         <div className="log-in"> <Link to="/login"> Log In </Link></div>
-                        <div className="sign-up" onClick={this.handleRedirectToDemo}> <h4>Demo</h4> </div> 
+                        <div className="sign-up" onClick={this.handleRedirectToDemo}> <h4>Demo</h4> </div>
                     </div>
                 </div>
+                
             </nav>
         )
     }

@@ -29,12 +29,12 @@ class SignUpForm extends React.Component {
         this.props.processForm(user);
     }
     redirectDemo() {
-
+        this.props.history.push({ pathname: "/login", state: { demoActive: true } });
     }
 
     formatErrors(){
-        return this.props.errors.join(", ")
-        }
+        return this.props.errors[0];
+    }
     render() {
         return (
             <div className="SignUpForm">
@@ -66,7 +66,13 @@ class SignUpForm extends React.Component {
                                 <ul className="errors">
                                     {this.formatErrors()}
                                 </ul> 
-                            <input type="submit" className="form-button" value="Sign Up" id="signup-form-button" />
+                            <div className="sign-up-submit-wrapper">
+                                <input type="submit" className="form-button" value="Sign Up" id="signup-form-button" />
+
+                                <div className="form-button" onClick={this.redirectDemo}>
+                                    <h4>Demo</h4>
+                                </div>
+                            </div>
 
                         </form>
 
