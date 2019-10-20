@@ -112,7 +112,7 @@ class Portfolio extends React.Component {
         )
         return (
             <ResponsiveContainer width='100%' height="100%">
-                <LineChart data={this.state.chartData} key={this.state.initialLoad} className="stock-show-chart" onMouseMove={this.handleMouseHover} onMouseDown={this.handleMouseHover} onMouseLeave={this.resetHoverBalance} >
+                <LineChart data={this.state.chartData} key={this.state.initialLoad} className="stock-show-chart" onMouseMove={this.handleMouseHover} onTouchStart={this.handleMouseHover} onMouseLeave={this.resetHoverBalance} >
                     <Line type="linear" dataKey="balance" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
 
                     <YAxis domain={['dataMin', 'dataMax']} hide={true} />

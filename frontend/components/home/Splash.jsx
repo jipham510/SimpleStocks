@@ -14,18 +14,17 @@ const Splash = (props) => {
                     <div className="cover"></div>
                     <div className="front-page-text1">
                         <h1>
-                            Invest
+                            Investing
                         </h1>
                     </div>
                     <div className="front-page-text2">
                         <h1>
-                            Commission-Free
+                            Made Simple
                         </h1>
                     </div>
                     <br/>
                     <div className="front-page-text3">
-                        <h2> Invest in stocks, ETFs, options, and </h2>
-                        <h2> cryptocurrencies, all commission-free, </h2> 
+                        <h2> Practice investing in stocks</h2>
                         <h2> right from your phone or desktop.</h2>
                     </div>
 

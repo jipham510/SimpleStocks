@@ -45,7 +45,7 @@ class SignUpForm extends React.Component {
                 <div className="signup-body">
                     <div className="signup-form">
                         <h1 className="signup-form-heading1">Make Your Money Move</h1>
-                            <h3 className="signup-form-heading2">Simple Stocks lets you invest in companies you love, <br/>commission-free</h3>
+                            <h3 className="signup-form-heading2">SimpleStocks lets you invest in companies you love, <br/>commission-free</h3>
                         <form onSubmit={this.handleSubmit}>
                             <div className="name-form">
                                     <input type="text" placeholder="First Name" className="input-field first-name" value={this.state.first_name} onChange={this.update('first_name')} />

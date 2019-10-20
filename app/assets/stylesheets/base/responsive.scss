@@ -36,7 +36,7 @@ TOC :
     display: block;
     padding-left: 5vw;
     padding-top: 80px;
-
+    margin: 0px;
   }
   .user-page-header .user-nav-menu-wrapper {
     // left: 66vw;
@@ -137,6 +137,9 @@ TOC :
   .right-side-content {
     display: none;
   }
+  .SignUpForm .signup-body .right-side-content #video-background {
+    display: none;
+  }
   .SignUpForm .signup-body .signup-form {
     width: 80vw;
   }
@@ -232,6 +235,9 @@ TOC :
     }
   }
 
+  .splash-nav #logo {
+    margin-left: 5.5vw;
+  }
 }
 @media only screen and (max-width: 479px) {
   .news-index {
@@ -275,5 +281,8 @@ TOC :
       font-size: 20px;
       
     }
+  }
+  .splash-nav #logo {
+    margin-left: 4.5vw;
   }
 }
