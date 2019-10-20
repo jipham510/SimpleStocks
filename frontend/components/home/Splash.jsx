@@ -7,22 +7,6 @@ const Splash = (props) => {
         <div className="splash-wrapper">
             <header className="splash-nav">
                 <NavContainer />
-                {/* <div className="icons">
-                    <a href="#!" className="hoverlinks">
-                        <i className="fas fa-envelope fa-2x"></i>
-                    </a>
-                    <a href="#!" className="hoverlinks">
-                        <i className="fab fa-linkedin fa-2x"></i>
-                    </a>
-                    <a href="#!" className="hoverlinks">
-                        <i className="fab fa-github fa-2x"></i>
-                    </a>
-                    <a href="#!" className="hoverlinks">
-                        <i class="fas fa-user-alt"></i>
-                    </a>
-                    
-                </div> */}
-
             </header>
 
             <div className="front-page-wrapper">
@@ -44,9 +28,7 @@ const Splash = (props) => {
                         <h2> cryptocurrencies, all commission-free, </h2> 
                         <h2> right from your phone or desktop.</h2>
                     </div>
-                    <br/>
-                    <br/>
-                    <br/>
+
                     <Link to="/signup">
                         <div className="sign-up">
                             <h4 className="sign-up-text">Sign Up</h4>

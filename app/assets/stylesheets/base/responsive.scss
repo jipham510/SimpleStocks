@@ -132,6 +132,9 @@ TOC :
   .user-page-header .user-nav-menu-wrapper .user-nav-menu  {
     display: none;
   }
+  .splash-nav .splash-menu-wrapper  {
+    display: none;
+  }
   .watchlist {
     z-index: 15;
     width: 100vw;
@@ -180,5 +183,20 @@ TOC :
   }
   .stock-show-wrapper .stock-show-left-content .stock-info .stock-stats-wrapper .stock-stats .stat {
     margin-right: 30px;
+  }
+
+  .front-page-wrapper {
+    .front-page-intro {
+      .cover {
+        width: 100vw;
+      }
+      h1 {
+      font-size: 2.5em;
+      }
+      h2 {
+      font-size: 1.3em;
+
+      }
+    }
   }
 }

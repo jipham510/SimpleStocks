@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router';
+import Hamburger from './hamburger';
 
 class Nav extends React.Component {
     constructor(props) {
@@ -52,10 +53,12 @@ class Nav extends React.Component {
                     <h4>SimpleStocks</h4>
                 </div>
 
-                <div className="splash-menu">
-                    <div className="theme" onClick={this.toggleDarkMode}>Dark Mode</div>
-                    <div className="log-in"> <Link to="/login"> Log In </Link></div>
-                    <div className="sign-up" onClick={this.handleRedirectToDemo}> <h4>Demo</h4> </div> 
+                <div className="splash-menu-wrapper">
+                    <div className="splash-menu">
+                        <div className="theme" onClick={this.toggleDarkMode}>Dark Mode</div>
+                        <div className="log-in"> <Link to="/login"> Log In </Link></div>
+                        <div className="sign-up" onClick={this.handleRedirectToDemo}> <h4>Demo</h4> </div> 
+                    </div>
                 </div>
             </nav>
         )
