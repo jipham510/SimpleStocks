@@ -27,16 +27,21 @@ TOC :
 }
 
 @media only screen and (max-width: 1024px) {
+  .body {
+    width: 100vw;
+  }
   .main-content {
     // padding-left: 13.9vw;
     padding-left: 5vw;
     padding-top: 80px;
+    width: 100vw;
   }
   .stock-show-wrapper { 
     display: block;
     padding-left: 5vw;
     padding-top: 80px;
     margin: 0px;
+    width: 100vw;
   }
   .user-page-header .user-nav-menu-wrapper {
     // left: 66vw;
@@ -94,12 +99,12 @@ TOC :
     top: 0px;
     padding-bottom: 0;
     background-color: var(--background-color);
-    // visibility: hidden;
+    visibility: hidden;
     @include easeOut;
     &.open {
         @include easeOut;
         left: 0vw;
-        // visibility: visible;
+        visibility: visible;
     }
     .order-sidebar {
      margin-bottom: 0px; 
