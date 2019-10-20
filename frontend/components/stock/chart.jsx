@@ -52,7 +52,7 @@ class Chart extends React.Component {
                 this.setIntradayData(this.props.intradayData)
             }
             if (this.props.historicalData.length === 0) {
-                // this.props.fetch1YrHistoricalData(this.props.ticker).then(res => this.setState( {historicalData: res.historicalData.chart}));
+                this.props.fetch1YrHistoricalData(this.props.ticker).then(res => this.setState( {historicalData: res.historicalData.chart}));
             } else {
                 this.setState({ historicalData: this.props.historicalData })
             }
@@ -69,9 +69,9 @@ class Chart extends React.Component {
             this.setIntradayData(this.props.intradayData)
         }
         if (this.props.historicalData.length === 0) {
-            // this.props.fetch1YrHistoricalData(this.props.ticker).then(res => {
-            //     this.setState({ historicalData: res.historicalData.chart })
-            // });
+            this.props.fetch1YrHistoricalData(this.props.ticker).then(res => {
+                this.setState({ historicalData: res.historicalData.chart })
+            });
         } else {
             this.setState({ historicalData: this.props.historicalData })
         }
@@ -147,12 +147,12 @@ class Chart extends React.Component {
         } else if (range === "5Y") {
             newChartData = this.state.historicalData
             if (newChartData.length < 300 ) {
-                // this.props.fetch5YrHistoricalData(this.props.ticker).then(res => 
-                //     this.setState({ 
-                //         historicalData: res.historicalData.chart,
-                //         chartData: res.historicalData.chart
-                //     })
-                // );
+                this.props.fetch5YrHistoricalData(this.props.ticker).then(res => 
+                    this.setState({ 
+                        historicalData: res.historicalData.chart,
+                        chartData: res.historicalData.chart
+                    })
+                );
             } else {
                 newChartData = this.state.historicalData
             }
