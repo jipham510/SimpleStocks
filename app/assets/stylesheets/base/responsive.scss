@@ -66,6 +66,9 @@ TOC :
   .stock-show-left-content .stock-show-chart-wrapper .line-chart-stock-show-page {
     width: 90vw !important;
     height: 20vh !important;
+    padding-top: 20px;
+    margin-top: -20px;
+    overflow-x: hidden;
   }
 
   .stock-show-wrapper .stock-show-left-content .stock-show-chart-wrapper .chart-header {
