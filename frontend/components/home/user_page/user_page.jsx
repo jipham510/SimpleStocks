@@ -6,7 +6,9 @@ import PortfolioContainer from '../../portfolio/portfolio_container';
 import Footer from '../footer';
 
 class UserPage extends React.Component {
-
+    componentDidMount(){
+        window.scrollTo(0, 0)
+    }
     render() {
         return (
             <div className="home">

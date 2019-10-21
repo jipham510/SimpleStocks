@@ -26,7 +26,7 @@ class StockShow extends React.Component {
         if (this.props.stock === "Not Found") {
             this.props.history.push("/404");
         }
-
+        window.scrollTo(0, 0)
     }
     componentDidUpdate(prevProps) {
         if(prevProps.ticker !== this.props.ticker ){

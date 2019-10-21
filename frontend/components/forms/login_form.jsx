@@ -107,11 +107,13 @@ class LoginForm extends React.Component {
                                 </li>
                             ))}
                         </ul>
-                    <input type="submit" className="form-button" value="Sign In" id="login-form-button"/>
+                        <div className="login-form-submit-wrapper">
+                            <input type="submit" className="form-button" value="Sign In" id="login-form-button"/>
+                            <div className="form-button" id="demo" onClick={this.handleDemo}>
+                                <h4>Demo</h4>
+                            </div>
+                        </div>
                     </form>
-                    <div className="form-button" id="demo" onClick={this.handleDemo}>
-                        <h4>Demo</h4>
-                    </div>
                 </div>
             </div>
         )

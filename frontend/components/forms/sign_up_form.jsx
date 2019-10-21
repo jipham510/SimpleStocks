@@ -15,6 +15,12 @@ class SignUpForm extends React.Component {
         this.redirectDemo = this.redirectDemo.bind(this);
         this.formatErrors = this.formatErrors.bind(this);
     }
+    componentDidMount(){
+        const backgroundVideo = document.querySelector("#video-background");
+        if (window.innerWidth >= 1024) {
+            backgroundVideo.setAttribute("autoplay", "autoplay")
+        }
+    }
     componentWillUnmount() {
         this.props.clearErrors();
     }
@@ -82,7 +88,7 @@ class SignUpForm extends React.Component {
                         </div>
                     </div>
                     <div className="right-side-content">
-                        <video autoPlay loop muted id="video-background">
+                        <video loop muted id="video-background">
                                 <source src={window.signUpVideoURL} type="video/mp4"></source>
                         </video>
                         <div className="content-description">

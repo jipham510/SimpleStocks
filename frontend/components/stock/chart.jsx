@@ -204,7 +204,7 @@ class Chart extends React.Component {
         return (
             <div className="line-chart-stock-show-page">
                 <ResponsiveContainer width='100%' height="100%">
-                    <LineChart data={this.state.chartData} onMouseMove={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
+                    <LineChart data={this.state.chartData} onMouseMove={this.handleMouseHover} onTouchStart={this.handleMouseHover} onMouseLeave={this.resetHoverPrice} key={this.state.initialLoad} className="stock-show-chart">
                         <Line type="linear" dataKey="close" stroke={this.state.lineColor} strokeWidth={2} dot={false} />
                         <YAxis domain={['dataMin', 'dataMax']} hide={true} />
 
