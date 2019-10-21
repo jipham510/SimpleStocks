@@ -11,6 +11,7 @@ class Nav extends React.Component {
         }
         this.refreshPageOrRedirect = this.refreshPageOrRedirect.bind(this);
         this.toggleDarkMode = this.toggleDarkMode.bind(this);
+        this.toggleDarkModeMobile = this.toggleDarkModeMobile.bind(this);
         this.handleRedirectToDemo = this.handleRedirectToDemo.bind(this);
         this.handleHamburgerClick = this.handleHamburgerClick.bind(this);
     }
@@ -28,7 +29,7 @@ class Nav extends React.Component {
             this.props.history.push("/");
         }
     }
-    toggleDarkMode(e) {
+    toggleDarkModeMobile(e) {
         const body = document.querySelector("body");
     
         if (body.getAttribute("data-theme")) {
@@ -38,6 +39,19 @@ class Nav extends React.Component {
         } else {
             localStorage.setItem("theme", "dark")
             e.target.innerHTML = `<i class="menu-item-symbol fas fa-sun"></i>Light Mode`;
+            body.setAttribute("data-theme", "dark")
+        }
+    }
+    toggleDarkMode(e) {
+        const body = document.querySelector("body");
+    
+        if (body.getAttribute("data-theme")) {
+            localStorage.setItem("theme", "light")
+            e.target.innerHTML = `Dark Mode`;
+            body.removeAttribute("data-theme")
+        } else {
+            localStorage.setItem("theme", "dark")
+            e.target.innerHTML = `Light Mode`;
             body.setAttribute("data-theme", "dark")
         }
     }
@@ -82,7 +96,7 @@ class Nav extends React.Component {
                         <li className="menu-header">
                             Menu
                         </li>
-                        <li className="menu-items" onClick={this.toggleDarkMode}>
+                        <li className="menu-items" onClick={this.toggleDarkModeMobile}>
                             <i className="menu-item-symbol fas fa-moon"></i>
                             Dark Mode
                         </li>
