@@ -28,11 +28,11 @@ class UserNav extends React.Component {
 
         if (body.getAttribute("data-theme")) {
             localStorage.setItem("theme", "light")
-            e.target.innerHTML = "Dark Mode";
+            e.target.innerHTML = `<i class="menu-item-symbol fas fa-moon"></i>Dark Mode`;
             body.removeAttribute("data-theme")
         } else {
             localStorage.setItem("theme", "dark")
-            e.target.innerHTML = "Light Mode";
+            e.target.innerHTML = `<i class="menu-item-symbol fas fa-sun"></i>Light Mode`;
             body.setAttribute("data-theme", "dark")
         }
     }
@@ -79,6 +79,7 @@ class UserNav extends React.Component {
         if (this.props.match.path === "/") {
             return (
                 <li className="menu-items" onClick={this.showStocks}>
+                    <i className="menu-item-symbol fas fa-chart-line"></i>
                     Stocks
                 </li>
             )
@@ -86,6 +87,7 @@ class UserNav extends React.Component {
         else {
             return (
                 <li className="menu-items" onClick={this.refreshPageOrRedirect}>
+                    <i className="menu-item-symbol fas fa-home"></i>
                     Home
                 </li>
             )
@@ -106,10 +108,12 @@ class UserNav extends React.Component {
                             Menu
                         </li>
                         <li className="menu-items" onClick={this.toggleDarkMode}>
+                            <i className="menu-item-symbol fas fa-moon"></i>
                             Dark Mode
                         </li>
                         { this.decideRenderStock()}
                         <li className="menu-items" onClick={this.props.logout} >
+                            <i className="menu-item-symbol fas fa-sign-out-alt"></i>
                             Log Out
                         </li>
                     </ul>

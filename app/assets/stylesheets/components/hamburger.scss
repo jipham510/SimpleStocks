@@ -58,8 +58,12 @@
         font-family: $secondary-font;
         font-weight: bold;
         li {
-          padding: 40px 100px;
+          padding: 40px 44px;
           font-size: 20px;
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: flex-start;
           // transition: font-size 0.5s ease-out;
           border-bottom: 1px solid var(--border-color);
           &.menu-header {
@@ -68,6 +72,9 @@
               padding: 20px 40px;
             //   padding-top: 40px;
               border-bottom: 3px solid var(--border-color);
+          }
+          .menu-item-symbol {
+            margin-right: 26px;
           }
         }
         .menu-items:hover {

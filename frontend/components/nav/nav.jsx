@@ -33,11 +33,11 @@ class Nav extends React.Component {
     
         if (body.getAttribute("data-theme")) {
             localStorage.setItem("theme", "light")
-            e.target.innerHTML = "Dark Mode";
+            e.target.innerHTML = `<i class="menu-item-symbol fas fa-moon"></i>Dark Mode`;
             body.removeAttribute("data-theme")
         } else {
             localStorage.setItem("theme", "dark")
-            e.target.innerHTML = "Light Mode";
+            e.target.innerHTML = `<i class="menu-item-symbol fas fa-sun"></i>Light Mode`;
             body.setAttribute("data-theme", "dark")
         }
     }
@@ -83,11 +83,13 @@ class Nav extends React.Component {
                             Menu
                         </li>
                         <li className="menu-items" onClick={this.toggleDarkMode}>
+                            <i className="menu-item-symbol fas fa-moon"></i>
                             Dark Mode
                         </li>
                         {(this.props.match.path !== "/login") ? 
                             (
                                 <li className="menu-items" onClick={this.handleRedirectToDemo} >
+                                    <i className="menu-item-symbol far fa-id-card"></i>
                                     Demo
                                 </li>
                             ) : ""
@@ -95,6 +97,7 @@ class Nav extends React.Component {
                         { (this.props.match.path !== "/") ? 
                             (
                                 <li className="menu-items" onClick={this.refreshPageOrRedirect}>
+                                    <i className="menu-item-symbol fas fa-home"></i>
                                     Home
                                 </li>
                             ) : ""
@@ -103,6 +106,7 @@ class Nav extends React.Component {
                             (this.props.match.path !== "/login") ? 
                             (
                                 <li className="menu-items" onClick={() => this.props.history.push("/login")} >
+                                    <i className="menu-item-symbol fas fa-sign-in-alt"></i>
                                     Log In
                                 </li>
                             ) : ""
@@ -111,6 +115,7 @@ class Nav extends React.Component {
                             (this.props.match.path !== "/signup") ? 
                             (
                                 <li className="menu-items" onClick={() => this.props.history.push("/signup")} >
+                                        <i className="menu-item-symbol fas fa-user-plus"></i>
                                     Sign Up
                                 </li>
                             ) : ""
