@@ -173,38 +173,36 @@ class Portfolio extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="portfolio">
+                <div className="chart-header">
+                    <h1>Balance</h1>
+                    <h2>$<Odometer value={this.state.hoverBalance}></Odometer></h2>
+                    <h3>{parseFloatToPosNegDollars(this.state.flux)} ({parseFloatToPostNegPercent(this.state.fluxPercent)})</h3>
+                </div>
                 {(this.state.chartData.length !== 0) ? ( 
-                    <div className="portfolio">
-                        <div className="chart-header">
-                            <h1>Balance</h1>
-                            <h2>$<Odometer value={this.state.hoverBalance}></Odometer></h2>
-                            <h3>{parseFloatToPosNegDollars(this.state.flux)} ({parseFloatToPostNegPercent(this.state.fluxPercent)})</h3>
-                        </div>
+                    <div className="chart-wrapper">
                         {this.renderLineChart()}
-                        <ul className="chart-ranges">
-                            <li className={this.activeBtn("1D")} onClick={this.handleChangeRange}>1D</li>
-                            <li className={this.activeBtn("1W")} onClick={this.handleChangeRange}>1W</li>
-                            <li className={this.activeBtn("1M")} onClick={this.handleChangeRange}>1M</li>
-                            <li className={this.activeBtn("3M")} onClick={this.handleChangeRange}>3M</li>
-                            <li className={this.activeBtn("1Y")} onClick={this.handleChangeRange}>1Y</li>
-                            <li className={this.activeBtn("5Y")} onClick={this.handleChangeRange}>5Y</li>
-                        </ul>
                     </div>
                 ) : (
-                        <div className="portfolio">
-                            <BeatLoader
-                                className={override}
-                                sizeUnit={"px"}
-                                size={10}
-                                color={"#67CF9A"}
-                                loading={true}
+                    <div className="chart-wrapper">
+                        <BeatLoader
+                            className={override}
+                            sizeUnit={"px"}
+                            size={10}
+                            color={"#67CF9A"}
+                            loading={true}
                             />
-                        </div>
-
+                    </div>
                     )
-
                 }
+                <ul className="chart-ranges">
+                    <li className={this.activeBtn("1D")} onClick={this.handleChangeRange}>1D</li>
+                    <li className={this.activeBtn("1W")} onClick={this.handleChangeRange}>1W</li>
+                    <li className={this.activeBtn("1M")} onClick={this.handleChangeRange}>1M</li>
+                    <li className={this.activeBtn("3M")} onClick={this.handleChangeRange}>3M</li>
+                    <li className={this.activeBtn("1Y")} onClick={this.handleChangeRange}>1Y</li>
+                    <li className={this.activeBtn("5Y")} onClick={this.handleChangeRange}>5Y</li>
+                </ul>
 
             </div>
 
