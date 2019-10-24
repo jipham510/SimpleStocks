@@ -17,9 +17,8 @@ class User < ApplicationRecord
   through: :watches,
   source: :stock
 
-  API_TOKEN = "pk_041184d81a4d4efe90eb7dfab43d9d2f" #throwaway
   # API_TOKEN = "pk_507026b3e85f4e4a889d2c112c20b532" #kayn0222
-  # API_TOKEN = "pk_fa06e2b91bce45c6a774b2a1ae8c678b" #production2 api kayn05555
+  API_TOKEN = "pk_fa06e2b91bce45c6a774b2a1ae8c678b" #production2 api kayn05555
 
 # demo_user = User.find_by(username: "Demo_User")
 
