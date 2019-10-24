@@ -11,7 +11,7 @@ class Api::PortfolioSnapshotsController < ApplicationController
     end
 
     def index
-        @portfolio_snapshots = current_user.portfolio_snapshots
+        @portfolio_snapshots = current_user.portfolio_snapshots.order(:id)
         render json: @portfolio_snapshots
     end
 
