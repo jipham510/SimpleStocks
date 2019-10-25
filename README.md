@@ -17,6 +17,7 @@ SimpleStocks is an investment app which simplifies stock trading and lets users 
 ## Features
 ### Responsive Web Design
 SimpleStocks is a fully responsive website that can be used on any device! I made 5 separate CSS media queries that account for a wide range of desktop, tablet, and phone sizes. On phone, the navigation bar turns into a hamburger menu on the top right and helps users navigate through the site effortlessly. There is also a dark mode feature that was made using CSS variables. It can be toggled on or off at any time through the navigation menu.
+
 ![](https://media.giphy.com/media/UUmCxRkVEMCC3o858A/giphy.gif)
 
 ### Data Visualization
