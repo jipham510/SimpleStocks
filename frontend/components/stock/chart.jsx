@@ -143,7 +143,12 @@ class Chart extends React.Component {
         } else if (range === "3M") {
             newChartData = this.state.historicalData.slice(historicalLength - 66, historicalLength)
         } else if (range === "1Y") {
-            newChartData = this.state.historicalData.slice(historicalLength - 264, historicalLength)
+            if(this.state.historicalData.length > 300) {
+                newChartData = this.state.historicalData.slice(historicalLength - 264, historicalLength)
+             
+            } else {
+                newChartData = this.state.historicalData;
+            }
         } else if (range === "5Y") {
             newChartData = this.state.historicalData
             if (newChartData.length < 300 ) {
@@ -154,7 +159,7 @@ class Chart extends React.Component {
                     })
                 );
             } else {
-                newChartData = this.state.historicalData
+                newChartData = this.state.historicalData;
             }
         }
         let newColor;
