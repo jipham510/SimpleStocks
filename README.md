@@ -15,13 +15,12 @@ SimpleStocks is an investment app which simplifies stock trading and lets users 
 * CSS and HTML5
 
 ## Features
-### Dark Mode
-Dark mode is togglable on every page of the application through the top right menu. Using CSS variables, I made my css dynamic by having a corresponding color be triggered depending on whether or not my dark theme was applied to the body. 
-
-![alt text](https://i.imgur.com/V7dhg70.png)
+### Responsive Web Design
+SimpleStocks is a fully responsive website that can be used on any device! I made 5 separate CSS media queries that account for a wide range of desktop, tablet, and phone sizes. On phone, the navigation bar turns into a hamburger menu on the top right and helps users navigate through the site effortlessly. There is also a dark mode feature that was made using CSS variables. It can be toggled on or off at any time through the navigation menu.
+![](https://media.giphy.com/media/UUmCxRkVEMCC3o858A/giphy.gif)
 
 ### Data Visualization
-Using IEX Cloud to pull historical stock info and recharts JS to transform the data into line charts, I made visualizations of the stock data prices in real time. Once my chart component is mounted, it fetches the historical data of the past 5 years of a stock's value. Event handlers are set on the 1D, 1W, 1M, 3M, 1Y, and 5Y buttons. The chart component has a data state that changes its range depending on what event handler is triggered.
+Using IEX Cloud to pull historical stock info and recharts JS to transform the data into line charts, I made visualizations of the stock data prices in real time. Once my chart component is mounted, it fetches the historical data for the past 5 years of a stock. Event handlers are set on the 1D, 1W, 1M, 3M, 1Y, and 5Y buttons. The chart component has a data state that changes its range depending on what event handler is triggered.
 ```
 changeDates(range) {
         let newChartData;
@@ -56,7 +55,9 @@ changeDates(range) {
     }
 ```
 ### Portfolio
-One of the biggest challenges I faced in this project was making my user portfolio. The portfolio is the user's balance at any point in the past 5 years. My first approach was trying to fetch all of the user's stocks for the past five years. This is very costly to do, so instead I made a portfolio snapshot table that saves the user's balance daily and stores it in my database. Doing the daily portfolio balance was also challenging due to having to account for many factors, like when a user buys or sells a stock, how many they own at a time, their deposits at different times, and the fluctuating nature of stocks every minute. The following code makes a batch request for the intraday data of all the stocks a user owns at a given time of the day and combines them with the user's buying power at that time.
+One of the biggest challenges I faced in this project was making my user portfolio. The portfolio is the user's balance at any point in the past 5 years. My first approach was trying to fetch all of the user's stocks for the past five years. This was very costly to do, so instead I used heroku scheduler and set a rake task that will be ran once everyday. This task will calculate the user's balance for the day and save it to my database which stores the user's balance for the past 5 years. 
+
+Creating the user's 1 day portfolio balance was even more challenging due to having to account for more factors, such as when a user buys or sells a stock, how many they own at a specific time in the day, and the fluctuating nature of stocks every minute. The following code makes a batch request for the intraday data of all the stocks a user owns at a given time of the day and combines them with the user's buying power at that time.
 
 ```   def create_one_day_portfolio 
     result = []
