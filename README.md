@@ -7,13 +7,12 @@ SimpleStocks is an investment app which simplifies stock trading and lets users 
 ![](https://media.giphy.com/media/cOcCtxNoy6OZYh5ps9/giphy.gif)
 ## Technologies
 
-* Frontend: React, Redux
+* Frontend: React, Redux, CSS, HTML5
 * Backend: Ruby on Rails, PostgreSQL
-* Data Visualization: Recharts Library
-* IEX Trading API
-* [News API]
+* [IEX Trading API](https://iexcloud.io/)
+* [News API](https://newsapi.org/)
 * [Odometer JS](https://github.hubspot.com/odometer/docs/welcome/)
-* CSS and HTML5
+* [Recharts JS Library](http://recharts.org/en-US/)
 
 ## Features
 ### Responsive Web Design
