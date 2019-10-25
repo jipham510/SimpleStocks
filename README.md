@@ -4,6 +4,7 @@ SimpleStocks is an investment app which simplifies stock trading and lets users 
 
 [Live Demo](https://simplestocks-fsp.herokuapp.com/#/)
 
+![](https://media.giphy.com/media/cOcCtxNoy6OZYh5ps9/giphy.gif)
 ## Technologies
 
 * Frontend: React, Redux
