@@ -41,10 +41,17 @@ class Portfolio extends React.Component {
 
     }
     componentDidMount(){
+        //default 1 day on page load
         fetchPortfolioSnapshot()
             .then(res => this.setData(res));
         fetchPortfolioSnapshots()
             .then(res => this.setState({ fiveYearData: res}));
+
+        //default 5 year on page load
+            // fetchPortfolioSnapshot()
+            //     .then(res => this.setState({intradayData: res}));
+            // fetchPortfolioSnapshots()
+            //     .then(res => this.setState({ fiveYearData: res }, () => this.changeDates('5Y')));
     }
     setData(intradayData){
         // responseJSON: Array(1258) [0 … 99] 0: balance: 100000 created_at: "2019-09-18T16:33:01.896Z" id: 1258 snapshot_date: "2014-09-18"
