@@ -36,17 +36,18 @@ class LoginForm extends React.Component {
 
     handleDemo(e){
         if(!this.state.disabled) {
-            this.setState( { disabled: true} );
+            this.setState({ disabled: true});
             let user = "Demo_User";
             let pass = "password";
             const demoBtn = document.getElementById("demo");
             const loginBtn = document.getElementById("login-form-button");
             demoBtn.setAttribute("button-theme", "disabled");
             loginBtn.setAttribute("button-theme", "disabled");
-            this.setState({username: "", password: "" },
-                        () => this.demoLogin(user,pass) );
+            this.setState(
+                { username: "", password: "" },
+                () => this.demoLogin(user,pass) 
+            );
         }
-
     }
     demoLogin(user,pass) {
         user = user.split("");
@@ -54,7 +55,8 @@ class LoginForm extends React.Component {
         const _demoUser = (user) => {
             if (user.length > 0) {
                 let char = user.shift();
-                this.setState({ username: this.state.username + char },
+                this.setState(
+                    { username: this.state.username + char },
                     () => setTimeout(() => { _demoUser(user) }, 50)
                 )
             } else {
@@ -64,7 +66,8 @@ class LoginForm extends React.Component {
         const _demoPass = (pass) => {
             if (pass.length > 0) {
                 let char = pass.shift();
-                this.setState({ password: this.state.password + char },
+                this.setState(
+                    { password: this.state.password + char },
                     () => setTimeout(() => { _demoPass(pass) }, 50)
                 )
             } else {
@@ -76,7 +79,6 @@ class LoginForm extends React.Component {
     }
 
     render() {
-
         return (
             <div className="background-img">
                 <header className="splash-nav">

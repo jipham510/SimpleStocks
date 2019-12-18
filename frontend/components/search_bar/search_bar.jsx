@@ -8,6 +8,7 @@ class SearchBar extends React.Component {
             user_input: "",
             searchbarFocused: false
         }
+        
         this.searchStocks = this.searchStocks.bind(this);
         this.update = this.update.bind(this);
         this.match = this.match.bind(this);
@@ -126,10 +127,20 @@ class SearchBar extends React.Component {
     }
     render() {
         return (
-            <div className="searchbar" onMouseEnter={this.focusSearchBar} onMouseLeave={this.blurSearchBar} onFocus={this.focusSearchBar} onBlur={this.blurSearchBar}>
-            {/* <div className="searchbar" onMouseEnter={this.focusSearchBar} onFocus={this.focusSearchBar} > */}
-                <div className="searchbar-svg"></div>
-                <input type="text" className="search-bar-input" placeholder="Search" onChange={this.update}/>
+            <div className="searchbar" 
+                onMouseEnter={this.focusSearchBar} 
+                onMouseLeave={this.blurSearchBar} 
+                onFocus={this.focusSearchBar} 
+                onBlur={this.blurSearchBar}
+            >
+                <div className="searchbar-svg"/>
+                <input 
+                    type="text" 
+                    className="search-bar-input" 
+                    placeholder="Search" 
+                    onChange={this.update}
+                    spellCheck="false"
+                />
                 {this.renderSearchResults()}
             </div>
         )

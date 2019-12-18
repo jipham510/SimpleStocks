@@ -10,7 +10,6 @@ class UserNav extends React.Component {
         this.refreshPageOrRedirect = this.refreshPageOrRedirect.bind(this);
         this.toggleDarkMode = this.toggleDarkMode.bind(this);
         this.showStocks = this.showStocks.bind(this);
-        this.handleCloseStocks = this.handleCloseStocks.bind(this);
         this.decideRenderStock = this.decideRenderStock.bind(this);
     }
 
@@ -84,10 +83,7 @@ class UserNav extends React.Component {
             this.handleHamburgerClick();
         }
     }
-    handleCloseStocks(){
-        const watchlist = document.querySelector('.watchlist');
 
-    }
     decideRenderStock(){
         if (this.props.match.path === "/") {
             return (
