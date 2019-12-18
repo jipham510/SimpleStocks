@@ -62,7 +62,6 @@ a {
         .front-page-pic {
             position: relative;
             top: 20vh;
-            // background: red;
             height: 700px;
             width: 800px;
             margin-top: 10vh;
@@ -73,69 +72,68 @@ a {
             animation-fill-mode: forwards;  
         }
     }
-    .front-page-intro {
-        color: var(--text-color);
-        h1 {
-            // font-size: 46px;
-            font-size: 3em;
-            font-weight: bold;
-        }
-        h2 {
-            // font-size: 18px;
-            font-size: 1.5em;
-        }
-        .cover {
-            position: relative;
-            top: 15vh;
-            background: var(--background-color);
-            width: 20vw;
-            height: 10vh;
-            z-index: 5;
-        }
-        .front-page-text1 {
-            z-index: 3;
-            letter-spacing: 1px;
-            position: relative;
-            animation: drop1 1s 1;
-            background: var(--background-color);
-            padding-top: 50px;
-            animation-fill-mode: forwards;  
-        }
-        .front-page-text2 {
-            word-wrap: none;
-            letter-spacing: 1px;
-            left: -2px;
-            padding-top: 10vh;
-            background: var(--background-color);
-            z-index: 2;
-            opacity: 0;
-            position: relative;
-            animation: drop2 1s 1;
-            animation-delay: 1s;
-            animation-fill-mode: forwards;  
-        }
-        .front-page-text3 {
-            opacity: 0;
-            z-index: 1;
-            position: relative;
-            h2 {
-                line-height: 26px;
-            }
-            animation: drop3 1s 1;
-            animation-delay: 2s;
-            animation-fill-mode: forwards;  
-        }
-        .sign-up {
-            position: relative;
-            top: 10vh;
-            opacity: 0;
-            animation: fadein 1s 1;
-            animation-delay: 3s;
-            animation-fill-mode: forwards;  
-            h4 {
-                padding: 16px 0px;
-            }
+}
 
+.front-page__intro {
+    color: var(--text-color);
+    h1 {
+        font-size: 3em;
+        font-weight: bold;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    &__cover {
+        position: relative;
+        top: 15vh;
+        background: var(--background-color);
+        width: 20vw;
+        height: 10vh;
+        z-index: 5;
+    }
+    &__text1 {
+        z-index: 3;
+        letter-spacing: 1px;
+        position: relative;
+        animation: drop1 1s 1;
+        background: var(--background-color);
+        padding-top: 50px;
+        animation-fill-mode: forwards;  
+    }
+    &__text2 {
+        word-wrap: none;
+        letter-spacing: 1px;
+        left: -2px;
+        padding-top: 10vh;
+        background: var(--background-color);
+        z-index: 2;
+        opacity: 0;
+        position: relative;
+        animation: drop2 1s 1;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;  
+    }
+    &__text3 {
+        opacity: 0;
+        z-index: 1;
+        position: relative;
+        h2 {
+            line-height: 26px;
         }
+        animation: drop3 1s 1;
+        animation-delay: 2s;
+        animation-fill-mode: forwards;  
+    }
+    .sign-up {
+        position: relative;
+        top: 10vh;
+        opacity: 0;
+        animation: fadein 1s 1;
+        animation-delay: 3s;
+        animation-fill-mode: forwards;  
+        h4 {
+            padding: 16px 0px;
+        }
+
     }
 }

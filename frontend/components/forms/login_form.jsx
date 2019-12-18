@@ -81,7 +81,7 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div className="background-img">
-                <header className="splash-nav">
+                <header className="splash__nav">
                     <NavContainer />
                 </header>
                 <div className="login-form">

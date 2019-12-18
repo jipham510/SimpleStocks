@@ -79,6 +79,7 @@
         }
         .menu-items:hover {
           background: var(--order-form-border-color);
+          cursor: pointer;
         //     @include easeOut();
         //     color: white;
         //     font-weight: bold;

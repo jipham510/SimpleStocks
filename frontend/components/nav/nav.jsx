@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
 import Hamburger from './hamburger';
 
 class Nav extends React.Component {
@@ -65,7 +64,7 @@ class Nav extends React.Component {
         }
     }
     handleHamburgerClick() {
-        const hamburgerBtn = document.querySelector('.splash-nav .hamburger-btn');
+        const hamburgerBtn = document.querySelector('.splash__nav .hamburger-btn');
         const menu = document.querySelector('.menu');
         const menuNav = document.querySelector('.menu-nav');
         const menuItems = document.querySelector('.menu-items');
@@ -83,7 +82,7 @@ class Nav extends React.Component {
     }
     render() {
         return (
-            <nav className="splash-nav">
+            <nav className="splash__nav">
                 <div id="logo" onClick={this.refreshPageOrRedirect}>
                     <div className="logo-image"></div>
                     <h4>SimpleStocks</h4>
@@ -100,39 +99,37 @@ class Nav extends React.Component {
                             <i className="menu-item-symbol fas fa-moon"></i>
                             Dark Mode
                         </li>
-                        {(this.props.match.path !== "/login") ? 
-                            (
-                                <li className="menu-items" onClick={this.handleRedirectToDemo} >
-                                    <i className="menu-item-symbol far fa-id-card"></i>
-                                    Demo
-                                </li>
-                            ) : ""
-                        }
-                        { (this.props.match.path !== "/") ? 
+                        <li className="menu-items" onClick={this.handleRedirectToDemo} >
+                            <i className="menu-item-symbol far fa-id-card"></i>
+                            Demo
+                        </li>
+                             
+                        { 
+                            (this.props.match.path !== "/") && 
                             (
                                 <li className="menu-items" onClick={this.refreshPageOrRedirect}>
                                     <i className="menu-item-symbol fas fa-home"></i>
                                     Home
                                 </li>
-                            ) : ""
+                            ) 
                         }
                         {
-                            (this.props.match.path !== "/login") ? 
+                            (this.props.match.path !== "/login") && 
                             (
                                 <li className="menu-items" onClick={() => this.props.history.push("/login")} >
                                     <i className="menu-item-symbol fas fa-sign-in-alt"></i>
                                     Log In
                                 </li>
-                            ) : ""
+                            ) 
                         }
                         {
-                            (this.props.match.path !== "/signup") ? 
+                            (this.props.match.path !== "/signup") && 
                             (
                                 <li className="menu-items" onClick={() => this.props.history.push("/signup")} >
                                         <i className="menu-item-symbol fas fa-user-plus"></i>
                                     Sign Up
                                 </li>
-                            ) : ""
+                            ) 
                         }
                         
                     </ul>

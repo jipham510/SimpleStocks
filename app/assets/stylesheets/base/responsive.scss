@@ -127,12 +127,12 @@ TOC :
   .splash-menu-wrapper {
     display: none;
   }
-  .splash-nav .hamburger-btn {
+  .splash__nav .hamburger-btn {
     display: block;
   }
   .background-img {
     background: none;
-    .splash-nav {
+    .splash__nav {
       display: block;
     }
     .login-form {
@@ -170,7 +170,7 @@ TOC :
   .SignUpForm .signup-body .signup-form .last-name {
     width: 38vw;
   }
-  .front-page-wrapper .front-page-intro .cover {
+  .front-page__intro__cover {
     width: 100vw !important;
 
   }
@@ -223,7 +223,7 @@ TOC :
   .user-page-header .user-nav-menu-wrapper .user-nav-menu  {
     display: none;
   }
-  .splash-nav .splash-menu-wrapper  {
+  .splash__nav .splash-menu-wrapper  {
     display: none;
   }
   .watchlist {
@@ -257,7 +257,7 @@ TOC :
     }
   }
 
-  .splash-nav #logo {
+  .splash__nav #logo {
     margin-left: 5.5vw;
   }
 }
@@ -280,7 +280,7 @@ TOC :
   }
 
   .front-page-wrapper {
-    .front-page-intro {
+    .front-page__intro {
       h1 {
       font-size: 2.5em;
       }
@@ -304,7 +304,7 @@ TOC :
       
     }
   }
-  .splash-nav #logo {
+  .splash__nav #logo {
     margin-left: 4.5vw;
   }
 }

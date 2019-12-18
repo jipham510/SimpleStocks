@@ -152,9 +152,3 @@ class OrderForm extends React.Component {
     }
 }
 export default OrderForm;
-{/* <div className="password">
-    <div className="text2">
-        <h2>Password</h2>
-    </div>
-    <input type="password" className="input-field" value={this.state.password} onChange={this.update('password')} />
-</div> */}

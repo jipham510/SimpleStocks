@@ -17,8 +17,8 @@ class User < ApplicationRecord
   through: :watches,
   source: :stock
 
-  API_TOKEN = Rails.application.credentials.iex_cloud_api_key
-
+  # API_TOKEN = Rails.application.credentials.iex_cloud_api_key
+  API_TOKEN = "pk_507026b3e85f4e4a889d2c112c20b532"
   def create_one_day_portfolio 
     result = []
     url = "https://cloud.iexapis.com/stable/stock/market/batch?types=chart&range=1d&chartInterval=5&last=5&token=#{API_TOKEN}&symbols="

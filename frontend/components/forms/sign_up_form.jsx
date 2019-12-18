@@ -44,7 +44,7 @@ class SignUpForm extends React.Component {
     render() {
         return (
             <div className="SignUpForm">
-                <header className="splash-nav">
+                <header className="splash__nav">
                     <NavContainer />
                 </header>
                 <div className="signup-body-parent">
