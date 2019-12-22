@@ -3,7 +3,6 @@ import {fetchIntradayData} from '../../actions/stock_actions'
 import Portfolio from './portfolio';
 
 const mapStateToProps = (state, ownProps) => {
-
     let currentBalance = state.entities.users[state.session.id].currentBalance;
     return {
         currentBalance

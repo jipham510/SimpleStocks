@@ -2,6 +2,8 @@
 // const API_TOKEN = "pk_fa06e2b91bce45c6a774b2a1ae8c678b" //production2 api kayn05555
 const API_TOKEN = "pk_507026b3e85f4e4a889d2c112c20b532" //kayn0222
 
+// https://cloud.iexapis.com/stable/stock/market/collection/sector?collectionName=Technology&token=pk_507026b3e85f4e4a889d2c112c20b532
+// https://cloud.iexapis.com/stable/stock/market/collection/list?collectionName=mostactive&token=pk_507026b3e85f4e4a889d2c112c20b532
 export const fetchStock = (ticker) => (
     $.ajax({
         method: "GET",
